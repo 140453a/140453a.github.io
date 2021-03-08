@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My Web Page</title>
+<script src="./js/generator.js"></script>
+<link rel="stylesheet" type="text/css" href="my_css.css" media="screen"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  <h2>Mythras Classic Fantasy Character Generator</h2>
+  <form id='form'>
+    <!-- NAME -->
+   <label for="fname">Character Name:</label><br>
+   <input type="text" id="name" name="fname"><br>
+   <!-- GENDER  -->
+   <input type="radio" id="male" name="gender" value="male">
+   <label for="male">Male</label><br>
+   <input type="radio" id="female" name="gender" value="female">
+   <label for="female">Female</label><br>
+   <input type="radio" id="other" name="gender" value="other">
+   <label for="other">Other</label><br>
+  </form>
+  <!-- Race -->
+  <label for="race">Choose your race: </label>
+  <select id="race" name="race">
+      <option value="0">Dwarf</option>
+      <option value="1">Elf</option>
+      <option value="2">Gnome</option>
+      <option value="3">Half-Elf</option>
+      <option value="4">Half-Orc</option>
+      <option value="5">Halfling</option>
+      <option value="6">Human(suggested)</option>
+    </select> <br>
+  <!-- CLASS -->
+  <label for="class">Choose your class: </label>
+  <select id="class" name="class">
+      <option value="0">Bard</option>
+      <option value="1">Cavalier</option>
+      <option value="2">Cleric</option>
+      <option value="3">Druid</option>
+      <option value="4">Fighter</option>
+      <option value="5">Magic-User</option>
+      <option value="6">Monk</option>
+      <option value="7">Paladin</option>
+      <option value="8">Ranger</option>
+      <option value="9">Thief</option>
+      <option value="10">Thief-Acrobat</option>
+    </select> <br>
+  <!-- GENERATE BUTTON -->
+   <button onclick="generate()">Generate</button>
+</body>
