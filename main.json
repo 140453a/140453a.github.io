@@ -1,4 +1,70 @@
 {
+  "Skills":{
+     "Regular":{
+       "Athletics": "STR+DEX",
+       "Boating": "STR+CON",
+       "Brawn": "STR+SIZ",
+       "Conceal": "DEX+POW",
+       "Customs": "INT+INT",
+       "Dance": "DEX+CHA",
+       "Deceit": "INT+CHA",
+       "Drive": "DEX+POW",
+       "Endurance": "CON+CON",
+       "Evade": "DEX+DEX",
+       "First Aid": "INT+DEX",
+       "Influence": "CHA+CHA",
+       "Insight": "INT+POW",
+       "Locale": "INT+INT",
+       "LanguageC": "INT+CHA",
+       "LanguageN": "INT+CHA",
+       "Perception": "INT+POW",
+       "Ride": "DEX+POW",
+       "Sing": "CHA+POW",
+       "Stealth": "DEX+INT",
+       "Swim": "STR+CON",
+       "Unarmed": "STR+DEX",
+       "Willpower": "POW+POW"
+     },
+     "Professional": {
+       "Acting": "CHA+CHA",
+       "Acrobatics": "STR+DEX",
+       "Art": "POW+CHA",
+       "Bureaucracy": "INT+INT",
+       "Commerce": "INT+CHA",
+       "Courtesy": "INT+CHA",
+       "Craft": "DEX+INT",
+       "Culture": "INT+INT",
+       "Disguise": "INT+CHA",
+       "Engineering": "INT+INT",
+       "Gambling": "INT+POW",
+       "Healing": "INT+POW",
+       "LanguageO": "INT+CHA",
+       "Mechanisms": "DEX+INT",
+       "Musicianship": "DEX+CHA",
+       "Navigation": "INT+POW",
+       "Oratory": "POW+CHA",
+       "Seamanship": "INT+CON",
+       "Seduction": "INT+CHA",
+       "Sleight": "DEX+CHA",
+       "Streetwise": "POW+CHA",
+       "Survival": "CON+POW",
+       "Teach": "INT+CON",
+       "Track": "INT+CON",
+       "AnimalT": "POW+CHA",
+       "Language": "INT+CHA",
+       "Lockpicking": "DEX+DEX",
+       "Meditation": "INT+CON",
+       "Mysticism": "POW+CON"
+      },
+      "Magical": {
+        "ArcaneC": "INT+POW",
+        "ArcaneK": "INT+INT"
+     },
+       "Divine": {
+          "Channeling": "INT+POW",
+          "Piety": "CHA+POW"
+    }
+  },
   "Race": {
     "Dwarf": {
       "Characteristics": {
