@@ -1,0 +1,146 @@
+{
+  "Race": {
+    "Dwarf": {
+      "Characteristics": {
+        "STR": "2d6+9",
+        "CON": "2d6+9",
+        "SIZ": "1d3+9",
+        "DEX": "3d6",
+        "INT": "2d6+6",
+        "POW": "3d6",
+        "CHA": "3d6"
+      },
+      "Attributes": {
+        "APs": "",
+        "DMod": "",
+        "EMod": "",
+        "HRate": "",
+        "Initiative": "",
+        "Luck": "",
+        "Movement": "15"
+      },
+
+    },
+    "Elf": {
+      "Characteristics": {
+        "STR": "2d6+3",
+        "CON": "3d6",
+        "SIZ": "1d6+6",
+        "DEX": "2d6+9",
+        "INT": "2d6+7",
+        "POW": "3d6",
+        "CHA": "3d6"
+      },
+      "Attributes": {
+        "APs": "",
+        "DMod": "",
+        "EMod": "",
+        "HRate": "",
+        "Initiative": "",
+        "Luck": "",
+        "Movement": "20"
+      }
+    },
+    "Gnome": {
+      "Characteristics": {
+        "STR": "2d6+1",
+        "CON": "2d6+6",
+        "SIZ": "1d3+6",
+        "DEX": "3d6+2",
+        "INT": "2d6+8",
+        "POW": "3d6",
+        "CHA": "3d6"
+      },
+      "Attributes": {
+        "APs": "",
+        "DMod": "",
+        "EMod": "",
+        "HRate": "",
+        "Initiative": "",
+        "Luck": "",
+        "Movement": "15"
+      }
+    },
+    "Half-Elf": {
+      "Characteristics": {
+        "STR": "3d6",
+        "CON": "3d6",
+        "SIZ": "2d6+5",
+        "DEX": "3d6",
+        "INT": "2d6+6",
+        "POW": "3d6",
+        "CHA": "3d6"
+      },
+      "Attributes": {
+        "APs": "",
+        "DMod": "",
+        "EMod": "",
+        "HRate": "",
+        "Initiative": "",
+        "Luck": "",
+        "Movement": "20"
+      }
+    },
+    "Half-Orc": {
+      "Characteristics": {
+        "STR": "2d6+7",
+        "CON": "2d6+6",
+        "SIZ": "2d6+7",
+        "DEX": "3d6",
+        "INT": "2d6+5",
+        "POW": "3d6",
+        "CHA": "2d6+1"
+      },
+      "Attributes": {
+        "APs": "",
+        "DMod": "",
+        "EMod": "",
+        "HRate": "",
+        "Initiative": "",
+        "Luck": "",
+        "Movement": "20"
+      }
+    },
+    "Halfling": {
+      "Characteristics": {
+        "STR": "2d6",
+        "CON": "2d6+7",
+        "SIZ": "1d3+6",
+        "DEX": "3d6+3",
+        "INT": "2d6+6",
+        "POW": "3d6",
+        "CHA": "2d6+5"
+      },
+      "Attributes": {
+        "APs": "",
+        "DMod": "",
+        "EMod": "",
+        "HRate": "",
+        "Initiative": "",
+        "Luck": "",
+        "Movement": "15"
+      }
+    },
+    "Human": {
+      "Characteristics": {
+        "STR": "3d6",
+        "CON": "3d6",
+        "SIZ": "2d6+6",
+        "DEX": "3d6",
+        "INT": "2d6+6",
+        "POW": "3d6",
+        "CHA": "3d6"
+      },
+      "Attributes": {
+        "APs": "",
+        "DMod": "",
+        "EMod": "",
+        "HRate": "",
+        "Initiative": "",
+        "Luck": "",
+        "Movement": "20"
+      },
+
+    }
+  }
+}
