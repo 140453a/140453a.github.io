@@ -1,4 +1,4 @@
-{
+var cf =`{
   "Skills":{
      "Regular":{
        "Athletics": "STR+DEX",
@@ -84,8 +84,7 @@
         "Initiative": "",
         "Luck": "",
         "Movement": "15"
-      },
-
+      }
     },
     "Elf": {
       "Characteristics": {
@@ -205,8 +204,7 @@
         "Initiative": "",
         "Luck": "",
         "Movement": "20"
-      },
-
+      }
     }
   }
-}
+}`

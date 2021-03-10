@@ -1,3 +1,5 @@
+
+
 // Checking form data for validity.
 function checkData(data) {
   if (data.name === '') {
@@ -20,16 +22,22 @@ function getFormData(form){
 }
 
 function generate() {
+  // Validating forms
   var form = $("#form");
-  var data = getFormData(form);
-  var err = checkData(data);
+  var char = getFormData(form);
+  var err = checkData(char);
   if (!err) return false;
   var race = $('select[name=race] option').filter(':selected').val();
-  data.race = race;
+  char.race = race;
   var _class = $('select[name=class] option').filter(':selected').val();
-  data.class = _class;
-  console.log(data);
-  for(var p = 0; p < 30; p++){roll("2d6+6");}
+  char.class = _class;
+  console.log(char.race);
+  console.log(char.class)
+  // Loading json template for character generation (e.g. template.Skills.Regular.Athletics)
+  var template = JSON.parse(cf); //cf is the json object in classicfantasy.json
+
+
+
   return true;
 }
 
