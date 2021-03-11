@@ -1,4 +1,71 @@
+// Disable certain unallowable race/class combinations
+$(document).ready(function() {
+    //copy the class select, so we can easily reset it
+    var classClone = $('#class').clone();
+    //Document initialization, required to prevent selecting invalid class/race combinations
+    $("#race").val('Dwarf');
+    var forbidden = ["Bard", "Cavalier", "Druid", "Magic-User", "Monk", "Paladin", "Ranger"];
+    for (let c = 0; c < forbidden.length; c++){
+      $('#class').find(`option:contains(${forbidden[c]})`).remove();
+    }
 
+    $('#race').change(function() {
+        var val = $(this).val();
+        //reset the second select on each change
+        $('#class').html(classClone.html())
+        if (val === 'Dwarf') {
+          var forbidden = ["Bard", "Cavalier", "Druid", "Magic-User", "Monk", "Paladin", "Ranger"];
+          for (let c = 0; c < forbidden.length; c++){
+            $('#class').find(`option:contains(${forbidden[c]})`).remove();
+          }
+      } else if (val === 'Elf') {
+          var forbidden = ["(A)", "Berserker", "Monk", "Paladin"];
+          for (let c = 0; c < forbidden.length; c++){
+            $('#class').find(`option:contains(${forbidden[c]})`).remove();
+          }
+      } else if (val === 'Gnome') {
+          var forbidden = ["Bard", "Druid", "Cavalier", "Ranger", "Berserker", "Monk", "Paladin"];
+          for (let c = 0; c < forbidden.length; c++){
+            $('#class').find(`option:contains(${forbidden[c]})`).remove();
+          }
+      } else if (val === 'Half-Elf') {
+          var forbidden = ["Berserker", "Monk", "Paladin"];
+          for (let c = 0; c < forbidden.length; c++){
+            $('#class').find(`option:contains(${forbidden[c]})`).remove();
+          }
+      } else if (val === 'Half-Orc') {
+          var forbidden = ["Bard", "Cavalier", "Druid", "Magic-User", "Monk", "Paladin", "Ranger"];
+          for (let c = 0; c < forbidden.length; c++){
+            $('#class').find(`option:contains(${forbidden[c]})`).remove();
+          }
+      } else if (val === 'Halfling') {
+          var forbidden = ["Bard", "Berserker", "Cavalier", "Druid", "Magic-User", "Monk", "Paladin", "Ranger"];
+          for (let c = 0; c < forbidden.length; c++){
+            $('#class').find(`option:contains(${forbidden[c]})`).remove();
+          }
+      } else if (val === 'HumanC') {
+          var forbidden = ["Berserker"];
+          for (let c = 0; c < forbidden.length; c++){
+            $('#class').find(`option:contains(${forbidden[c]})`).remove();
+          }
+      } else if (val === 'HumanB') {
+          var forbidden = ["(A)", "Cavalier", "Magic-User", "Monk", "Paladin", "Thief-Acrobat"];
+          for (let c = 0; c < forbidden.length; c++){
+            $('#class').find(`option:contains(${forbidden[c]})`).remove();
+          }
+      } else if (val === 'HumanN') {
+          var forbidden = ["(A)", "Berserker", "Cavalier", "Druid", "Thief-Acrobat", "Monk", "Paladin"];
+          for (let c = 0; c < forbidden.length; c++){
+            $('#class').find(`option:contains(${forbidden[c]})`).remove();
+          }
+      } else if (val === 'HumanP') {
+          var forbidden = ["(A)", "Cavalier", "Thief-Acrobat", "Monk", "Paladin", "Magic-User", "Ranger"];
+          for (let c = 0; c < forbidden.length; c++){
+            $('#class').find(`option:contains(${forbidden[c]})`).remove();
+          }
+      }
+  });
+});
 
 // Checking form data for validity.
 function checkData(data) {
@@ -35,9 +102,12 @@ function generate() {
   console.log(char.class)
   // Loading json template for character generation (e.g. template.Skills.Regular.Athletics)
   var template = JSON.parse(cf); //cf is the json object in classicfantasy.json
+  // Finding race characteristics
+  for (var prop in template.Race) {
+    if (char.race === prop) console.log(prop)
+  }
 
-
-
+console.log(char);
   return true;
 }
 

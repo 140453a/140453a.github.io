@@ -186,7 +186,67 @@ var cf =`{
         "Movement": "15"
       }
     },
-    "Human": {
+    "HumanC": {
+      "Characteristics": {
+        "STR": "3d6",
+        "CON": "3d6",
+        "SIZ": "2d6+6",
+        "DEX": "3d6",
+        "INT": "2d6+6",
+        "POW": "3d6",
+        "CHA": "3d6"
+      },
+      "Attributes": {
+        "APs": "",
+        "DMod": "",
+        "EMod": "",
+        "HRate": "",
+        "Initiative": "",
+        "Luck": "",
+        "Movement": "20"
+      }
+    },
+    "HumanB": {
+      "Characteristics": {
+        "STR": "3d6",
+        "CON": "3d6",
+        "SIZ": "2d6+6",
+        "DEX": "3d6",
+        "INT": "2d6+6",
+        "POW": "3d6",
+        "CHA": "3d6"
+      },
+      "Attributes": {
+        "APs": "",
+        "DMod": "",
+        "EMod": "",
+        "HRate": "",
+        "Initiative": "",
+        "Luck": "",
+        "Movement": "20"
+      }
+    },
+    "HumanN": {
+      "Characteristics": {
+        "STR": "3d6",
+        "CON": "3d6",
+        "SIZ": "2d6+6",
+        "DEX": "3d6",
+        "INT": "2d6+6",
+        "POW": "3d6",
+        "CHA": "3d6"
+      },
+      "Attributes": {
+        "APs": "",
+        "DMod": "",
+        "EMod": "",
+        "HRate": "",
+        "Initiative": "",
+        "Luck": "",
+        "Movement": "20"
+      }
+    },
+    "HumanP": {
       "Characteristics": {
         "STR": "3d6",
         "CON": "3d6",
