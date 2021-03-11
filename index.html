@@ -3,57 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <title>My Web Page</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script type="text/javascript" src="ClassicFantasy.json"></script>
 <script type="text/javascript" src="./js/generator.js"></script>
 <link rel="stylesheet" type="text/css" href="my_css.css" media="screen"/>
 </head>
 <body>
+  <div class="container">
   <h2>Mythras Classic Fantasy Character Generator</h2>
-  <form id='form'>
-    <!-- NAME -->
-   <label for="fname">Character Name:</label><br>
-   <input type="text" id="name" name="name" required><br>
-   <!-- GENDER  -->
-   <input type="radio" id="male" name="gender" value="male" checked="checked">
-   <label for="male">Male</label><br>
-   <input type="radio" id="female" name="gender" value="female">
-   <label for="female">Female</label><br>
-   <input type="radio" id="other" name="gender" value="other">
-   <label for="other">Other</label><br>
-  </form>
-  <!-- Race -->
-  <label for="race">Choose your race: </label>
-  <select id="race" name="race">
-      <option value="Dwarf">Dwarf</option>
-      <option value="Elf">Elf</option>
-      <option value="Gnome">Gnome</option>
-      <option value="Half-Elf">Half-Elf</option>
-      <option value="Half-Orc">Half-Orc</option>
-      <option value="Halfling">Halfling</option>
-      <option value="HumanC">Civilised Human</option>
-      <option value="HumanB">Barbarian Human</option>
-      <option value="HumanN">Nomadic Human</option>
-      <option value="HumanP">Primitive Human</option>
+    <form id='form'>
+      <div class="form-group">
+        <!-- NAME -->
+       <label for="fname">Character Name:</label><br>
+       <input class="form-control" type="text" id="name" name="name" required><br>
+       <!-- GENDER  -->
+       <input type="radio" id="male" name="gender" value="male" checked="checked">
+       <label for="male">Male</label><br>
+       <input type="radio" id="female" name="gender" value="female">
+       <label for="female">Female</label><br>
+       <input type="radio" id="other" name="gender" value="other">
+       <label for="other">Other</label><br>
+      </form>
+      <!-- Race -->
+      <label for="race">Choose your race: </label>
+      <select class="custom-select" id="race" name="race">
+          <option value="Dwarf">Dwarf</option>
+          <option value="Elf">Elf</option>
+          <option value="Gnome">Gnome</option>
+          <option value="Half-Elf">Half-Elf</option>
+          <option value="Half-Orc">Half-Orc</option>
+          <option value="Halfling">Halfling</option>
+          <option value="HumanC">Civilised Human</option>
+          <option value="HumanB">Barbarian Human</option>
+          <option value="HumanN">Nomadic Human</option>
+          <option value="HumanP">Primitive Human</option>
 
-    </select> <br>
-  <!-- CLASS -->
-  <label for="class">Choose your class: </label>
-  <select id="class" name="class">
-      <option value="BardA">Bard (A)</option>
-      <option value="BardD">Bard (D)</option>
-      <option value="Berserker">Berserker</option>
-      <option value="Cavalier">Cavalier</option>
-      <option value="Cleric">Cleric</option>
-      <option value="Druid">Druid</option>
-      <option value="Fighter">Fighter</option>
-      <option value="Magic-User">Magic-User</option>
-      <option value="Monk">Monk</option>
-      <option value="Paladin">Paladin</option>
-      <option value="Ranger">Ranger</option>
-      <option value="Thief">Thief</option>
-      <option value="Thief-Acrobat">Thief-Acrobat</option>
-    </select> <br>
-  <!-- GENERATE BUTTON -->
-   <button onclick="generate()">Generate</button>
+        </select> <br>
+      <!-- CLASS -->
+      <label for="class">Choose your class: </label>
+      <select class="custom-select" id="class" name="class">
+          <option value="BardA">Bard (A)</option>
+          <option value="BardD">Bard (D)</option>
+          <option value="Berserker">Berserker</option>
+          <option value="Cavalier">Cavalier</option>
+          <option value="Cleric">Cleric</option>
+          <option value="Druid">Druid</option>
+          <option value="Fighter">Fighter</option>
+          <option value="Magic-User">Magic-User</option>
+          <option value="Monk">Monk</option>
+          <option value="Paladin">Paladin</option>
+          <option value="Ranger">Ranger</option>
+          <option value="Thief">Thief</option>
+          <option value="Thief-Acrobat">Thief-Acrobat</option>
+        </select> <br>
+      <!-- GENERATE BUTTON -->
+       <button onclick="generate()">Generate</button>
+    </div>
+  </div>
 </body>

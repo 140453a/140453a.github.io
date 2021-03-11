@@ -67,7 +67,7 @@ $(document).ready(function() {
   });
 });
 
-// Checking form data for validity.
+// Checking name for validity.
 function checkData(data) {
   if (data.name === '') {
     alert("Error: name field is blank.");
@@ -98,24 +98,38 @@ function generate() {
   char.race = race;
   var _class = $('select[name=class] option').filter(':selected').val();
   char.class = _class;
-  console.log(char.race);
-  console.log(char.class)
+  // console.log(char.race);
+  // console.log(char.class);
   // Loading json template for character generation (e.g. template.Skills.Regular.Athletics)
   var template = JSON.parse(cf); //cf is the json object in classicfantasy.json
   // Finding race characteristics
-  for (var prop in template.Race) {
-    if (char.race === prop) console.log(prop)
-  }
+  var stats = []
+  prereq = template.Class[_class];
+  console.log(prereq);
+  stats.push({"STR": roll(template.Race[race].Characteristics.STR)});
+  stats.push({"CON": roll(template.Race[race].Characteristics.CON)});
+  stats.push({"SIZ": roll(template.Race[race].Characteristics.SIZ)});
+  stats.push({"DEX": roll(template.Race[race].Characteristics.DEX)});
+  stats.push({"INT": roll(template.Race[race].Characteristics.INT)});
+  stats.push({"POW": roll(template.Race[race].Characteristics.POW)});
+  stats.push({"CHA": roll(template.Race[race].Characteristics.CHA)});
+  char.stats = stats;
 
-console.log(char);
+
+  console.log(char);
   return true;
 }
 
 function roll(dice) {
+  var result = 0;
+  var mod = 0;
   var rolls = dice.split("d")[0]; // in 3d6+4, rolls is 3
-  var sides = dice.split("d")[1].split("+")[0]; // in 3d6+4, sides is 6
-  var mod = parseInt(dice.split("+")[1], 10); // in 3d6+4, mod is 4
-  var result = null;
+  if (dice.includes("+")) {
+    var sides = dice.split("d")[1].split("+")[0]; // in 3d6+4, sides is 6
+    mod = parseInt(dice.split("+")[1], 10); // in 3d6+4, mod is 4
+  } else {
+    var sides = dice.split("d")[1]
+  }
   for (var i = 0; i < rolls; i++) {
     result = result + Math.floor(Math.random() * sides) + 1;
   }
