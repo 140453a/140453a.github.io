@@ -67,43 +67,95 @@ var cf =`{
   },
   "Class": {
     "BardA": {
-      "Prereq": [{"STR": "11"}, {"CON": "11"}, {"DEX": "12"}, {"INT": "13"}, {"POW": "11"}, {"CHA": "12"}]
+      "Prereq": {"STR": "11", "CON": "11", "DEX": "12", "INT": "13", "POW": "11", "CHA": "12"},
+      "Armor": {
+        "Main": 2,
+        "Limbs": 2
+      }
     },
     "BardD": {
-      "Prereq": [{"STR": "11"}, {"CON": "11"}, {"DEX": "12"}, {"INT": "13"}, {"POW": "11"}, {"CHA": "12"}]
+      "Prereq": {"STR": "11", "CON": "11", "DEX": "12", "INT": "13", "POW": "11", "CHA": "12"},
+      "Armor": {
+        "Main": 2,
+        "Limbs": 2
+      }
     },
     "Berserker": {
-      "Prereq": [{"STR": "12"}, {"CON": "14"}, {"DEX": "12"}, {"POW": "12"}]
+      "Prereq": {"STR": "12", "CON": "14", "DEX": "12", "POW": "12"},
+      "Armor": {
+        "Main": 3,
+        "Limbs": 0
+      }
     },
     "Cavalier": {
-      "Prereq": [{"STR": "11"}, {"CON": "12"}, {"DEX": "11"}, {"INT": "13"}, {"POW": "10"}]
+      "Prereq": {"STR": "11", "CON": "12", "DEX": "11", "INT": "13", "POW": "10"},
+      "Armor": {
+        "Main": 5,
+        "Limbs": 5
+      }
     },
     "Cleric": {
-      "Prereq": [{"POW": "11"}]
+      "Prereq": {"POW": "11"},
+      "Armor": {
+        "Main": 4,
+        "Limbs": 4
+      }
     },
     "Druid": {
-      "Prereq": [{"POW": "11"}, {"CHA": "11"}]
+      "Prereq": {"POW": "11", "CHA": "11"},
+      "Armor": {
+        "Main": 0,
+        "Limbs": 0
+      }
     },
     "Fighter": {
-      "Prereq": [{"STR": "11"}, {"CON": "11"}]
+      "Prereq": {"STR": "11", "CON": "11"},
+      "Armor": {
+        "Main": 4,
+        "Limbs": 4
+      }
     },
     "Magic-User": {
-      "Prereq": [{"DEX": "11"}, {"INT": "14"}, {"POW": "12"}]
+      "Prereq": {"DEX": "11", "INT": "14", "POW": "12"},
+      "Armor": {
+        "Main": 0,
+        "Limbs": 0
+      }
     },
     "Monk": {
-      "Prereq": [{"STR": "11"}, {"CON": "11"}, {"DEX": "14"}, {"POW": "12"}]
+      "Prereq": {"STR": "11", "CON": "11", "DEX": "14", "POW": "12"},
+      "Armor": {
+        "Main": 0,
+        "Limbs": 0
+      }
     },
     "Paladin": {
-      "Prereq": [{"STR": "11"}, {"CON": "12"}, {"INT": "13"}, {"POW": "12"}, {"CHA": "14"}]
+      "Prereq": {"STR": "11", "CON": "12", "INT": "13", "POW": "12", "CHA": "14"},
+      "Armor": {
+        "Main": 5,
+        "Limbs": 5
+      }
     },
     "Ranger": {
-      "Prereq": [{"STR": "11"}, {"CON": "12"}, {"INT": "14"}, {"POW": "12"}]
+      "Prereq": {"STR": "11", "CON": "12", "INT": "14", "POW": "12"},
+      "Armor": {
+        "Main": 3,
+        "Limbs": 3
+      }
     },
     "Thief": {
-      "Prereq": [{"DEX": "11"}]
+      "Prereq": {"DEX": "11"},
+      "Armor": {
+        "Main": 3,
+        "Limbs": 3
+      }
     },
     "Thief-Acrobat": {
-      "Prereq": [{"STR": "11"}, {"DEX": "12"}]
+      "Prereq": {"STR": "11", "DEX": "12"},
+      "Armor": {
+        "Main": 3,
+        "Limbs": 3
+      }
     }
   },
   "Race": {

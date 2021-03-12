@@ -19,14 +19,6 @@
         <!-- NAME -->
        <label for="fname">Character Name:</label><br>
        <input class="form-control" type="text" id="name" name="name" required><br>
-       <!-- GENDER  -->
-       <input type="radio" id="male" name="gender" value="male" checked="checked">
-       <label for="male">Male</label><br>
-       <input type="radio" id="female" name="gender" value="female">
-       <label for="female">Female</label><br>
-       <input type="radio" id="other" name="gender" value="other">
-       <label for="other">Other</label><br>
-      </form>
       <!-- Race -->
       <label for="race">Choose your race: </label>
       <select class="custom-select" id="race" name="race">
@@ -60,7 +52,7 @@
           <option value="Thief-Acrobat">Thief-Acrobat</option>
         </select> <br>
       <!-- GENERATE BUTTON -->
-       <button onclick="generate()">Generate</button>
+       <button type="button" class="btn btn-secondary btn-lg" onclick="generate()">Generate</button>
     </div>
   </div>
 </body>
