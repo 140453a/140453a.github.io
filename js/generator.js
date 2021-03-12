@@ -120,7 +120,7 @@ function generate() {
   char.skills = [];
   char.notes = ""
   char.sorcery_spells = [];
-  var hit = hitLocations(template.Class[_class].Armor.Main, template.Class[_class].Armor.Limbs );
+  var hit = hitLocations(template.Class[_class].Armor.Main, template.Class[_class].Armor.Limbs, char.stats);
   char.hit_locations = hit;
   $("#myJson").html("[" + JSON.stringify(char) + "]");
   return true;
@@ -199,9 +199,9 @@ function calculateAttributes(template, race, stats) {
   // AP
   if (INT + DEX <= 12) {
     attr.action_points = 1;
-  } else if (INT + DEX > 12 && INT + DEX <= 24) {
+  } else if (INT + DEX <= 24) {
     attr.action_points = 2;
-  } else if (INT + DEX > 24 && INT + DEX <= 36) {
+  } else if (INT + DEX <= 36) {
     attr.action_points = 3;
   } else {
     attr.action_points = 4;
@@ -287,16 +287,43 @@ function calculateAttributes(template, race, stats) {
   return attr;
 }
 
-function hitLocations(chest_abdomen_head, rest_of_body) {
+function hitLocations(chest_abdomen_head, rest_of_body, stats) {
+  // these characteristics are needed to calculate HP.
+  var CON = Object.entries(stats[1])[0][1];
+  var SIZ = Object.entries(stats[2])[0][1];
+  var bucket = CON + SIZ;
+  var hp_mod = 0
+  if (bucket <= 5) {
+    hp_mod = 0;
+  } else if (bucket <= 10) {
+    hp_mod = 1;
+  } else if (bucket <= 15) {
+    hp_mod = 2;
+  } else if (bucket <= 20) {
+    hp_mod = 3;
+  } else if (bucket <= 25) {
+    hp_mod = 4;
+  } else if (bucket <= 30) {
+    hp_mod = 5;
+  } else if (bucket <= 35) {
+    hp_mod = 6;
+  } else if (bucket <= 40) {
+    hp_mod = 7;
+  } else {
+    hp_mod = 8;
+  }
+  //returning array
   var hit = [];
   var humanoid = ["Right leg", "Left leg", "Abdomen", "Chest", "Right arm", "Left arm", "Head"];
   var ranges = ["01-03", "04-06", "07-09", "10-12", "13-15", "16-18", "19-20"];
   var special = [2, 3, 6] // indexes of abdomen, chest, head.
+  var base_hp = [1, 1, 2, 3, 1, 1, 1]; //starting hp of humanoid, before modifier is added.
+
   for (var i = 0; i < 7; i++) {
     let obj = {}
     special.includes(i) ? obj.ap = chest_abdomen_head : obj.ap = rest_of_body;
     obj.range = ranges[i];
-    // TODO: calculate hitpoints.
+    obj.hp = base_hp[i] + hp_mod;
     obj.name = humanoid[i];
     hit.push(obj);
   }
