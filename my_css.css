@@ -11,3 +11,7 @@ body {
 h2 {
   text-align: center;
 }
+
+.btn {
+  margin-top: 10px;
+}

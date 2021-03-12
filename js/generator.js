@@ -122,8 +122,15 @@ function generate() {
   char.sorcery_spells = [];
   var hit = hitLocations(template.Class[_class].Armor.Main, template.Class[_class].Armor.Limbs );
   char.hit_locations = hit;
-  console.log("[" + JSON.stringify(char) + "]");
+  $("#myJson").html("[" + JSON.stringify(char) + "]");
   return true;
+}
+
+function copyText() {
+  var copyText = document.getElementById("myJson");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
 }
 
 function roll(dice) {
