@@ -105,7 +105,7 @@ function generate() {
   prereq = template.Class[_class].Prereq;
   var stats = rollCharacteristics(prereq, template, char.race); // getting characteristics for character
   char.stats = stats; // main json now has characteristics that meet prereqs for class.
-  var attrs = calculateAttributes(template, char.race, char.stats);
+  var attrs = calculateAttributes(template, char.race, char.stats, char.class);
   char.attributes = attrs;
   // extra stuff needed for json importer to work. (maybe? some needed, some not.)
   char.features = [];
@@ -117,13 +117,37 @@ function generate() {
   char.combat_styles = []
   char.cults = [];
   char.folk_spells = [];
-  char.skills = [];
+  var skills = calculateBaseSkills(template, char.stats);
+  char.skills = skills;
   char.notes = ""
   char.sorcery_spells = [];
   var hit = hitLocations(template.Class[_class].Armor.Main, template.Class[_class].Armor.Limbs, char.stats);
   char.hit_locations = hit;
   $("#myJson").html("[" + JSON.stringify(char) + "]");
   return true;
+}
+
+function calculateBaseSkills(template, stats) {
+  // for ease of use, characteristics are separated out and put in temp array 's'.
+  var STR = Object.entries(stats[0])[0][1];
+  var CON = Object.entries(stats[1])[0][1];
+  var SIZ = Object.entries(stats[2])[0][1];
+  var DEX = Object.entries(stats[3])[0][1];
+  var INT = Object.entries(stats[4])[0][1];
+  var POW = Object.entries(stats[5])[0][1];
+  var CHA = Object.entries(stats[6])[0][1];
+  var s = {"STR": STR, "CON": CON, "SIZ": SIZ, "DEX": DEX, "INT": INT, "POW": POW, "CHA": CHA}
+
+
+
+  var skill_return = {};
+  var skills = template.Skills.Regular;
+  for (var skill in skills) {
+    var skill_arr = skills[skill].split("+");
+    var skill_value = s[skill_arr[0]] + s[skill_arr[1]];
+    skill_return[skill] = skill_value;
+  }
+  return skill_return;
 }
 
 function copyText() {
@@ -182,7 +206,7 @@ function rollCharacteristics(prereq, template, race) {
   return(stats);
 }
 
-function calculateAttributes(template, race, stats) {
+function calculateAttributes(template, race, stats, class_) {
   // for ease of use, characteristics are separated out.
   var STR = Object.entries(stats[0])[0][1];
   var CON = Object.entries(stats[1])[0][1];
@@ -268,8 +292,11 @@ function calculateAttributes(template, race, stats) {
   }
 
   // Strike rank (called initiative, but importer uses strike rank.)
-  sr = (Math.ceil((INT + DEX)/2)).toString()
-  attr.strike_rank = sr + `(${sr}-0)`;
+  var pen = template.Class[class_].Armor.Penalty.toString();
+  var unmodified_sr = Math.ceil((INT + DEX)/2);
+  var sr = (unmodified_sr - template.Class[class_].Armor.Penalty).toString();
+
+  attr.strike_rank = sr + `(${unmodified_sr}-${pen})`;
 
   // magic points
   attr.magic_points = POW;
