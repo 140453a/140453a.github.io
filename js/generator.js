@@ -124,12 +124,12 @@ function generate() {
   char.hit_locations = hit;
   var spec = racialSpecials(template, char.race);
   char.features = spec;
-  racialSkills(char.skills, template, race, char.stats);
+  racialSkills(char.skills, template, race, char.stats, char.class);
   $("#myJson").html("[" + JSON.stringify(char) + "]");
   return true;
 }
 
-function racialSkills(skills, template, race, stats) {
+function racialSkills(skills, template, race, stats, _class) {
   // for ease of use, characteristics are separated out and put in temp array 's'.
   var STR = Object.entries(stats[0])[0][1];
   var CON = Object.entries(stats[1])[0][1];
@@ -141,9 +141,10 @@ function racialSkills(skills, template, race, stats) {
   var s = {"STR": STR, "CON": CON, "SIZ": SIZ, "DEX": DEX, "INT": INT, "POW": POW, "CHA": CHA}
 
   // pushing racial language to skills, if race is demi-human.
+  var language_base = INT+CHA;
   var langs = template.Race[race].Skills.Languages;
   for (language in langs){
-      skills.push({[language]: langs[language]});
+      skills.push({[language]: language_base + langs[language]}); //adding 40 to language skill.
   }
   // adding 40 to all race's Customs skill.
   var indexOfCustoms = skills.findIndex(function(obj, index) {
@@ -153,6 +154,7 @@ function racialSkills(skills, template, race, stats) {
 
   // Selecting 3 professional skills from racial list, setting to base values + 5
   var chooser = randomNoRepeats(template.Race[race].Skills.Professional);
+  var race_prereqs_pro = [];
   for (let i = 0; i < 3; i ++) {
     var pro_skill = chooser();
     var template_value = template.Skills.Professional[pro_skill];
@@ -161,19 +163,44 @@ function racialSkills(skills, template, race, stats) {
     // add 5 to each skill.
     skill_value = skill_value + 5;
     skills.push({[pro_skill]: skill_value});
-
+    race_prereqs_pro.push(pro_skill);
   }
+
+
   // Putting 5 points in every racial standard skill.
   var points = 85;
   for (var s_skill of template.Race[race].Skills.Standard) {
-    var indexOfSkill = skills.findIndex(function(obj, index) {
-      if(Object.keys(obj)[0] == s_skill) return true; // index of skill in char.skills
-    });
-    skills[indexOfSkill][s_skill] = skills[indexOfSkill][s_skill] + 5;
+    var index_of_skill = skills.findIndex(p => Object.keys(p)[0] == s_skill); // xkcd
+    skills[index_of_skill][s_skill] = skills[index_of_skill][s_skill] + 5;
   }
   points = points - (template.Race[race].Skills.Standard.length * 5);
-  console.log("Points remaining:", points);
+  //now have 50 points
 
+  // spending rest of points on professional+ standard skills. no more than 15 per skill.
+
+  var class_prereqs = template.Class[_class].Skills;
+  var race_prereqs_std = template.Race[race].Skills.Standard;
+  var race_prereqs = Array.from(new Set(race_prereqs_std.concat(race_prereqs_pro)));
+  // checking if any of my skills match class prerequisite skills.
+  var skill_intersection = class_prereqs.filter(v => race_prereqs.includes(v)); // array of skills in both class requirements, and racial available skills.
+  for (intersects of skill_intersection) {
+    var index_of_skill = skills.findIndex(p => Object.keys(p)[0] == intersects);
+    skills[index_of_skill][intersects] = skills[index_of_skill][intersects] + 10;
+    points -= 10;
+    if (points <= 0) break;
+  }
+  // need to find symmetric difference of arrays to not go over 15 skill limit accidentally.
+  var skill_chooser = randomNoRepeats(race_prereqs);
+  while (points > 0) { // have left over points to spend that are inconsequential to class prereqs.
+    var random_skill = skill_chooser();
+    if (skill_intersection.includes(random_skill)) continue; // already had 15 added to it.
+    var index_of_skill = skills.findIndex(p => Object.keys(p)[0] == random_skill);
+    skills[index_of_skill][random_skill] = skills[index_of_skill][random_skill] + 10;
+    console.log(random_skill);
+    points -= 10;
+  }
+  console.log(skill_intersection);
+  console.log(points);
 }
 
 // takes elements out randomly with no repeats until none are left, then resets.
