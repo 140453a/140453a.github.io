@@ -108,7 +108,6 @@ function generate() {
   var attrs = calculateAttributes(template, char.race, char.stats, char.class);
   char.attributes = attrs;
   // extra stuff needed for json importer to work. (maybe? some needed, some not.)
-  char.features = [];
   char.theism_spells = [];
   char.cult_rank = "None";
   char.mysticism_spells = [];
@@ -123,8 +122,78 @@ function generate() {
   char.sorcery_spells = [];
   var hit = hitLocations(template.Class[_class].Armor.Main, template.Class[_class].Armor.Limbs, char.stats);
   char.hit_locations = hit;
+  var spec = racialSpecials(template, char.race);
+  char.features = spec;
+  racialSkills(char.skills, template, race, char.stats);
   $("#myJson").html("[" + JSON.stringify(char) + "]");
   return true;
+}
+
+function racialSkills(skills, template, race, stats) {
+  // for ease of use, characteristics are separated out and put in temp array 's'.
+  var STR = Object.entries(stats[0])[0][1];
+  var CON = Object.entries(stats[1])[0][1];
+  var SIZ = Object.entries(stats[2])[0][1];
+  var DEX = Object.entries(stats[3])[0][1];
+  var INT = Object.entries(stats[4])[0][1];
+  var POW = Object.entries(stats[5])[0][1];
+  var CHA = Object.entries(stats[6])[0][1];
+  var s = {"STR": STR, "CON": CON, "SIZ": SIZ, "DEX": DEX, "INT": INT, "POW": POW, "CHA": CHA}
+
+  // pushing racial language to skills, if race is demi-human.
+  var langs = template.Race[race].Skills.Languages;
+  for (language in langs){
+      skills.push({[language]: langs[language]});
+  }
+  // adding 40 to all race's Customs skill.
+  var indexOfCustoms = skills.findIndex(function(obj, index) {
+    if(Object.keys(obj)[0] == 'Customs') return true;
+  });
+  skills[indexOfCustoms].Customs = skills[indexOfCustoms].Customs + 40;
+
+  // Selecting 3 professional skills from racial list, setting to base values + 5
+  var chooser = randomNoRepeats(template.Race[race].Skills.Professional);
+  for (let i = 0; i < 3; i ++) {
+    var pro_skill = chooser();
+    var template_value = template.Skills.Professional[pro_skill];
+    var skill_split = template_value.split("+");
+    var skill_value = s[skill_split[0]] + s[skill_split[1]];
+    // add 5 to each skill.
+    skill_value = skill_value + 5;
+    skills.push({[pro_skill]: skill_value});
+
+  }
+  // Putting 5 points in every racial standard skill.
+  var points = 85;
+  for (var s_skill of template.Race[race].Skills.Standard) {
+    var indexOfSkill = skills.findIndex(function(obj, index) {
+      if(Object.keys(obj)[0] == s_skill) return true; // index of skill in char.skills
+    });
+    skills[indexOfSkill][s_skill] = skills[indexOfSkill][s_skill] + 5;
+  }
+  points = points - (template.Race[race].Skills.Standard.length * 5);
+  console.log("Points remaining:", points);
+
+}
+
+// takes elements out randomly with no repeats until none are left, then resets.
+function randomNoRepeats(array) {
+  var copy = array.slice(0);
+  return function() {
+    if (copy.length < 1) { copy = array.slice(0); }
+    var index = Math.floor(Math.random() * copy.length);
+    var item = copy[index];
+    copy.splice(index, 1);
+    return item;
+  };
+}
+
+function racialSpecials(template, race) {
+  var spec = []
+  for (var special of template.Race[race].Special) {
+    spec.push(special);
+  }
+  return spec;
 }
 
 function calculateBaseSkills(template, stats) {
@@ -140,12 +209,12 @@ function calculateBaseSkills(template, stats) {
 
 
 
-  var skill_return = {};
+  var skill_return = [];
   var skills = template.Skills.Regular;
   for (var skill in skills) {
     var skill_arr = skills[skill].split("+");
     var skill_value = s[skill_arr[0]] + s[skill_arr[1]];
-    skill_return[skill] = skill_value;
+    skill_return.push({[skill]: skill_value});
   }
   return skill_return;
 }

@@ -1,5 +1,8 @@
 var cf =`{
   "Skills":{
+    "Combat": {
+      "Base": "STR+DEX"
+    },
      "Regular":{
        "Athletics": "STR+DEX",
        "Boating": "STR+CON",
@@ -15,8 +18,6 @@ var cf =`{
        "Influence": "CHA+CHA",
        "Insight": "INT+POW",
        "Locale": "INT+INT",
-       "LanguageC": "INT+CHA",
-       "LanguageN": "INT+CHA",
        "Perception": "INT+POW",
        "Ride": "DEX+POW",
        "Sing": "CHA+POW",
@@ -28,20 +29,21 @@ var cf =`{
      "Professional": {
        "Acting": "CHA+CHA",
        "Acrobatics": "STR+DEX",
-       "Art": "POW+CHA",
+       "Art(Any)": "POW+CHA",
        "Bureaucracy": "INT+INT",
        "Commerce": "INT+CHA",
        "Courtesy": "INT+CHA",
-       "Craft": "DEX+INT",
-       "Culture": "INT+INT",
+       "Craft(Any)": "DEX+INT",
+       "Culture(Any)": "INT+INT",
        "Disguise": "INT+CHA",
        "Engineering": "INT+INT",
        "Gambling": "INT+POW",
        "Healing": "INT+POW",
-       "LanguageO": "INT+CHA",
+       "Language(Any)": "INT+CHA",
+       "Lore(Any)": "INT+INT",
        "Mechanisms": "DEX+INT",
        "Musicianship": "DEX+CHA",
-       "Navigation": "INT+POW",
+       "Navigate": "INT+POW",
        "Oratory": "POW+CHA",
        "Seamanship": "INT+CON",
        "Seduction": "INT+CHA",
@@ -50,15 +52,15 @@ var cf =`{
        "Survival": "CON+POW",
        "Teach": "INT+CON",
        "Track": "INT+CON",
-       "AnimalT": "POW+CHA",
+       "Animal Training": "POW+CHA",
        "Language": "INT+CHA",
        "Lockpicking": "DEX+DEX",
        "Meditation": "INT+CON",
        "Mysticism": "POW+CON"
       },
       "Magical": {
-        "ArcaneC": "INT+POW",
-        "ArcaneK": "INT+INT"
+        "Arcane Casting": "INT+POW",
+        "Arcane Knowledge": "INT+INT"
      },
        "Divine": {
           "Channeling": "INT+POW",
@@ -72,104 +74,195 @@ var cf =`{
         "Main": 2,
         "Limbs": 2,
         "Penalty": 2
-      }
-    },
+      },
+      "Skills": ["Arcane Casting", "Arcane Knowledge", "Athletics", "Influence", "Lore(Any)", "Musicianship", "Seduction", "Sing"],
+      "combat_styles": [
+        {
+          "name": "",
+
+          "weapons": [
+            {}]
+    }]},
     "BardD": {
       "Prereq": {"STR": "11", "CON": "11", "DEX": "12", "INT": "13", "POW": "11", "CHA": "12"},
       "Armor": {
         "Main": 2,
         "Limbs": 2,
         "Penalty": 2
-      }
-    },
+      },
+      "Skills": ["Athletics", "Channeling", "Influence", "Lore(Any)", "Musicianship", "Piety", "Sing", "Survival"],
+      "combat_styles": [
+        {
+          "name": "",
+
+          "weapons": [
+            {}]
+    }]},
     "Berserker": {
       "Prereq": {"STR": "12", "CON": "14", "DEX": "12", "POW": "12"},
       "Armor": {
         "Main": 3,
         "Limbs": 0,
         "Penalty": 2
-      }
-    },
+      },
+      "Skills": ["Athletics", "Brawn", "COMBAT", "Endurance", "Evade", "Unarmed", "Survival"],
+      "combat_styles": [
+        {
+          "name": "",
+
+          "weapons": [
+            {}]
+    }]},
     "Cavalier": {
       "Prereq": {"STR": "11", "CON": "12", "DEX": "11", "INT": "13", "POW": "10"},
       "Armor": {
         "Main": 5,
         "Limbs": 5,
         "Penalty": 6
-      }
-    },
+      },
+      "Skills": ["Bureaucracy", "COMBAT", "Courtesy", "Endurance", "Influence", "Ride", "Willpower"],
+      "combat_styles": [
+        {
+          "name": "",
+
+          "weapons": [
+            {}]
+    }]},
     "Cleric": {
       "Prereq": {"POW": "11"},
       "Armor": {
         "Main": 4,
         "Limbs": 4,
         "Penalty": 5
-      }
-    },
+      },
+      "Skills": ["Channeling", "COMBAT", "First Aid", "Influence", "Insight", "Piety", "Willpower"],
+      "combat_styles": [
+        {
+          "name": "",
+
+          "weapons": [
+            {}]
+    }]},
     "Druid": {
       "Prereq": {"POW": "11", "CHA": "11"},
       "Armor": {
         "Main": 0,
         "Limbs": 0,
         "Penalty": 0
-      }
-    },
+      },
+      "Skills": ["Channeling", "COMBAT", "First Aid", "Influence", "Insight", "Piety", "Willpower"],
+      "combat_styles": [
+        {
+          "name": "",
+
+          "weapons": [
+            {}]
+    }]},
     "Fighter": {
       "Prereq": {"STR": "11", "CON": "11"},
       "Armor": {
         "Main": 4,
         "Limbs": 4,
         "Penalty": 5
-      }
-    },
+      },
+      "Skills": ["Brawn", "COMBAT", "Craft(Any)", "Endurance", "Evade", "Lore(Any)", "Unarmed"],
+      "combat_styles": [
+        {
+          "name": "",
+
+          "weapons": [
+            {}]
+    }]},
     "Magic-User": {
       "Prereq": {"DEX": "11", "INT": "14", "POW": "12"},
       "Armor": {
         "Main": 0,
         "Limbs": 0,
         "Penalty": 0
-      }
-    },
+      },
+      "Skills": ["Arcane Casting", "Arcane Knowledge", "Influence", "Insight", "Lore(Any)", "Perception", "Willpower"],
+      "combat_styles": [
+        {
+          "name": "",
+
+          "weapons": [
+            {}]
+    }]},
     "Monk": {
       "Prereq": {"STR": "11", "CON": "11", "DEX": "14", "POW": "12"},
       "Armor": {
         "Main": 0,
         "Limbs": 0,
         "Penalty": 0
-      }
-    },
+      },
+      "Skills": ["Acrobatics", "Athletics", "COMBAT", "Evade", "Meditation", "Mysticism", "Unarmed", "Willpower"],
+      "combat_styles": [
+        {
+          "name": "",
+
+          "weapons": [
+            {}]
+    }]},
     "Paladin": {
       "Prereq": {"STR": "11", "CON": "12", "INT": "13", "POW": "12", "CHA": "14"},
       "Armor": {
         "Main": 5,
         "Limbs": 5,
         "Penalty": 6
-      }
-    },
+      },
+      "Skills": ["Channeling", "COMBAT", "Endurance", "Perception", "Piety", "Stealth", "Survival"],
+      "combat_styles": [
+        {
+          "name": "",
+
+          "weapons": [
+            {}]
+    }]},
     "Ranger": {
       "Prereq": {"STR": "11", "CON": "12", "INT": "14", "POW": "12"},
       "Armor": {
         "Main": 3,
         "Limbs": 3,
         "Penalty": 3
-      }
-    },
+      },
+      "Skills": ["Athletics", "Channeling", "COMBAT", "Endurance", "Perception", "Piety", "Stealth", "Survival"],
+      "combat_styles": [
+        {
+          "name": "",
+
+          "weapons": [
+            {}]
+    }]},
     "Thief": {
       "Prereq": {"DEX": "11"},
       "Armor": {
         "Main": 3,
         "Limbs": 3,
         "Penalty": 3
-      }
-    },
+      },
+      "Skills": ["Athletics", "COMBAT", "Deceit", "Evade", "Sleight", "Stealth", "Streetwise"],
+      "combat_styles": [
+        {
+          "name": "",
+
+          "weapons": [
+            {}]
+    }]},
     "Thief-Acrobat": {
       "Prereq": {"STR": "11", "DEX": "12"},
       "Armor": {
         "Main": 3,
         "Limbs": 3,
         "Penalty": 3
-      }
-    }
+      },
+      "Skills": ["Acrobatics", "Athletics", "COMBAT", "Deceit", "Evade", "Perception", "Stealth", "Streetwise"],
+      "combat_styles": [
+        {
+          "name": "",
+
+          "weapons": [
+            {}]
+    }]}
   },
   "Race": {
     "Dwarf": {
@@ -190,6 +283,18 @@ var cf =`{
         "Initiative": "",
         "Luck": "",
         "Movement": "15"
+      },
+      "Special":[
+        "Magic Resistance: Dwarves are highly resistant to Arcane magic; their Willpower Checks 1 grade easier when used to resist. They may not use certain magic items not specifically designed for dwarves or their class. Only magic weapons, shields, armour, gauntlets, and girlds are able to be used without restriction.",
+        "Poison Resistance: Endurance Rolls that relate to poisoning are 1 grade easier.",
+        "Infravision: See up to 60 feet in darkness (pg 96).",
+        "Tunnel Sense: Can detect certain underground phenomena within 10 feet by succeeding at an Easy Perception check (may be further augmented with Lore(Mineral)). Can be used to detect stonework pits, deadfalls, traps; a slope or grade; aproximate depth; new tunnel or passage construction; shifting or sliding walls or rooms."
+
+      ],
+      "Skills": {
+        "Standard": ["Athletics", "Brawn", "Endurance", "Evade", "Locale", "Perception", "Willpower"],
+        "Professional": ["Commerce", "Craft(Any)", "Engineering", "Language(Any)", "Lore(Any)", "Mechanisms", "Oratory", "Survival"],
+        "Languages": {"Language (Dwarvish)": 40}
       }
     },
     "Elf": {
@@ -210,6 +315,18 @@ var cf =`{
         "Initiative": "",
         "Luck": "",
         "Movement": "20"
+      },
+      "Special":[
+        "Infravision: See up to 60 feet in darkness (pg 96).",
+        "Resistance to Sleep and Charm: Willpower rolls to resist sleep and charm spells are 2 grades easier. Voluntary application.",
+        "Unaffected by Raise Dead: Elves require other methods of revival if they are to be resurrected.",
+        "Stealthy: Elves wearing nothing more restrictive than light armour find stealth checks 1 grade easier.",
+        "Secret and Concealed Object Detection: Due to their acute senses, an elf that succeeds at a Formidable Perception check has a chance of noticing a concealed object when merely passing within 10 feet of it."
+      ],
+      "Skills": {
+        "Standard": ["Conceal", "Influence", "Insight", "Locale", "Perception", "Stealth", "Willpower"],
+        "Professional": ["Animal Training", "Art(Any)", "Commerce", "Craft(Any)", "Courtesy", "Language(Any)", "Lore(Any)", "Musicianship", "Survival"],
+        "Languages": {"Language (Elvish)": 40}
       }
     },
     "Gnome": {
@@ -230,6 +347,17 @@ var cf =`{
         "Initiative": "",
         "Luck": "",
         "Movement": "15"
+      },
+      "Special":[
+        "Magic Resistance: Willpower checks are 1 grade easier when used to resist Arcane magic. May not use magic items not specifically designed for them or their class. Only magic weapons, shields, armour, gauntlets, and girlds are able to be used without restriction. Gnomes may use Illusion magic.",
+        "Poison Resistance: Gnomes are highly resistant to poison, with Endurance rolls that relate to poisoning being 1 grade easier.",
+        "Infravision: See up to 60 feet in darkness (pg 96).",
+        "Tunnel Sense: Can detect certain underground phenomena within 10 feet by succeeding at an Easy Perception check (may be further augmented with Lore(Mineral)). Can be used to detect stonework pits, deadfalls, traps; a slope or grade; aproximate depth; new tunnel or passage construction; shifting or sliding walls or rooms."
+      ],
+      "Skills": {
+        "Standard": ["Deceit", "Evade", "Insight", "Locale", "Perception", "Stealth", "Willpower"],
+        "Professional": ["Animal Training", "Commerce", "Craft(Any)", "Engineering", "Language(Any)", "Lore(Any)", "Mechanisms", "Oratory", "Survival"],
+        "Languages": {"Language (Gnomish)": 40, "Language (Small Burrowing Animals)": 40}
       }
     },
     "Half-Elf": {
@@ -250,6 +378,18 @@ var cf =`{
         "Initiative": "",
         "Luck": "",
         "Movement": "20"
+      },
+      "Special":[
+        "Infravision: See up to 60 feet in darkness (pg 96).",
+        "Resistance to Sleep and Charm: Willpower rolls to resist sleep and charm spells are 2 grades easier. Voluntary application.",
+        "Unaffected by Raise Dead: Elves require other methods of revival if they are to be resurrected.",
+        "Stealthy: Elves wearing nothing more restrictive than light armour find stealth checks 1 grade easier.",
+        "Secret and Concealed Object Detection: Due to their acute senses, an elf that succeeds at a Formidable Perception check has a chance of noticing a concealed object when merely passing within 10 feet of it."
+      ],
+      "Skills": {
+        "Standard": ["Conceal", "Influence", "Insight", "Locale", "Perception", "Stealth", "Willpower"],
+        "Professional": ["Animal Training", "Art(Any)", "Commerce", "Craft(Any)", "Courtesy", "Healing", "Language(Any)", "Lore(Any)", "Musicianship", "Navigate", "Seamanship", "Streetwise", "Survival", "Track"],
+        "Languages": {"Language (Elvish)": 40}
       }
     },
     "Half-Orc": {
@@ -270,6 +410,14 @@ var cf =`{
         "Initiative": "",
         "Luck": "",
         "Movement": "20"
+      },
+      "Special":[
+        "Infravision: See up to 60 feet in darkness (pg 96)."
+      ],
+      "Skills": {
+        "Standard": ["Athletics", "Brawn", "Endurance", "First Aid", "Locale", "Perception", "Evade"],
+        "Professional": ["Animal Training", "Art(Any)", "Commerce", "Craft(Any)", "Courtesy", "Healing", "Language(Any)", "Lore(Any)", "Musicianship", "Navigate", "Seamanship", "Streetwise", "Survival", "Track"],
+        "Languages": {"Language (Orcish)": 40}
       }
     },
     "Halfling": {
@@ -290,6 +438,17 @@ var cf =`{
         "Initiative": "",
         "Luck": "",
         "Movement": "15"
+      },
+      "Special":[
+        "Magic Resistance: Willpower checks are 1 grade easier when used to resist Arcane magic. May not use magic items not specifically designed for them or their class. Only magic weapons, shields, armour, gauntlets, and girlds are able to be used without restriction.",
+        "Poison Resistance: Halflings are highly resistant to poison, with Endurance rolls that relate to poisoning being 1 grade easier.",
+        "Stealthy: Halflings wearing nothing more restrictive than light armour find stealth checks 1 grade easier.",
+        "Exposure Tolerance (Feet): Halflings suffer no adverse effects from exposure when going around barefoot, regardless of the temperature. The rest of their body suffers exposure normally."
+      ],
+      "Skills": {
+        "Standard": ["Dance", "Evade", "Insight", "Locale", "Perception", "Stealth", "Willpower"],
+        "Professional": ["Art(Any)", "Commerce", "Craft(Any)", "Courtesy", "Language(Any)", "Lore(Any)", "Musicianship", "Streetwise"],
+        "Languages": {"Language (Halfling)": 40}
       }
     },
     "HumanC": {
@@ -310,6 +469,15 @@ var cf =`{
         "Initiative": "",
         "Luck": "",
         "Movement": "20"
+      },
+      "Special":[
+        "Lucky: Humans receive an extra Luck Point. Add this to your luck points now. (Not added)",
+        "Gifted: Humans receive an extra Experience Roll. Add this to you Exp Rolls now. (Not added)"
+      ],
+      "Skills": {
+        "Standard": ["Conceal", "Deceit", "Drive", "Influence", "Insight", "Locale", "Willpower"],
+        "Professional": ["Art(Any)", "Commerce", "Craft(Any)", "Courtesy", "Language(Any)", "Lore(Any)", "Musicianship", "Streetwise"],
+        "Languages": {}
       }
     },
     "HumanB": {
@@ -330,6 +498,15 @@ var cf =`{
         "Initiative": "",
         "Luck": "",
         "Movement": "20"
+      },
+      "Special":[
+        "Lucky: Humans receive an extra Luck Point. Add this to your luck points now. (Not added)",
+        "Gifted: Humans receive an extra Experience Roll. Add this to you Exp Rolls now. (Not added)"
+      ],
+      "Skills": {
+        "Standard": ["Athletics", "Brawn", "Endurance", "First Aid", "Locale", "Perception", "Ride"],
+        "Professional": ["Animal Training", "Craft(Any)", "Healing", "Language(Any)", "Lore(Any)", "Musicianship", "Navigate", "Seamanship", "Survival", "Track"],
+        "Languages": {}
       }
     },
     "HumanN": {
@@ -350,6 +527,15 @@ var cf =`{
         "Initiative": "",
         "Luck": "",
         "Movement": "20"
+      },
+      "Special":[
+        "Lucky: Humans receive an extra Luck Point. Add this to your luck points now. (Not added)",
+        "Gifted: Humans receive an extra Experience Roll. Add this to you Exp Rolls now. (Not added)"
+      ],
+      "Skills": {
+        "Standard": ["Endurance", "First Aid", "Locale", "Perception", "Stealth", "Ride", "Athletics"],
+        "Professional": ["Craft(Any)", "Culture(Any)", "Language(Any)", "Lore(Any)", "Musicianship", "Navigate", "Survival", "Track"],
+        "Languages": {}
       }
     },
     "HumanP": {
@@ -370,6 +556,15 @@ var cf =`{
         "Initiative": "",
         "Luck": "",
         "Movement": "20"
+      },
+      "Special":[
+        "Lucky: Humans receive an extra Luck Point. Add this to your luck points now. (Not added)",
+        "Gifted: Humans receive an extra Experience Roll. Add this to you Exp Rolls now. (Not added)"
+      ],
+      "Skills": {
+        "Standard": ["Brawn", "Endurance", "Evade", "Locale", "Perception", "Stealth", "Athletics"],
+        "Professional": ["Craft(Any)", "Healing", "Lore(Any)", "Musicianship", "Navigate", "Survival", "Track"],
+        "Languages": {}
       }
     }
   }
