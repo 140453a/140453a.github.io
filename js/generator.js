@@ -125,6 +125,8 @@ function generate() {
   var spec = racialSpecials(template, char.race);
   char.features = spec;
   racialSkills(char.skills, template, race, char.stats, char.class);
+  // TODO: remove "COMBAT" from char.skills
+  // TODO: berserker has first pro skill required, rest have 2
   $("#myJson").html("[" + JSON.stringify(char) + "]");
   return true;
 }
@@ -178,7 +180,7 @@ function racialSkills(skills, template, race, stats, _class) {
 
   // spending rest of points on professional+ standard skills. no more than 15 per skill.
 
-  var class_prereqs = template.Class[_class].Skills;
+  var class_prereqs = template.Class[_class].Prereqs;
   var race_prereqs_std = template.Race[race].Skills.Standard;
   var race_prereqs = Array.from(new Set(race_prereqs_std.concat(race_prereqs_pro)));
   // checking if any of my skills match class prerequisite skills.
