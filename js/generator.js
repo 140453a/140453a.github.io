@@ -125,10 +125,63 @@ function generate() {
   var spec = racialSpecials(template, char.race);
   char.features = spec;
   racialSkills(char.skills, template, race, char.stats, char.class);
+  classSkills(char.class, template, char.skills, char.stats);
   // TODO: remove "COMBAT" from char.skills
-  // TODO: berserker has first pro skill required, rest have 2
   $("#myJson").html("[" + JSON.stringify(char) + "]");
   return true;
+}
+
+function classSkills(class_, template, skills, stats){
+  // for ease of use, characteristics are separated out and put in temp array 's'.
+  var STR = Object.entries(stats[0])[0][1];
+  var CON = Object.entries(stats[1])[0][1];
+  var SIZ = Object.entries(stats[2])[0][1];
+  var DEX = Object.entries(stats[3])[0][1];
+  var INT = Object.entries(stats[4])[0][1];
+  var POW = Object.entries(stats[5])[0][1];
+  var CHA = Object.entries(stats[6])[0][1];
+  var s = {"STR": STR, "CON": CON, "SIZ": SIZ, "DEX": DEX, "INT": INT, "POW": POW, "CHA": CHA}
+  // picking first 2 indexes of professional skills, and random of rest.
+  var class_choices = template.Class[class_].Skills.Professional;
+  var class_professionals = [];
+  class_professionals.push(class_choices[0], class_choices[1]);
+  // make random choices of indexes 2+ and push to class_professionals.
+  class_choices = class_choices.slice(2); // remove first 2 choices.
+  const randomElement = class_choices[Math.floor(Math.random() * class_choices.length)];
+  class_professionals.push(randomElement);
+  // adding pro skills to char.skills
+  for (let i = 0; i < 3; i ++) {
+    if(skills.indexOf(class_professionals[i]) === -1){ // only pushing if unique.
+      var template_value = template.Skills.Professional[class_professionals[i]];
+      var skill_split = template_value.split("+");
+      var skill_value = s[skill_split[0]] + s[skill_split[1]];
+      skills.push({[class_professionals[i]]: skill_value});
+    }
+  }
+
+
+  //assigning 100 points to class skills, no minimum, 15 point maximum
+  var points = 100;
+  var class_prereqs = template.Class[class_].Prereqs;
+  var class_prereqs_std = template.Class[class_].Skills.Standard;
+
+  // combined pro and standard skills to create an intersection to determine skill priority.
+  var combined_prereqs = Array.from(new Set(class_prereqs_std.concat(class_professionals)));
+  // creating intersection
+  var skill_intersection = class_prereqs.filter(v => combined_prereqs.includes(v)); // array of skills in both available class skills, and class requirements
+  console.log(skill_intersection);
+  for (intersects of skill_intersection) {
+    var points_to_add = Math.min(15, points); // for the case of adding 15 to 7, makes the last skill only add 10 points.
+    var index_of_skill = skills.findIndex(p => Object.keys(p)[0] == intersects);
+    skills[index_of_skill][intersects] = skills[index_of_skill][intersects] + points_to_add;
+    points -= points_to_add;
+    console.log(intersects)
+    if (points <= 0) break; //
+  }
+  if (points >0){ // spending extra points, if any.
+    ;
+  }
+  console.log(points);
 }
 
 function racialSkills(skills, template, race, stats, _class) {
@@ -198,11 +251,8 @@ function racialSkills(skills, template, race, stats, _class) {
     if (skill_intersection.includes(random_skill)) continue; // already had 15 added to it.
     var index_of_skill = skills.findIndex(p => Object.keys(p)[0] == random_skill);
     skills[index_of_skill][random_skill] = skills[index_of_skill][random_skill] + 10;
-    console.log(random_skill);
     points -= 10;
   }
-  console.log(skill_intersection);
-  console.log(points);
 }
 
 // takes elements out randomly with no repeats until none are left, then resets.
