@@ -57,15 +57,11 @@ var cf =`{
        "Language": "INT+CHA",
        "Lockpicking": "DEX+DEX",
        "Meditation": "INT+CON",
-       "Mysticism": "POW+CON"
-      },
-      "Magical": {
-        "Arcane Casting": "INT+POW",
-        "Arcane Knowledge": "INT+INT"
-     },
-       "Divine": {
-          "Channeling": "INT+POW",
-          "Piety": "CHA+POW"
+       "Mysticism": "POW+CON",
+       "Arcane Casting": "INT+POW",
+       "Arcane Knowledge": "INT+INT",
+       "Channeling": "INT+POW",
+       "Piety": "CHA+POW"
     }
   },
   "Class": {
@@ -154,7 +150,7 @@ var cf =`{
       },
       "Prereqs": ["Channeling", "COMBAT", "First Aid", "Influence", "Insight", "Piety", "Willpower"],
       "Skills": {
-        "Standard": ["COBMAT", "Customs", "First Aid", "Influence", "Insight", "Willpower", "Locale"],
+        "Standard": ["COMBAT", "Customs", "First Aid", "Influence", "Insight", "Willpower", "Locale"],
         "Professional": ["Channeling", "Piety", "Healing"]
       },
       "combat_styles": [

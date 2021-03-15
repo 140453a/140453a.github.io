@@ -150,6 +150,7 @@ function classSkills(class_, template, skills, stats){
   const randomElement = class_choices[Math.floor(Math.random() * class_choices.length)];
   class_professionals.push(randomElement);
   // adding pro skills to char.skills
+  console.log("Class Professionals:", class_professionals);
   for (let i = 0; i < 3; i ++) {
     if(skills.indexOf(class_professionals[i]) === -1){ // only pushing if unique.
       var template_value = template.Skills.Professional[class_professionals[i]];
