@@ -123,10 +123,12 @@ function generate() {
   var hit = hitLocations(template.Class[_class].Armor.Main, template.Class[_class].Armor.Limbs, char.stats);
   char.hit_locations = hit;
   var spec = racialSpecials(template, char.race);
+  spec = spec.concat(template.Class[_class].Talents);
   char.features = spec;
+
   racialSkills(char.skills, template, race, char.stats, char.class);
   classSkills(char.class, template, char.skills, char.stats);
-  // TODO: remove "COMBAT" from char.skills
+  // TODO: remove "COMBAT", "Arcane Casting/Knowledge", "Channeling/Piety" from char.skills
   $("#myJson").html("[" + JSON.stringify(char) + "]");
   return true;
 }
@@ -179,8 +181,15 @@ function classSkills(class_, template, skills, stats){
     console.log(intersects)
     if (points <= 0) break; //
   }
-  if (points >0){ // spending extra points, if any.
-    ;
+
+  var skill_chooser = randomNoRepeats(combined_prereqs);
+  while (points > 0) { // have left over points to spend that are inconsequential to class prereqs.
+    var random_skill = skill_chooser();
+    if (skill_intersection.includes(random_skill)) continue; // already had 15 added to it.
+    var index_of_skill = skills.findIndex(p => Object.keys(p)[0] == random_skill);
+    var points_to_add = Math.min(5, points);
+    skills[index_of_skill][random_skill] = skills[index_of_skill][random_skill] + points_to_add;
+    points -= points_to_add;
   }
   console.log(points);
 }
