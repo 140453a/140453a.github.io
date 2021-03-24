@@ -123,46 +123,150 @@ function generate() {
   var hit = hitLocations(template.Class[_class].Armor.Main, template.Class[_class].Armor.Limbs, char.stats);
   char.hit_locations = hit;
   var spec = racialSpecials(template, char.race);
-  spec = spec.concat(template.Class[_class].Talents);
   char.features = spec;
 
   racialSkills(char.skills, template, race, char.stats, char.class);
   classSkills(char.class, template, char.skills, char.stats);
-  classAdjustment(char.class, char.skills, template);
+  classAdjustment(char.class, char.skills, char.features, char.stats, template);
   // TODO: remove "COMBAT", "Arcane Casting/Knowledge", "Channeling/Piety" from char.skills
   $("#myJson").html("[" + JSON.stringify(char) + "]");
   return true;
 }
 
 //add starting spells (if spell-caster), class-given languages& passions
-function classAdjustment(class_, skills, template){
+function classAdjustment(class_, skills, features, stats, template){
+  // for ease of use, characteristics are separated out and put in temp array 's'.
+  var STR = Object.entries(stats[0])[0][1];
+  var CON = Object.entries(stats[1])[0][1];
+  var SIZ = Object.entries(stats[2])[0][1];
+  var DEX = Object.entries(stats[3])[0][1];
+  var INT = Object.entries(stats[4])[0][1];
+  var POW = Object.entries(stats[5])[0][1];
+  var CHA = Object.entries(stats[6])[0][1];
+  var language_base = INT+CHA;
 
   if (class_ === "BardA") {
+    skills.push({"Language (Thieves' Cant": language_base + 40});
+
 
   } else if (class_ === "BardD") {
+    skills.push({"Language (Druids’ Cant)": language_base + 40});
+
 
   } else if (class_ === "Berserker") {
+    features.push(template.Class[class_].Talents[1]); // combat proficiency, add 5% to COMBAT and Unarmed
+    // adding 5% to COMBAT and Unarmed skills.
+    var indexOfCombat = skills.findIndex(function(obj, index) {
+      if(Object.keys(obj)[0] == 'COMBAT') return true;
+    });
+    var indexOfUnarmed = skills.findIndex(function(obj, index) {
+      if(Object.keys(obj)[0] == 'Unarmed') return true;
+    });
+    skills[indexOfUnarmed].Unarmed += 5;
+    skills[indexOfCombat].COMBAT += 5;
+
 
   } else if (class_ === "Cavalier") {
-
+    ;
   } else if (class_ === "Cleric") {
-
+    ;
   } else if (class_ === "Druid") {
-
+    skills.push({"Language (Druids’ Cant)": language_base + 40});
   } else if (class_ === "Fighter") {
 
-  } else if (class_ === "Magic-User") {
+    features.push(template.Class[class_].Talents[2]); // combat proficiency, add 5% to COMBAT and Unarmed
+    // adding 5% to COMBAT and Unarmed skills.
+    var indexOfCombat = skills.findIndex(function(obj, index) {
+      if(Object.keys(obj)[0] == 'COMBAT') return true;
+    });
+    var indexOfUnarmed = skills.findIndex(function(obj, index) {
+      if(Object.keys(obj)[0] == 'Unarmed') return true;
+    });
+    skills[indexOfUnarmed].Unarmed += 5;
+    skills[indexOfCombat].COMBAT += 5;
 
+
+    // pick 1 defensive style from Armour prof, Agile defender
+    // additionally, pick 1 out of 3 combat styles, total of 6 permuations
+    var fighter_style = Math.floor(Math.random() * 6) + 1; // 1 - 6 
+    switch(fighter_style) { // pick a permutation at random.
+      case 1:
+        features.push(template.Class[class_].Talents[0]); // defense talent
+        features.push(template.Class[class_].Talents[3]); // offense talent
+        break;
+      case 2:
+        features.push(template.Class[class_].Talents[0]); // defense talent
+        features.push(template.Class[class_].Talents[4]); // offense talent
+        break;
+      case 3:
+        features.push(template.Class[class_].Talents[0]); // defense talent
+        features.push(template.Class[class_].Talents[5]); // offense talent
+        break;
+      case 4:
+        features.push(template.Class[class_].Talents[1]); // defense talent
+        features.push(template.Class[class_].Talents[3]); // offense talent
+        break;
+      case 5:
+        features.push(template.Class[class_].Talents[1]); // defense talent
+        features.push(template.Class[class_].Talents[4]); // offense talent
+        break;
+      case 6:
+        features.push(template.Class[class_].Talents[1]); // defense talent
+        features.push(template.Class[class_].Talents[5]); // offense talent
+        break;
+    }
+  } else if (class_ === "Magic-User") {
+    ;
   } else if (class_ === "Monk") {
+    features.push(template.Class[class_].Talents[1]); // combat proficiency, add 5% to COMBAT and Unarmed
+    // adding 5% to COMBAT and Unarmed skills.
+    var indexOfCombat = skills.findIndex(function(obj, index) {
+      if(Object.keys(obj)[0] == 'COMBAT') return true;
+    });
+    var indexOfUnarmed = skills.findIndex(function(obj, index) {
+      if(Object.keys(obj)[0] == 'Unarmed') return true;
+    });
+    skills[indexOfUnarmed].Unarmed += 5;
+    skills[indexOfCombat].COMBAT += 5;
+
+
 
   } else if (class_ === "Paladin") {
-
+    features.push(template.Class[class_].Talents[1]); // combat proficiency, add 5% to COMBAT and Unarmed
+    // adding 5% to COMBAT and Unarmed skills.
+    var indexOfCombat = skills.findIndex(function(obj, index) {
+      if(Object.keys(obj)[0] == 'COMBAT') return true;
+    });
+    var indexOfUnarmed = skills.findIndex(function(obj, index) {
+      if(Object.keys(obj)[0] == 'Unarmed') return true;
+    });
+    skills[indexOfUnarmed].Unarmed += 5;
+    skills[indexOfCombat].COMBAT += 5;
   } else if (class_ === "Ranger") {
+    features.push(template.Class[class_].Talents[1]); // combat proficiency, add 5% to COMBAT and Unarmed
+    // adding 5% to COMBAT and Unarmed skills.
+    var indexOfCombat = skills.findIndex(function(obj, index) {
+      if(Object.keys(obj)[0] == 'COMBAT') return true;
+    });
+    var indexOfUnarmed = skills.findIndex(function(obj, index) {
+      if(Object.keys(obj)[0] == 'Unarmed') return true;
+    });
+    skills[indexOfUnarmed].Unarmed += 5;
+    skills[indexOfCombat].COMBAT += 5;
 
+    // pushing static features
+    features.push(template.Class[class_].Talents[0]);
+    features.push(template.Class[class_].Talents[4]);
+    var ranger_style = Math.round(Math.random()); // 0 or 1
+    if (ranger_style == 0) { // bow specialization
+      features.push(template.Class[class_].Talents[2]);  
+    } else { // dual wielding specialization
+      features.push(template.Class[class_].Talents[3]);
+    }
   } else if (class_ === "Thief") {
-
+    skills.push({"Language (Thieves' Cant": language_base + 40});
   } else if (class_ === "Thief-Acrobat") {
-    
+    skills.push({"Language (Thieves' Cant": language_base + 40});
   }
 
 }
