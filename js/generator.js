@@ -128,9 +128,43 @@ function generate() {
 
   racialSkills(char.skills, template, race, char.stats, char.class);
   classSkills(char.class, template, char.skills, char.stats);
+  classAdjustment(char.class, char.skills, template);
   // TODO: remove "COMBAT", "Arcane Casting/Knowledge", "Channeling/Piety" from char.skills
   $("#myJson").html("[" + JSON.stringify(char) + "]");
   return true;
+}
+
+//add starting spells (if spell-caster), class-given languages& passions
+function classAdjustment(class_, skills, template){
+
+  if (class_ === "BardA") {
+
+  } else if (class_ === "BardD") {
+
+  } else if (class_ === "Berserker") {
+
+  } else if (class_ === "Cavalier") {
+
+  } else if (class_ === "Cleric") {
+
+  } else if (class_ === "Druid") {
+
+  } else if (class_ === "Fighter") {
+
+  } else if (class_ === "Magic-User") {
+
+  } else if (class_ === "Monk") {
+
+  } else if (class_ === "Paladin") {
+
+  } else if (class_ === "Ranger") {
+
+  } else if (class_ === "Thief") {
+
+  } else if (class_ === "Thief-Acrobat") {
+    
+  }
+
 }
 
 function classSkills(class_, template, skills, stats){
