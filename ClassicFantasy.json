@@ -60,7 +60,7 @@ var cf =`{
        "Mysticism": "POW+CON",
        "Arcane Casting": "INT+POW",
        "Arcane Knowledge": "INT+INT",
-       "Channeling": "INT+POW",
+       "Channel": "INT+POW",
        "Piety": "CHA+POW"
     }
   },
@@ -113,10 +113,10 @@ var cf =`{
         "Limbs": 2,
         "Penalty": 2
       },
-      "Prereqs": ["Athletics", "Channeling", "Influence", "Musicianship", "Piety", "Sing", "Survival", "Lore(Any)"],
+      "Prereqs": ["Athletics", "Channel", "Influence", "Musicianship", "Piety", "Sing", "Survival", "Lore(Any)"],
       "Skills": {
         "Standard": ["Athletics", "COMBAT", "Dance", "Evade", "Influence", "Insight", "Locale", "Sing", "Stealth"],
-        "Professional": ["Channeling", "Piety", "Lore(Any)", "Survival", "Musicianship"]
+        "Professional": ["Channel", "Piety", "Lore(Any)", "Survival", "Musicianship"]
       },
       "combat_styles": [
         {
@@ -158,7 +158,7 @@ var cf =`{
       "Hospitality: You may expect food and lodging from other paladins or cavaliers of non-conflicting Passions, as well as noble and royal households of similar political divisions.",
       "Immunity to Fear (3 Metre/10 foot Radius): Due to this talent, you are immune to the effects of fear, magical or otherwise. This immunity extends around you in a 3-metre (10-foot) radius, granting this ability to all friends and allies in the radius of effect.",
       "Mounted Combat Specialisation: You have trained to fight from the back of a mount and may benefit from the following when mounted. Where normally the combat skills of riders may not exceed their Ride skill, this stipulation does not apply to you. In addition, your Combat Style is improved by 10% when fighting from a mount for the purposes of both attack and defence. Finally, you may ignore the first penalty grade of any Ride roll required while in combat. The elven cavalier may apply the above bonuses when using a short bow from the back of a mount as well.",
-      "Weapon Proficiency: Being a master of armed and unarmed combat, cavaliers gain a further +5% to their Combat Style & Unarmed."
+      "Combat Proficiency: Being a master of armed and unarmed combat, cavaliers gain a further +5% to their Combat Style & Unarmed."
   ],
       "Prereq": {"STR": "11", "CON": "12", "DEX": "11", "INT": "13", "POW": "10"},
       "Armor": {
@@ -190,10 +190,10 @@ var cf =`{
         "Limbs": 4,
         "Penalty": 5
       },
-      "Prereqs": ["Channeling", "COMBAT", "First Aid", "Influence", "Insight", "Piety", "Willpower"],
+      "Prereqs": ["Channel", "COMBAT", "First Aid", "Influence", "Insight", "Piety", "Willpower"],
       "Skills": {
         "Standard": ["COMBAT", "Customs", "First Aid", "Influence", "Insight", "Willpower", "Locale"],
-        "Professional": ["Channeling", "Piety", "Healing"]
+        "Professional": ["Channel", "Piety", "Healing"]
       },
       "combat_styles": [
         {
@@ -215,10 +215,10 @@ var cf =`{
         "Limbs": 0,
         "Penalty": 0
       },
-      "Prereqs": ["Channeling", "COMBAT", "First Aid", "Influence", "Insight", "Piety", "Willpower"],
+      "Prereqs": ["Channel", "COMBAT", "First Aid", "Influence", "Insight", "Piety", "Willpower"],
       "Skills": {
         "Standard": ["Athletics", "COMBAT", "First Aid", "Perception", "Ride", "Willpower", "Locale"],
-        "Professional": ["Channeling", "Piety", "Animal Training", "Survival", "Track", "Musicianship", "Navigate"]
+        "Professional": ["Channel", "Piety", "Animal Training", "Survival", "Track", "Musicianship", "Navigate"]
       },
       "combat_styles": [
         {
@@ -285,8 +285,7 @@ var cf =`{
         "Augment Skills: Monks augment their skills by channelling their own positive energies. Each level of Intensity improves the monk’s chance of success by 1 difficulty grade. Acrobatics, Athletics, Unarmed, and Endurance may be augmented this way at Rank 1. Costs 1 Magic Point per level of Intensity.",
         "Invoke Traits: Traits are specialised physical, mental and emotional endeavours akin to those found for many creatures. All traits by default have an Intensity of 1. Costs 2 Magic Points.",
         "Slow Fall Trait: Slow Fall: If you drop or fall within reach of a wall, cliff face, tree trunk and so on, you can slow your descent and take no damage from the fall as long as you can make periodic contact. The distance fallen that can be effectively ignored is equal to 1/5th your Mysticism skill in metres (yards).",
-        "Enhance Attribute: Monks may spend 3 Magic Points to increase their Action Points by 1, or their Damage Modifier by 1 step."
-
+        "Enhance Attribute: Monks may spend 3 Magic Points to increase their Action Points by 1, or their Damage Modifier by 1 step.",
       ],
       "Prereq": {"STR": "11", "CON": "11", "DEX": "14", "POW": "12"},
       "Armor": {
@@ -317,7 +316,7 @@ var cf =`{
       "Immunity to Fear (10’ Radius): You are immune to the effects of fear, magical or otherwise. This immunity extends around you in a 3 metre (10 foot) radius, granting this ability to all friends and allies in the radius of effect",
       "Protection from Evil (10’ Radius): You and all allies within 3 metres (10 feet) find Resistance Rolls 1 grade easier when avoiding the effects of creatures of evil. In addition, summoned, conjured, or enchanted creatures of any type are unable to enter the radius of protection of their own accord; however, you may close with such beings forcing them within the radius, and once there, they are unaffected by its effects for at least 24 hours.",
       "Detect Evil: By concentrating for a single melee round, you can detect any evil beings up to 18 metres (60 feet) away within your field of vision. This ability will only detect evil creatures of a supernatural nature like demons and vampires, or mundane beings of either evil or vile intention.",
-      "Holy Weapons: If you are using a holy weapon of any type, you can create a circle of power 10 feet in diameter when it is held. This dispels all hostile magic within the area of effect: all spells with a Magnitude equal or less than 1/10th the paladin’s Channel skill are suppressed. The magic is negated only while within the area of effect and reinstates itself when it leaves the affected radius, thus it cannot be used to permanently negate long-running curses or break enchantments for example, but could be used to briefly bring relief or bypass them."
+      "Holy Weapons: If you are using a holy weapon of any type, you can create a circle of power 10 feet in diameter when it is held. This dispels all hostile magic within the area of effect: all spells with a Magnitude equal or less than 1/10th the paladin’s Channel skill are suppressed. The magic is negated only while within the area of effect and reinstates itself when it leaves the affected radius, thus it cannot be used to permanently negate long-running curses or break enchantments for example, but could be used to briefly bring relief or bypass them.",
       ],
       "Prereq": {"STR": "11", "CON": "12", "INT": "13", "POW": "12", "CHA": "14"},
       "Armor": {
@@ -325,10 +324,10 @@ var cf =`{
         "Limbs": 5,
         "Penalty": 6
       },
-      "Prereqs": ["Channeling", "COMBAT", "Endurance", "Perception", "Piety", "Stealth", "Survival"],
+      "Prereqs": ["Channel", "COMBAT", "Endurance", "Perception", "Piety", "Stealth", "Survival"],
       "Skills": {
         "Standard": ["COMBAT", "Customs", "Influence", "Insight", "Ride", "Willpower", "Locale"],
-        "Professional": ["Piety", "Channeling", "Bureaucracy", "Courtesy", "Lore(Any)", "Oratory", "Language(Any)"]
+        "Professional": ["Piety", "Channel", "Bureaucracy", "Courtesy", "Lore(Any)", "Oratory", "Language(Any)"]
       },
       "combat_styles": [
         {
@@ -350,7 +349,7 @@ var cf =`{
         "Limbs": 3,
         "Penalty": 3
       },
-      "Prereqs": ["Athletics", "Channeling", "COMBAT", "Endurance", "Perception", "Piety", "Stealth", "Survival"],
+      "Prereqs": ["Athletics", "Channel", "COMBAT", "Endurance", "Perception", "Piety", "Stealth", "Survival"],
       "Skills": {
         "Standard": ["Athletics", "COMBAT", "Endurance", "First Aid", "Perception", "Stealth", "Swim"],
         "Professional": ["Piety", "Survival", "Track", "Navigate", "Animal Training"]

@@ -133,7 +133,7 @@ function generate() {
   return true;
 }
 
-//add starting spells (if spell-caster), class-given languages& passions
+//add class-given languages, passions, and talents/features with associated skill boosts.
 function classAdjustment(class_, skills, features, stats, template){
   // for ease of use, characteristics are separated out and put in temp array 's'.
   var STR = Object.entries(stats[0])[0][1];
@@ -147,15 +147,28 @@ function classAdjustment(class_, skills, features, stats, template){
 
   if (class_ === "BardA") {
     skills.push({"Language (Thieves' Cant": language_base + 40});
+    for (talent of template.Class[class_].Talents) { // pushing all talents to character.
+      features.push(talent);
+    }
 
+    
+
+    
 
   } else if (class_ === "BardD") {
     skills.push({"Language (Druids’ Cant)": language_base + 40});
+    for (talent of template.Class[class_].Talents) { // pushing all talents to character.
+      features.push(talent);
+    }
+
+    // required passions
+    skills.push({"Passion (Druidic Oath)": 30 + POW + INT});
+
+
 
 
   } else if (class_ === "Berserker") {
-    features.push(template.Class[class_].Talents[1]); // combat proficiency, add 5% to COMBAT and Unarmed
-    // adding 5% to COMBAT and Unarmed skills.
+    // adding 5% to COMBAT and Unarmed skills for Combat Proficiency feature.
     var indexOfCombat = skills.findIndex(function(obj, index) {
       if(Object.keys(obj)[0] == 'COMBAT') return true;
     });
@@ -165,15 +178,63 @@ function classAdjustment(class_, skills, features, stats, template){
     skills[indexOfUnarmed].Unarmed += 5;
     skills[indexOfCombat].COMBAT += 5;
 
+    for (talent of template.Class[class_].Talents) { // pushing all talents to character.
+      features.push(talent);
+    }
+
+    // required passions
+    skills.push({"Passion (Fear of Magic)": 30 + POW + POW});
+
+
+
 
   } else if (class_ === "Cavalier") {
-    ;
+    // adding 5% to COMBAT and Unarmed skills for Combat Proficiency feature.
+    var indexOfCombat = skills.findIndex(function(obj, index) {
+      if(Object.keys(obj)[0] == 'COMBAT') return true;
+    });
+    var indexOfUnarmed = skills.findIndex(function(obj, index) {
+      if(Object.keys(obj)[0] == 'Unarmed') return true;
+    });
+    skills[indexOfUnarmed].Unarmed += 5;
+    skills[indexOfCombat].COMBAT += 5;
+
+    for (talent of template.Class[class_].Talents) { // pushing all talents to character.
+      features.push(talent);
+    } // pushing all talents to character.
+
+    // required passions
+    skills.push({"Passion (Oath of Fealty)": 30 + POW + INT});
+    skills.push({"Passion (Knightly Virtues)": 30 + POW + INT});
+
+
+
+
+
   } else if (class_ === "Cleric") {
-    ;
+    for (talent of template.Class[class_].Talents) { // pushing all talents to character.
+      features.push(talent);
+    }
+
+    // required passions
+    skills.push({"Passion (Clerical Oath)": 30 + POW + POW});
+
+
+
+
   } else if (class_ === "Druid") {
     skills.push({"Language (Druids’ Cant)": language_base + 40});
-  } else if (class_ === "Fighter") {
+    for (talent of template.Class[class_].Talents) { // pushing all talents to character.
+      features.push(talent);
+    }
 
+    // required passions
+    skills.push({"Passion (Druidic Oath)": 30 + POW + INT});
+
+
+
+
+  } else if (class_ === "Fighter") {
     features.push(template.Class[class_].Talents[2]); // combat proficiency, add 5% to COMBAT and Unarmed
     // adding 5% to COMBAT and Unarmed skills.
     var indexOfCombat = skills.findIndex(function(obj, index) {
@@ -215,11 +276,18 @@ function classAdjustment(class_, skills, features, stats, template){
         features.push(template.Class[class_].Talents[5]); // offense talent
         break;
     }
+
+
+
   } else if (class_ === "Magic-User") {
-    ;
+    for (talent of template.Class[class_].Talents) { // pushing all talents to character.
+      features.push(talent);
+    }
+
+
+
   } else if (class_ === "Monk") {
-    features.push(template.Class[class_].Talents[1]); // combat proficiency, add 5% to COMBAT and Unarmed
-    // adding 5% to COMBAT and Unarmed skills.
+    // adding 5% to COMBAT and Unarmed skills for Combat Proficiency feature.
     var indexOfCombat = skills.findIndex(function(obj, index) {
       if(Object.keys(obj)[0] == 'COMBAT') return true;
     });
@@ -228,12 +296,20 @@ function classAdjustment(class_, skills, features, stats, template){
     });
     skills[indexOfUnarmed].Unarmed += 5;
     skills[indexOfCombat].COMBAT += 5;
+
+    for (talent of template.Class[class_].Talents) { // pushing all talents to character.
+      features.push(talent);
+    }
+
+    // required passions
+    skills.push({"Passion (Self-Improvement)": 30 + POW + INT});
+    skills.push({"Passion (Oath to Monastic Order)": 30 + POW + INT});
+
 
 
 
   } else if (class_ === "Paladin") {
-    features.push(template.Class[class_].Talents[1]); // combat proficiency, add 5% to COMBAT and Unarmed
-    // adding 5% to COMBAT and Unarmed skills.
+    // adding 5% to COMBAT and Unarmed skills for Combat Proficiency feature.
     var indexOfCombat = skills.findIndex(function(obj, index) {
       if(Object.keys(obj)[0] == 'COMBAT') return true;
     });
@@ -242,6 +318,17 @@ function classAdjustment(class_, skills, features, stats, template){
     });
     skills[indexOfUnarmed].Unarmed += 5;
     skills[indexOfCombat].COMBAT += 5;
+
+    for (talent of template.Class[class_].Talents) { // pushing all talents to character.
+      features.push(talent);
+    }
+
+    // required passions
+    skills.push({"Passion (Holy Order of Paladins)": 30 + POW + INT});
+
+
+
+
   } else if (class_ === "Ranger") {
     features.push(template.Class[class_].Talents[1]); // combat proficiency, add 5% to COMBAT and Unarmed
     // adding 5% to COMBAT and Unarmed skills.
@@ -263,11 +350,32 @@ function classAdjustment(class_, skills, features, stats, template){
     } else { // dual wielding specialization
       features.push(template.Class[class_].Talents[3]);
     }
+
+    // required passions
+    skills.push({"Passion (Ranger Oath)": 30 + POW + POW});
+
+
+
   } else if (class_ === "Thief") {
     skills.push({"Language (Thieves' Cant": language_base + 40});
+    for (talent of template.Class[class_].Talents) { // pushing all talents to character.
+      features.push(talent);
+    }
+
+    // required passions
+    skills.push({"Passion (Thieve's Guild Oath)": 30 + POW + INT});
+      
+
+
   } else if (class_ === "Thief-Acrobat") {
     skills.push({"Language (Thieves' Cant": language_base + 40});
+    for (talent of template.Class[class_].Talents) { // pushing all talents to character.
+      features.push(talent);
+    }
+    // required passions
+    skills.push({"Passion (Thieve's Guild Oath)": 30 + POW + INT});
   }
+
 
 }
 
