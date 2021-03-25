@@ -285,7 +285,7 @@ var cf =`{
         "Augment Skills: Monks augment their skills by channelling their own positive energies. Each level of Intensity improves the monk’s chance of success by 1 difficulty grade. Acrobatics, Athletics, Unarmed, and Endurance may be augmented this way at Rank 1. Costs 1 Magic Point per level of Intensity.",
         "Invoke Traits: Traits are specialised physical, mental and emotional endeavours akin to those found for many creatures. All traits by default have an Intensity of 1. Costs 2 Magic Points.",
         "Slow Fall Trait: Slow Fall: If you drop or fall within reach of a wall, cliff face, tree trunk and so on, you can slow your descent and take no damage from the fall as long as you can make periodic contact. The distance fallen that can be effectively ignored is equal to 1/5th your Mysticism skill in metres (yards).",
-        "Enhance Attribute: Monks may spend 3 Magic Points to increase their Action Points by 1, or their Damage Modifier by 1 step.",
+        "Enhance Attribute: Monks may spend 3 Magic Points to increase their Action Points by 1, or their Damage Modifier by 1 step."
       ],
       "Prereq": {"STR": "11", "CON": "11", "DEX": "14", "POW": "12"},
       "Armor": {
@@ -316,7 +316,7 @@ var cf =`{
       "Immunity to Fear (10’ Radius): You are immune to the effects of fear, magical or otherwise. This immunity extends around you in a 3 metre (10 foot) radius, granting this ability to all friends and allies in the radius of effect",
       "Protection from Evil (10’ Radius): You and all allies within 3 metres (10 feet) find Resistance Rolls 1 grade easier when avoiding the effects of creatures of evil. In addition, summoned, conjured, or enchanted creatures of any type are unable to enter the radius of protection of their own accord; however, you may close with such beings forcing them within the radius, and once there, they are unaffected by its effects for at least 24 hours.",
       "Detect Evil: By concentrating for a single melee round, you can detect any evil beings up to 18 metres (60 feet) away within your field of vision. This ability will only detect evil creatures of a supernatural nature like demons and vampires, or mundane beings of either evil or vile intention.",
-      "Holy Weapons: If you are using a holy weapon of any type, you can create a circle of power 10 feet in diameter when it is held. This dispels all hostile magic within the area of effect: all spells with a Magnitude equal or less than 1/10th the paladin’s Channel skill are suppressed. The magic is negated only while within the area of effect and reinstates itself when it leaves the affected radius, thus it cannot be used to permanently negate long-running curses or break enchantments for example, but could be used to briefly bring relief or bypass them.",
+      "Holy Weapons: If you are using a holy weapon of any type, you can create a circle of power 10 feet in diameter when it is held. This dispels all hostile magic within the area of effect: all spells with a Magnitude equal or less than 1/10th the paladin’s Channel skill are suppressed. The magic is negated only while within the area of effect and reinstates itself when it leaves the affected radius, thus it cannot be used to permanently negate long-running curses or break enchantments for example, but could be used to briefly bring relief or bypass them."
       ],
       "Prereq": {"STR": "11", "CON": "12", "INT": "13", "POW": "12", "CHA": "14"},
       "Armor": {
