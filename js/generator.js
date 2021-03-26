@@ -127,14 +127,14 @@ function generate() {
 
   racialSkills(char.skills, template, race, char.stats, char.class);
   classSkills(char.class, template, char.skills, char.stats);
-  classAdjustment(char.class, char.skills, char.features, char.stats, template);
+  classAdjustment(char, char.class, char.skills, char.features, char.stats, template);
   // TODO: remove "COMBAT", "Arcane Casting/Knowledge", "Channeling/Piety" from char.skills
   $("#myJson").html("[" + JSON.stringify(char) + "]");
   return true;
 }
 
 //add class-given languages, passions, and talents/features with associated skill boosts.
-function classAdjustment(class_, skills, features, stats, template){
+function classAdjustment(char, class_, skills, features, stats, template){
   // for ease of use, characteristics are separated out and put in temp array 's'.
   var STR = Object.entries(stats[0])[0][1];
   var CON = Object.entries(stats[1])[0][1];
@@ -144,6 +144,9 @@ function classAdjustment(class_, skills, features, stats, template){
   var POW = Object.entries(stats[5])[0][1];
   var CHA = Object.entries(stats[6])[0][1];
   var language_base = INT+CHA;
+
+  // pushing each classes' notes.
+  char.notes = template.Class[class_].Notes;
 
   if (class_ === "BardA") {
     skills.push({"Language (Thieves' Cant": language_base + 40});
