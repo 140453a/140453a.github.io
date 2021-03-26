@@ -103,6 +103,7 @@ var cf =`{
         "Standard": ["Athletics", "COMBAT", "Dance", "Evade", "Stealth", "Influence", "Insight", "Locale", "Sing"],
         "Professional": ["Arcane Casting", "Arcane Knowledge", "Lore(Any)", "Musicianship", "Seduction"]
       },
+      "Notes": ["Advancement Skills: Arcane Casting, Arcane Knowledge, Athletics, Influence, Lore(Any), Musicianship, Seduction, Sing"],
       "combat_styles": [
         {
           "name": "",
@@ -132,6 +133,7 @@ var cf =`{
         "Standard": ["Athletics", "COMBAT", "Dance", "Evade", "Influence", "Insight", "Locale", "Sing", "Stealth"],
         "Professional": ["Channel", "Piety", "Lore(Any)", "Survival", "Musicianship"]
       },
+      "Notes": ["Advancement Skills: Athletics, Channel, Influence, Musicianship, Piety, Sing, Survival, Lore(Any)"],
       "combat_styles": [
         {
           "name": "",
@@ -158,6 +160,7 @@ var cf =`{
         "Standard": ["Athletics", "Brawn", "COMBAT", "Endurance", "Evade", "Unarmed", "Stealth"],
         "Professional": ["Survival", "Lore(Any)", "Animal Training", "Acrobatics", "Craft(Any)", "Navigate", "Track"]
       },
+      "Notes": ["Advancement Skills: Athletics, Brawn, COMBAT, Endurance, Evade, Unarmed, Survival"],
       "combat_styles": [
         {
           "name": "",
@@ -185,6 +188,7 @@ var cf =`{
         "Standard": ["COMBAT", "Customs", "Endurance", "Influence", "Ride", "Willpower", "Locale"],
         "Professional": ["Bureaucracy", "Courtesy", "Culture(Any)", "Language(Any)", "Lore(Any)", "Oratory"]
       },
+      "Notes": ["Advancement Skills: Bureaucracy, COMBAT, Courtesy, Endurance, Influence, Ride, Willpower"],
       "combat_styles": [
         {
           "name": "",
@@ -209,6 +213,7 @@ var cf =`{
         "Standard": ["COMBAT", "Customs", "First Aid", "Influence", "Insight", "Willpower", "Locale"],
         "Professional": ["Channel", "Piety", "Healing"]
       },
+      "Notes": ["Advancement Skills: Channel, COMBAT, First Aid, Influence, Insight, Piety, Willpower"],
       "combat_styles": [
         {
           "name": "",
@@ -234,6 +239,7 @@ var cf =`{
         "Standard": ["Athletics", "COMBAT", "First Aid", "Perception", "Ride", "Willpower", "Locale"],
         "Professional": ["Channel", "Piety", "Animal Training", "Survival", "Track", "Musicianship", "Navigate"]
       },
+      "Notes": ["Advancement Skills: Channel, COMBAT, First Aid, Influence, Insight, Piety, Willpower"],
       "combat_styles": [
         {
           "name": "",
@@ -261,6 +267,7 @@ var cf =`{
         "Standard": ["Athletics", "Brawn", "COMBAT", "Endurance", "Evade", "Unarmed", "Ride"],
         "Professional": ["Craft(Any)", "Lore(Any)", "Engineering", "Gambling", "Survival", "Oratory"]
       },
+      "Notes": ["Advancement Skills: Brawn, COMBAT, Craft(Any), Endurance, Evade, Lore(Any), Unarmed"],
       "combat_styles": [
         {
           "name": "",
@@ -285,6 +292,7 @@ var cf =`{
         "Standard": ["Customs", "First Aid", "Influence", "Insight", "Perception", "Willpower", "Locale"],
         "Professional": ["Arcane Casting", "Arcane Knowledge", "Lore(Any)"]
       },
+      "Notes": ["Advancement Skills: Arcane Casting, Arcane Knowledge, Influence, Insight, Lore(Any), Perception, Willpower"],
       "combat_styles": [
         {
           "name": "",
@@ -312,6 +320,7 @@ var cf =`{
         "Standard": ["Athletics", "COMBAT", "Endurance", "Evade", "Unarmed", "Willpower", "Stealth"],
         "Professional": ["Acrobatics", "Mysticism", "Meditation"]
       },
+      "Notes": ["Advancement Skills: Acrobatics, Athletics, COMBAT, Evade, Meditation, Mysticism, Unarmed, Willpower"],
       "combat_styles": [
         {
           "name": "",
@@ -343,6 +352,7 @@ var cf =`{
         "Standard": ["COMBAT", "Customs", "Influence", "Insight", "Ride", "Willpower", "Locale"],
         "Professional": ["Piety", "Channel", "Bureaucracy", "Courtesy", "Lore(Any)", "Oratory", "Language(Any)"]
       },
+      "Notes": ["Advancement Skills: Channel, COMBAT, Endurance, Perception, Piety, Stealth, Survival"],
       "combat_styles": [
         {
           "name": "",
@@ -364,10 +374,12 @@ var cf =`{
         "Penalty": 3
       },
       "Prereqs": ["Athletics", "Channel", "COMBAT", "Endurance", "Perception", "Piety", "Stealth", "Survival"],
+
       "Skills": {
         "Standard": ["Athletics", "COMBAT", "Endurance", "First Aid", "Perception", "Stealth", "Swim"],
         "Professional": ["Piety", "Survival", "Track", "Navigate", "Animal Training"]
       },
+      "Notes": ["Advancement Skills: Athletics, Channel, COMBAT, Endurance, Perception, Piety, Stealth, Survival"],
       "combat_styles": [
         {
           "name": "",
@@ -393,6 +405,7 @@ var cf =`{
         "Standard": ["Athletics", "Stealth", "COMBAT", "Deceit", "Evade", "Insight", "Perception"],
         "Professional": ["Lockpicking", "Disguise", "Sleight", "Streetwise", "Acting", "Commerce"]
       },
+      "Notes": ["Advancement Skills: Athletics, COMBAT, Deceit, Evade, Sleight, Stealth, Streetwise"],
       "combat_styles": [
         {
           "name": "",
@@ -419,6 +432,7 @@ var cf =`{
         "Standard": ["Athletics", "COMBAT", "Stealth", "Deceit", "Evade", "Insight", "Perception"],
         "Professional": ["Lockpicking", "Acrobatics", "Sleight", "Streetwise", "Acting", "Commerce"]
       },
+      "Notes": ["Advancement Skills: Acrobatics, Athletics, COMBAT, Deceit, Evade, Perception, Stealth, Streetwise"],
       "combat_styles": [
         {
           "name": "",
