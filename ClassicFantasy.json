@@ -1,4 +1,18 @@
 var cf =`{
+  "Spells": {
+    "Cantrips": ["Appraise", "Calculate", "Calm", "Cleanse", "Chill", "Cool", "Deflect", "Dishevel", "Dry", "Extinguish", "Glue", "Ignite", "Magic Tricks", "Magnify", "Perfume", "Polish", "Preserve", "Repair", "Repugnance", "Tidy", "Tune", "Warmth" ],
+    "Rank1": {
+      "Abjuration": ["Protection from Evil"],
+      "Alteration": ["Affect Normal Fires", "Colour Cascade", "Erase Writing", "Faerie Lights", "Feather Fall", "Flaming Hands", "Know Languages", "Levitate", "Light", "Reflect Gaze", "Secure Portal", "Shocking Touch"],
+      "Conjuration": ["Disk of Burden", "Familiar"],
+      "Divination": ["Detect Magic", "Identify"],
+      "Enchantment": ["Charm Being", "Friendship", "Hypnotism", "Sleep"],
+      "Evocation": ["Magic Missile", "Shield"],
+      "Illusion": ["Audible Illusion", "Change Appearance", "Lesser Illusion", "Lesser Invisiblity", "Ventriloquism"],
+      "All": ["Read Magic"]
+
+    }
+  },
   "Skills":{
     "Combat": {
       "Base": "STR+DEX"

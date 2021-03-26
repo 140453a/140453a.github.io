@@ -153,7 +153,6 @@ function classAdjustment(class_, skills, features, stats, template){
 
     
 
-    
 
   } else if (class_ === "BardD") {
     skills.push({"Language (Druids’ Cant)": language_base + 40});
@@ -198,6 +197,7 @@ function classAdjustment(class_, skills, features, stats, template){
     });
     skills[indexOfUnarmed].Unarmed += 5;
     skills[indexOfCombat].COMBAT += 5;
+
 
     for (talent of template.Class[class_].Talents) { // pushing all talents to character.
       features.push(talent);
