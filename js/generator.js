@@ -156,7 +156,7 @@ function combatStyle(char, template) {
 
   // setting up starter class weapon.
   char.weapons = [];
-  
+
   char.combat_styles = outer_style; // setting char with combat style array
 }
 
@@ -221,7 +221,12 @@ function classAdjustment(char, class_, skills, features, stats, template) {
       features.push(talent);
     }
 
-    
+    // Strike rank (called initiative, but importer uses strike rank.)
+    var pen = template.Class[class_].Armor.Penalty.toString();
+    var unmodified_sr = char.attributes.strike_rank;
+    var sr = (unmodified_sr - template.Class[class_].Armor.Penalty).toString();
+    console.log(sr + `(${unmodified_sr}-${pen})`);
+    char.attributes.strike_rank = sr + `(${unmodified_sr}-${pen})`;
 
 
   } else if (class_ === "BardD") {
@@ -229,6 +234,12 @@ function classAdjustment(char, class_, skills, features, stats, template) {
     for (talent of template.Class[class_].Talents) { // pushing all talents to character.
       features.push(talent);
     }
+
+    // Strike rank (called initiative, but importer uses strike rank.)
+    var pen = template.Class[class_].Armor.Penalty.toString();
+    var unmodified_sr = char.attributes.strike_rank;
+    var sr = (unmodified_sr - template.Class[class_].Armor.Penalty).toString();
+    char.attributes.strike_rank = sr + `(${unmodified_sr}-${pen})`;
 
     // required passions
     skills.push({"Passion (Druidic Oath)": 30 + POW + INT});
@@ -246,6 +257,12 @@ function classAdjustment(char, class_, skills, features, stats, template) {
     });
     skills[indexOfUnarmed].Unarmed += 5;
     skills[indexOfCombat].COMBAT += 5;
+
+     // Strike rank (called initiative, but importer uses strike rank.)
+     var pen = template.Class[class_].Armor.Penalty.toString();
+     var unmodified_sr = char.attributes.strike_rank;
+     var sr = (unmodified_sr - template.Class[class_].Armor.Penalty).toString();
+     char.attributes.strike_rank = sr + `(${unmodified_sr}-${pen})`;
 
     for (talent of template.Class[class_].Talents) { // pushing all talents to character.
       features.push(talent);
@@ -269,6 +286,13 @@ function classAdjustment(char, class_, skills, features, stats, template) {
     skills[indexOfCombat].COMBAT += 5;
 
 
+    // Strike rank (called initiative, but importer uses strike rank.) armor proficiency handled in json.
+    var pen = template.Class[class_].Armor.Penalty.toString();
+    var unmodified_sr = char.attributes.strike_rank;
+    var sr = (unmodified_sr - template.Class[class_].Armor.Penalty).toString();
+    char.attributes.strike_rank = sr + `(${unmodified_sr}-${pen})`;
+
+
     for (talent of template.Class[class_].Talents) { // pushing all talents to character.
       features.push(talent);
     } // pushing all talents to character.
@@ -286,6 +310,13 @@ function classAdjustment(char, class_, skills, features, stats, template) {
       features.push(talent);
     }
 
+    // Strike rank (called initiative, but importer uses strike rank.)
+    var pen = template.Class[class_].Armor.Penalty.toString();
+    var unmodified_sr = char.attributes.strike_rank;
+    var sr = (unmodified_sr - template.Class[class_].Armor.Penalty).toString();
+    char.attributes.strike_rank = sr + `(${unmodified_sr}-${pen})`;
+
+
     // required passions
     skills.push({"Passion (Clerical Oath)": 30 + POW + POW});
 
@@ -298,6 +329,12 @@ function classAdjustment(char, class_, skills, features, stats, template) {
     for (talent of template.Class[class_].Talents) { // pushing all talents to character.
       features.push(talent);
     }
+
+    // Strike rank (called initiative, but importer uses strike rank.)
+    var pen = template.Class[class_].Armor.Penalty.toString();
+    var unmodified_sr = char.attributes.strike_rank;
+    var sr = (unmodified_sr - template.Class[class_].Armor.Penalty).toString();
+    char.attributes.strike_rank = sr + `(${unmodified_sr}-${pen})`;
 
     // required passions
     skills.push({"Passion (Druidic Oath)": 30 + POW + INT});
@@ -317,37 +354,45 @@ function classAdjustment(char, class_, skills, features, stats, template) {
     skills[indexOfUnarmed].Unarmed += 5;
     skills[indexOfCombat].COMBAT += 5;
 
-
+    var armor_penalty = template.Class[class_].Armor.Penalty;
     // pick 1 defensive style from Armour prof, Agile defender
     // additionally, pick 1 out of 3 combat styles, total of 6 permuations
     var fighter_style = Math.floor(Math.random() * 6) + 1; // 1 - 6 
     switch(fighter_style) { // pick a permutation at random.
       case 1:
-        features.push(template.Class[class_].Talents[0]); // defense talent
-        features.push(template.Class[class_].Talents[3]); // offense talent
+        features.push(template.Class[class_].Talents[0]); // defense talent, armour proficiency.
+        features.push(template.Class[class_].Talents[3]); // offense talent, melee weapon.
+        armor_penalty = Math.ceil(armor_penalty / 4); // armour proficiency lowers enc.
         break;
       case 2:
-        features.push(template.Class[class_].Talents[0]); // defense talent
-        features.push(template.Class[class_].Talents[4]); // offense talent
+        features.push(template.Class[class_].Talents[0]); // defense talent, armour proficiency.
+        features.push(template.Class[class_].Talents[4]); // offense talent, ranged weapon.
+        armor_penalty = Math.ceil(armor_penalty / 4); // armour proficiency lowers enc.
         break;
       case 3:
-        features.push(template.Class[class_].Talents[0]); // defense talent
-        features.push(template.Class[class_].Talents[5]); // offense talent
+        features.push(template.Class[class_].Talents[0]); // defense talent, armour proficiency.
+        features.push(template.Class[class_].Talents[5]); // offense talent, shields.
+        armor_penalty = Math.ceil(armor_penalty / 4); // armour proficiency lowers enc.
         break;
       case 4:
-        features.push(template.Class[class_].Talents[1]); // defense talent
-        features.push(template.Class[class_].Talents[3]); // offense talent
+        features.push(template.Class[class_].Talents[1]); // defense talent, agile defender.
+        features.push(template.Class[class_].Talents[3]); // offense talent, melee weapon.
         break;
       case 5:
-        features.push(template.Class[class_].Talents[1]); // defense talent
-        features.push(template.Class[class_].Talents[4]); // offense talent
+        features.push(template.Class[class_].Talents[1]); // defense talent, agile defender.
+        features.push(template.Class[class_].Talents[4]); // offense talent, ranged weapon.
         break;
       case 6:
-        features.push(template.Class[class_].Talents[1]); // defense talent
-        features.push(template.Class[class_].Talents[5]); // offense talent
+        features.push(template.Class[class_].Talents[1]); // defense talent, agile defender.
+        features.push(template.Class[class_].Talents[5]); // offense talent, shields.
         break;
     }
 
+    // Strike rank (called initiative, but importer uses strike rank.)
+    var pen = armor_penalty.toString();
+    var unmodified_sr = char.attributes.strike_rank;
+    var sr = (unmodified_sr - armor_penalty).toString();
+    char.attributes.strike_rank = sr + `(${unmodified_sr}-${pen})`;
 
 
   } else if (class_ === "Magic-User") {
@@ -390,6 +435,14 @@ function classAdjustment(char, class_, skills, features, stats, template) {
       }
     }
 
+    // Strike rank (called initiative, but importer uses strike rank.)
+    var pen = template.Class[class_].Armor.Penalty.toString();
+    var unmodified_sr = char.attributes.strike_rank;
+    var sr = (unmodified_sr - template.Class[class_].Armor.Penalty).toString();
+    char.attributes.strike_rank = sr + `(${unmodified_sr}-${pen})`;
+
+
+
   } else if (class_ === "Monk") {
     // adding 5% to COMBAT and Unarmed skills for Combat Proficiency feature.
     var indexOfCombat = skills.findIndex(function(obj, index) {
@@ -409,7 +462,11 @@ function classAdjustment(char, class_, skills, features, stats, template) {
     skills.push({"Passion (Self-Improvement)": 30 + POW + INT});
     skills.push({"Passion (Oath to Monastic Order)": 30 + POW + INT});
 
-
+    // Strike rank (called initiative, but importer uses strike rank.)
+    var pen = template.Class[class_].Armor.Penalty.toString();
+    var unmodified_sr = char.attributes.strike_rank;
+    var sr = (unmodified_sr - template.Class[class_].Armor.Penalty).toString();
+    char.attributes.strike_rank = sr + `(${unmodified_sr}-${pen})`;
 
 
   } else if (class_ === "Paladin") {
@@ -430,7 +487,11 @@ function classAdjustment(char, class_, skills, features, stats, template) {
     // required passions
     skills.push({"Passion (Holy Order of Paladins)": 30 + POW + INT});
 
-
+    // Strike rank (called initiative, but importer uses strike rank.) armor prof handled in json.
+    var pen = template.Class[class_].Armor.Penalty.toString();
+    var unmodified_sr = char.attributes.strike_rank;
+    var sr = (unmodified_sr - template.Class[class_].Armor.Penalty).toString();
+    char.attributes.strike_rank = sr + `(${unmodified_sr}-${pen})`;
 
 
   } else if (class_ === "Ranger") {
@@ -459,6 +520,12 @@ function classAdjustment(char, class_, skills, features, stats, template) {
     skills.push({"Passion (Ranger Oath)": 30 + POW + POW});
 
 
+    // Strike rank (called initiative, but importer uses strike rank.)
+    var pen = template.Class[class_].Armor.Penalty.toString();
+    var unmodified_sr = char.attributes.strike_rank;
+    var sr = (unmodified_sr - template.Class[class_].Armor.Penalty).toString();
+    char.attributes.strike_rank = sr + `(${unmodified_sr}-${pen})`;
+
 
   } else if (class_ === "Thief") {
     skills.push({"Language (Thieves' Cant": language_base + 40});
@@ -469,18 +536,26 @@ function classAdjustment(char, class_, skills, features, stats, template) {
     // required passions
     skills.push({"Passion (Thieve's Guild Oath)": 30 + POW + INT});
       
-
+    // Strike rank (called initiative, but importer uses strike rank.)
+    var pen = template.Class[class_].Armor.Penalty.toString();
+    var unmodified_sr = char.attributes.strike_rank;
+    var sr = (unmodified_sr - template.Class[class_].Armor.Penalty).toString();
+    char.attributes.strike_rank = sr + `(${unmodified_sr}-${pen})`;
 
   } else if (class_ === "Thief-Acrobat") {
     skills.push({"Language (Thieves' Cant": language_base + 40});
     for (talent of template.Class[class_].Talents) { // pushing all talents to character.
       features.push(talent);
     }
+    // Strike rank (called initiative, but importer uses strike rank.)
+    var pen = template.Class[class_].Armor.Penalty.toString();
+    var unmodified_sr = char.attributes.strike_rank;
+    var sr = (unmodified_sr - template.Class[class_].Armor.Penalty).toString();
+    char.attributes.strike_rank = sr + `(${unmodified_sr}-${pen})`;
+
     // required passions
     skills.push({"Passion (Thieve's Guild Oath)": 30 + POW + INT});
   }
-
-
 }
 
 
@@ -821,12 +896,10 @@ function calculateAttributes(template, race, stats, class_) {
     attr.experience_modifier = "+2";
   }
 
-  // Strike rank (called initiative, but importer uses strike rank.)
-  var pen = template.Class[class_].Armor.Penalty.toString();
+  // Strike rank (called initiative, but importer uses strike rank. This is further modified in bonus stage.)
   var unmodified_sr = Math.ceil((INT + DEX)/2);
-  var sr = (unmodified_sr - template.Class[class_].Armor.Penalty).toString();
 
-  attr.strike_rank = sr + `(${unmodified_sr}-${pen})`;
+  attr.strike_rank = unmodified_sr;
 
   // magic points
   attr.magic_points = POW;

@@ -105,7 +105,11 @@ var cf =`{
       },
       "Notes": ["**Advancement Skills: Arcane Casting, Arcane Knowledge, Athletics, Influence, Lore(Any), Musicianship, Seduction, Sing",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
-      "weapons": []
+      "weapons": {
+        "OneHanded": [],
+        "Shield" : [],
+        "TwoHanded": []
+      }
     },
     "BardD": {
       "Talents": [
@@ -131,7 +135,11 @@ var cf =`{
       },
       "Notes": ["**Advancement Skills: Athletics, Channel, Influence, Musicianship, Piety, Sing, Survival, Lore(Any)",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
-      "weapons": []
+      "weapons": {
+        "OneHanded": [],
+        "Shield" : [],
+        "TwoHanded": []
+      }
     },
     "Berserker": {
       "Talents": ["Artful Dodger: This talent requires you to be Unburdened (ENC less than STRx2) and wearing nothing more restrictive than light armour. You possess fast reflexes and gain 1 extra Action Point, which may only be used to Parry or Evade. In addition, you may use the Evade skill to dodge a melee attack without falling prone. Against a ranged attack, you only end up prone if you fail the roll.",
@@ -139,7 +147,9 @@ var cf =`{
       "Eyes in the Back of Your Head: Due to this talent, if attacked from behind, you may attempt a Formidable Perception check, and if successful, you may turn to face your attacker before they can strike, and then Parry or Evade their attack. The entire reaction, including the defensive action, costs you 1 Action Point.",
       "Detect magic and Illusions: This talent allows you to use your Willpower to detect magical auras, areas, and items. The nature of the magic is not revealed, only the presence of magic.",
       "Fear of Arcane Magic: Anytime you are forced to interact with Arcane magic or an arcane caster, a standard roll is made against the Passion to determine how strongly your character thinks and feels about the situation. If the roll is a success, then you are ill at ease with the subject of your fear and find all skill tests used during the current scene 1 grade more difficult to perform. If the roll fails, then you can act freely without feeling constrained by the Passion’s drives and suffer no penalties. While berserking, you may add 20% of the value of the Passion (Fear Arcane Magic) to any relevant skills against the subject of your fear.",
-      "Berserk Rage: Using this talent, you may work yourself up into a fury, overcome with bloodlust. This imbues you with tremendous stamina and toughness: *Your Damage Mod is increased 1 step for every 2 ranks. *The size of your weapon counts as 1 step larger for the purpose of parrying. *You only take half of the damage that gets through armour. *You are immune to all detrimental effects of Serious Wounds and Fatigue. *All Endurance and Willpower rolls that, if successful, will allow your character to remain in combat are 1 grade easier. *All attempts to Parry or Evade are 1 step harder. *You may not benefit from the Artful Dodger talent. *Berserk rage lasts for CON rounds. Willpower check to cancel early. *At end of rage, berseker suffers 1 additional level of fatigue. *While berserking, you must attempt to engage an opponent every round, if possible."
+      "Berserk Rage: Using this talent, you may work yourself up into a fury, overcome with bloodlust. This imbues you with tremendous stamina and toughness: *Your Damage Mod is increased 1 step for every 2 ranks. *The size of your weapon counts as 1 step larger for the purpose of parrying. *You only take half of the damage that gets through armour. *You are immune to all detrimental effects of Serious Wounds and Fatigue. *All Endurance and Willpower rolls that, if successful, will allow your character to remain in combat are 1 grade easier. *All attempts to Parry or Evade are 1 step harder. *You may not benefit from the Artful Dodger talent. *Berserk rage lasts for CON rounds. Willpower check to cancel early. *At end of rage, berseker suffers 1 additional level of fatigue. *While berserking, you must attempt to engage an opponent every round, if possible.",
+      "Resilient: Berserkers are incredibly resilient to the effects of wounds. Their Hit Points are calculated using STR+CON+SIZ.",
+      "Agile: The berserker gains superb reflexes. When calculating Initiative the character adds one tenth of his or her Athletics skill to the Initiative 1d10 roll. (Not added)"
     ],
       "Prereq": {"STR": "12", "CON": "14", "DEX": "12", "POW": "12"},
       "Armor": {
@@ -155,7 +165,11 @@ var cf =`{
       "Notes": ["**Advancement Skills: Athletics, Brawn, COMBAT, Endurance, Evade, Unarmed, Survival",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
-      "weapons": []
+      "weapons": {
+        "OneHanded": [],
+        "Shield" : [],
+        "TwoHanded": []
+      }
     },
     "Cavalier": {
       "Talents": ["Armour Proficiency: You are trained in the use of all armours up to and including plate, knowing how position yourself to receive a blow in such a way as to deflect a portion of the attack. Light armours receive 1 extra armour point, and heavy armours 2. The only stipulation is that you have to know the attack is coming. In addition, when worn, only 1/4 the total ENC of the armour is counted towards Encumbrance instead of half.",
@@ -170,7 +184,7 @@ var cf =`{
       "Armor": {
         "Main": 5,
         "Limbs": 5,
-        "Penalty": 6
+        "Penalty": 2
       },
       "Prereqs": ["Bureaucracy", "COMBAT", "Courtesy", "Endurance", "Influence", "Ride", "Willpower"],
       "Skills": {
@@ -180,7 +194,11 @@ var cf =`{
       "Notes": ["**Advancement Skills: Bureaucracy, COMBAT, Courtesy, Endurance, Influence, Ride, Willpower",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
-      "weapons": []
+      "weapons": {
+        "OneHanded": [],
+        "Shield" : [],
+        "TwoHanded": []
+      }
     },
     "Cleric": {
       "Talents": ["Abilities and Talents Divine Spell Caster: Clerics are masters of Divine magic. Clerical Divine spell-casting is not hindered by the wearing of armour.",
@@ -201,7 +219,11 @@ var cf =`{
       },
       "Notes": ["**Advancement Skills: Channel, COMBAT, First Aid, Influence, Insight, Piety, Willpower",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
-      "weapons": []
+      "weapons": {
+        "OneHanded": [],
+        "Shield" : [],
+        "TwoHanded": []
+      }
     },
     "Druid": {
       "Talents": ["Divine Spell Caster: Druids are masters of nature magic and can bring the very forces of the wilderness to their aid when needed through the casting of their spells. Many forms of armour are contrary to the druidic oath with regards to Divine spell casting",
@@ -223,7 +245,11 @@ var cf =`{
       },
       "Notes": ["**Advancement Skills: Channel, COMBAT, First Aid, Influence, Insight, Piety, Willpower",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
-      "weapons": []
+      "weapons": {
+        "OneHanded": [],
+        "Shield" : [],
+        "TwoHanded": []
+      }
     },
     "Fighter": {
       "Talents": [
@@ -248,8 +274,11 @@ var cf =`{
       "Notes": ["**Advancement Skills: Brawn, COMBAT, Craft(Any), Endurance, Evade, Lore(Any), Unarmed",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
-
-      "weapons": []
+      "weapons": {
+        "OneHanded": [],
+        "Shield" : [],
+        "TwoHanded": []
+      }
     },
     "Magic-User": {
       "Talents": ["Cantrips: Cantrips are the first magical ability taught to an apprentice magic-user. A magic-user knows a number of cantrips equal to 1/5th Arcane Casting.",
@@ -277,7 +306,7 @@ var cf =`{
         "Unarmed Prowess: All monks of Rank 1 or higher treat Unarmed blocks and parries as ‘Medium’ sized, enabling them to better defend themselves from armed opponents.",
         "Augment Skills: Monks augment their skills by channelling their own positive energies. Each level of Intensity improves the monk’s chance of success by 1 difficulty grade. Acrobatics, Athletics, Unarmed, and Endurance may be augmented this way at Rank 1. Costs 1 Magic Point per level of Intensity.",
         "Invoke Traits: Traits are specialised physical, mental and emotional endeavours akin to those found for many creatures. All traits by default have an Intensity of 1. Costs 2 Magic Points.",
-        "Slow Fall Trait: Slow Fall: If you drop or fall within reach of a wall, cliff face, tree trunk and so on, you can slow your descent and take no damage from the fall as long as you can make periodic contact. The distance fallen that can be effectively ignored is equal to 1/5th your Mysticism skill in metres (yards).",
+        "Slow Fall Trait: Slow Fall: If you drop or fall within reach of a wall, cliff face, tree trunk and so on, you can slow your descent and take no damage from the fall as long as you can make periodic contact. The distance fallen that can be effectively ignored is equal to 1/5th your Mysticism skill in metres (yards). Instant cast time, may be used as a Reaction.",
         "Enhance Attribute: Monks may spend 3 Magic Points to increase their Action Points by 1, or their Damage Modifier by 1 step."
       ],
       "Prereq": {"STR": "11", "CON": "11", "DEX": "14", "POW": "12"},
@@ -294,7 +323,11 @@ var cf =`{
       "Notes": ["**Advancement Skills: Acrobatics, Athletics, COMBAT, Evade, Meditation, Mysticism, Unarmed, Willpower",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
-      "weapons": []
+      "weapons": {
+        "OneHanded": [],
+        "Shield" : [],
+        "TwoHanded": []
+      }
 },
     "Paladin": {
       "Talents": ["Armour Proficiency: You are trained in the use of all armours up to and including plate. Light armours receive 1 extra armour point, and heavy armours 2. The only stipulation is that you have to know the attack is coming. In addition, when worn, only 1/4 the total ENC of the armour is counted towards Encumbrance instead of half.",
@@ -313,7 +346,7 @@ var cf =`{
       "Armor": {
         "Main": 5,
         "Limbs": 5,
-        "Penalty": 6
+        "Penalty": 2
       },
       "Prereqs": ["Channel", "COMBAT", "Endurance", "Perception", "Piety", "Stealth", "Survival"],
       "Skills": {
@@ -323,14 +356,18 @@ var cf =`{
       "Notes": ["**Advancement Skills: Channel, COMBAT, Endurance, Perception, Piety, Stealth, Survival",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
-      "weapons": []
+      "weapons": {
+        "OneHanded": [],
+        "Shield" : [],
+        "TwoHanded": []
+      }
     },
     "Ranger": {
       "Talents": ["Artful Dodger: This talent requires you to be Unburdened (ENC less than STRx2) and wearing nothing more restrictive than light armour. You possess fast reflexes and gain 1 extra Action Point, which may only be used to Parry or Evade. In addition, you may use the Evade skill to dodge a melee attack without falling prone. Against a ranged attack, you only end up prone if you fail the roll.",
         "Combat Proficiency: Being a master of armed and unarmed combat, Fighters gain a further +5% to their Combat Style and Unarmed skill.",
         "Dual Weapon Specialisation: Grants the Ranger use of a weapon in each hand without penalty. The usual restriction that the offhand weapon must be shorter than the main weapon does not apply to you. Technically, this extra “weapon” may be a shield. When wielding two weapons, you gain an extra Action Point that may be used with the offhand weapon in the following ways: to parry 1 additional attack, or to make 1 additional attack with no addional penalty, and may use any special effect normally allowed by the main hand weapon.",
-        "Bow/Light Crossbow Specialisation: The normally imparted rules for aiming are modified as follows. When attacking a target at the weapon’s Close range, Aiming requires 1 Turn steadying the weapon instead of a full Round, and makes the following attack 1 grade easier. Attacks made beyond Close range follow the normal rules. Additional rounds spent aiming grant no further advantage. Finally, when aiming your Critical chance is equal to 1/20th your final modified skill instead of the normal 1/10th.",
-        "Species Enemy: At Rank 1, and every rank thereafter, the ranger may choose a Species Enemy. Each additional species chosen after the first requires the expenditure of 2 Experience Rolls and 1 month of training. Add 20% of your oath to all skills that involve the designated species."
+        "Bow/Light Crossbow Specialisation: The normally imparted rules for aiming are modified as follows. When attacking a target at the weapon’s Close range, Aiming requires 1 Turn steadying the weapon instead of a full Round, and makes the following attack 1 grade easier. Attacks made beyond Close range follow the normal rules. Additional rounds spent aiming grant no further advantage. Finally, when aiming your Critical chance is equal to 1/5th your final modified skill instead of the normal 1/10th. Can automatically fire first if bow/ammo are readied and not suprised.",
+        "Species Enemy: At Rank 1, and every rank thereafter, the ranger may choose a Species Enemy. Each additional species chosen after the first requires the expenditure of 2 Experience Rolls and 1 month of training. Add 20% of your oath to all skills that involve the designated species. (Choose a species now)"
       ],
       "Prereq": {"STR": "11", "CON": "12", "INT": "14", "POW": "12"},
       "Armor": {
@@ -347,11 +384,16 @@ var cf =`{
       "Notes": ["**Advancement Skills: Athletics, Channel, COMBAT, Endurance, Perception, Piety, Stealth, Survival",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
-      "weapons": []
+      "weapons": {
+        "OneHanded": [],
+        "Shield" : [],
+        "TwoHanded": []
+      }
     },
     "Thief": {
       "Talents": ["Artful Dodger: This talent requires you to be Unburdened (ENC less than STRx2) and wearing nothing more restrictive than light armour. You possess fast reflexes and gain 1 extra Action Point, which may only be used to Parry or Evade. In addition, you may use the Evade skill to dodge a melee attack without falling prone. Against a ranged attack, you only end up prone if you fail the roll.",
-        "Backstab: Backstab allows the attacker to use the Kill Silently Special Effect to neutralise a victim with a surprise attack.",
+        "Backstab: Backstab allows the attacker to use a Small or Medium weapon to strike with +1 DMOD for each Rank in Thief. Additionally, the first backstab grants an additional Special Effect. Surprise is not neccessary, the attacker must simply attack fromo outside field of vision. ",
+        "Agile: The Thief gains superb reflexes. When calculating Initiative the character adds one tenth of his or her Athletics skill to the Initiative 1d10 roll. (Not added)",
         "Climb Walls: You are very good at climbing anything up to and including sheer surfaces. As long as you are Unburdened (ENC less than STRx2) and wearing nothing more restrictive than light armour, you may ignore 1 grade of difficulty to your Athletics roll when performing any attempt at climbing. In addition the Armour Penalty to Base Movement when climbing may be ignored.",
         "Hide in Shadows: You are a master of stealth and have perfected the art of hiding in shadows. As long as you can position yourself in an area enshrouded in shadow, all Perception rolls to spot you are 1 difficulty grade harder.",
         "Language (Thieves’ Cant): Arcane bards know a secret form of communication called thieves’ cant. This Language skill consists of slang and implied meanings and is used between thieves as a way to discuss pursuits of an illicit nature in public, without giving away information to other interested parties."
@@ -369,11 +411,16 @@ var cf =`{
       },
       "Notes": ["**Advancement Skills: Athletics, COMBAT, Deceit, Evade, Sleight, Stealth, Streetwise",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
-      "weapons": []
+      "weapons": {
+        "OneHanded": [],
+        "Shield" : [],
+        "TwoHanded": []
+      }
     },
     "Thief-Acrobat": {
       "Talents": ["Artful Dodger: This talent requires you to be Unburdened (ENC less than STRx2) and wearing nothing more restrictive than light armour. You possess fast reflexes and gain 1 extra Action Point, which may only be used to Parry or Evade. In addition, you may use the Evade skill to dodge a melee attack without falling prone. Against a ranged attack, you only end up prone if you fail the roll.",
-        "Backstab: Backstab allows the attacker to use the Kill Silently Special Effect to neutralise a victim with a surprise attack.",
+        "Backstab: Backstab allows the attacker to use a Small or Medium weapon to strike with +1 DMOD for each Rank in Thief. Additionally, the first backstab grants an additional Special Effect. Surprise is not neccessary, the attacker must simply attack fromo outside field of vision. ",
+        "Agile: The Thief gains superb reflexes. When calculating Initiative the character adds one tenth of his or her Athletics skill to the Initiative 1d10 roll. (Not added)",
         "Climb Walls: You are very good at climbing anything up to and including sheer surfaces. As long as you are Unburdened (ENC less than STRx2) and wearing nothing more restrictive than light armour, you may ignore 1 grade of difficulty to your Athletics roll when performing any attempt at climbing. In addition the Armour Penalty to Base Movement when climbing may be ignored.",
         "Hide in Shadows: You are a master of stealth and have perfected the art of hiding in shadows. As long as you can position yourself in an area enshrouded in shadow, all Perception rolls to spot you are 1 difficulty grade harder.",
         "Language (Thieves’ Cant): Arcane bards know a secret form of communication called thieves’ cant. This Language skill consists of slang and implied meanings and is used between thieves as a way to discuss pursuits of an illicit nature in public, without giving away information to other interested parties.",
@@ -392,7 +439,11 @@ var cf =`{
       },
       "Notes": ["**Advancement Skills: Acrobatics, Athletics, COMBAT, Deceit, Evade, Perception, Stealth, Streetwise",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
-      "weapons": []
+      "weapons": {
+        "OneHanded": [],
+        "Shield" : [],
+        "TwoHanded": []
+      }
     }
   },
   "Race": {
