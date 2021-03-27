@@ -67,6 +67,8 @@ $(document).ready(function() {
   });
 });
 
+
+
 // Checking name for validity.
 function checkData(data) {
   if (data.name === '') {
@@ -75,6 +77,8 @@ function checkData(data) {
   }
   return true;
 }
+
+
 
 // Retrieving form data and putting in json.
 function getFormData(form){
@@ -88,6 +92,8 @@ function getFormData(form){
     return indexed_array;
 }
 
+
+
 function generate() {
   // Validating forms
   var form = $("#form");
@@ -98,8 +104,6 @@ function generate() {
   char.race = race;
   const _class = $('select[name=class] option').filter(':selected').val();
   char.class = _class;
-  // console.log(char.race);
-  // console.log(char.class);
   // Loading json template for character generation (e.g. template.Skills.Regular.Athletics)
   const template = JSON.parse(cf); //cf is the json object in classicfantasy.json
   prereq = template.Class[_class].Prereq;
@@ -128,13 +132,54 @@ function generate() {
   racialSkills(char.skills, template, race, char.stats, char.class);
   classSkills(char.class, template, char.skills, char.stats);
   classAdjustment(char, char.class, char.skills, char.features, char.stats, template);
-  // TODO: remove "COMBAT", "Arcane Casting/Knowledge", "Channeling/Piety" from char.skills
+  bonusSkills(char, char.class, template);
+  // XKCD TODO: remove "COMBAT" from char.skills
   $("#myJson").html("[" + JSON.stringify(char) + "]");
   return true;
 }
 
-//add class-given languages, passions, and talents/features with associated skill boosts.
-function classAdjustment(char, class_, skills, features, stats, template){
+
+
+// add bonus skills with focus on getting 5 prerequisite skills to 50%
+function bonusSkills(char, class_ ,template) {
+  // have 100 bonus points to try to spend on getting at least 5 skills to 50%, no more than 10 points per skill.
+  var points = 100;
+  // get list of prerequisite skills
+  var prerequisites = template.Class[class_].Prereqs;
+  var skills = char.skills;
+  var skill_keys = []; // an array of skill names that the character knows.
+  for (var i = 0; i < skills.length; i++) {
+    skill_keys.push(Object.keys(skills[i])[0]) // extracting skill name from array of skill objects.
+  }
+
+  // creating intersection of prerequisites and actual skills. 
+  var skill_intersection = skill_keys.filter(v => prerequisites.includes(v)); // array of skills in both char.skills and class prerequisites.
+  for (intersects of skill_intersection) {
+    var points_to_add = 10;
+    var index_of_skill = skills.findIndex(p => Object.keys(p)[0] == intersects);
+    skills[index_of_skill][intersects] = skills[index_of_skill][intersects] + points_to_add;
+    points -= points_to_add;
+  }
+
+
+  // spending bonus points, there are mathematically at least 20 bonus points remaining (8 prereqs * 10 = 80 - 100 = 20 points.)
+  var bonus_intersection = skill_keys.filter(e => !skill_intersection.includes(e));
+  var bonusSelector = randomNoRepeats(bonus_intersection);
+  var iterations = points / 10; // how many times we are iterating and adding 10 points to a skill.
+  for (var i = 0; i < iterations; i++) {
+    var random_skill = bonusSelector();
+    var index_of_skill = skills.findIndex(p => Object.keys(p)[0] == random_skill);
+    var points_to_add = Math.min(5, points);
+    skills[index_of_skill][random_skill] = skills[index_of_skill][random_skill] + points_to_add;
+  }
+  
+
+}
+
+
+
+// add class-given languages, passions, and talents/features with associated skill boosts.
+function classAdjustment(char, class_, skills, features, stats, template) {
   // for ease of use, characteristics are separated out and put in temp array 's'.
   var STR = Object.entries(stats[0])[0][1];
   var CON = Object.entries(stats[1])[0][1];
@@ -225,6 +270,7 @@ function classAdjustment(char, class_, skills, features, stats, template){
 
 
 
+
   } else if (class_ === "Druid") {
     skills.push({"Language (Druids’ Cant)": language_base + 40});
     for (talent of template.Class[class_].Talents) { // pushing all talents to character.
@@ -286,8 +332,41 @@ function classAdjustment(char, class_, skills, features, stats, template){
     for (talent of template.Class[class_].Talents) { // pushing all talents to character.
       features.push(talent);
     }
-
-
+    //determining speciality, if any.
+    var specialization = null;
+    var magic_chance = Math.round(Math.random()); // 50% chance to be specialized.
+    if (magic_chance) { // if specialized,
+      features_arr = [] // populate with specialization information, as well as a feature telling you your specialization, and forbidden specs.
+      var random_spec = Math.floor(Math.random() * 8); // 1 - 8
+      switch (random_spec) {
+        case 1:
+          specialization = "Abjuration";
+          break;
+        case 2:
+          specialization = "Conjuration";
+          break;      
+        case 3:
+          specialization = "Divination";
+          break;
+        case 4:
+          specialization = "Enchantment";
+          break;
+        case 5:
+          specialization = "Illusion";
+          break;
+        case 6:
+          specialization = "Evocation";
+          break;      
+        case 7:
+          specialization = "Necromancy";
+          break;
+        case 8:
+          specialization = "Alteration";
+          break;    
+        default:
+          break;
+      }
+    }
 
   } else if (class_ === "Monk") {
     // adding 5% to COMBAT and Unarmed skills for Combat Proficiency feature.
@@ -382,6 +461,8 @@ function classAdjustment(char, class_, skills, features, stats, template){
 
 }
 
+
+
 function classSkills(class_, template, skills, stats){
   // for ease of use, characteristics are separated out and put in temp array 's'.
   var STR = Object.entries(stats[0])[0][1];
@@ -392,16 +473,27 @@ function classSkills(class_, template, skills, stats){
   var POW = Object.entries(stats[5])[0][1];
   var CHA = Object.entries(stats[6])[0][1];
   var s = {"STR": STR, "CON": CON, "SIZ": SIZ, "DEX": DEX, "INT": INT, "POW": POW, "CHA": CHA}
-  // picking first 2 indexes of professional skills, and random of rest.
+
   var class_choices = template.Class[class_].Skills.Professional;
+
+  // Remove choices that you already have picked in racial skills!
+  var skill_keys = []; // an array of skill names that the character knows.
+  for (var i = 0; i < skills.length; i++) {
+    skill_keys.push(Object.keys(skills[i])[0]) // extracting skill name from array of skill objects.
+  }
+  var class_choices = class_choices.filter(e => !skill_keys.includes(e)); // stops duplicating of professional skills that are already picked when race skills were picked.
+
+
   var class_professionals = [];
   class_professionals.push(class_choices[0], class_choices[1]);
-  // make random choices of indexes 2+ and push to class_professionals.
-  class_choices = class_choices.slice(2); // remove first 2 choices.
+
+    // make random choices of indexes 2+ and push to class_professionals.
+    class_choices = class_choices.slice(2); // remove first 2 choices.
+
   const randomElement = class_choices[Math.floor(Math.random() * class_choices.length)];
   class_professionals.push(randomElement);
+  console.log("Class_Professionals", class_professionals);
   // adding pro skills to char.skills
-  console.log("Class Professionals:", class_professionals);
   for (let i = 0; i < 3; i ++) {
     if(skills.indexOf(class_professionals[i]) === -1){ // only pushing if unique.
       var template_value = template.Skills.Professional[class_professionals[i]];
@@ -421,13 +513,11 @@ function classSkills(class_, template, skills, stats){
   var combined_prereqs = Array.from(new Set(class_prereqs_std.concat(class_professionals)));
   // creating intersection
   var skill_intersection = class_prereqs.filter(v => combined_prereqs.includes(v)); // array of skills in both available class skills, and class requirements
-  console.log(skill_intersection);
   for (intersects of skill_intersection) {
-    var points_to_add = Math.min(15, points); // for the case of adding 15 to 7, makes the last skill only add 10 points.
+    var points_to_add = Math.min(15, points); // for the case of adding 15 to 7 skills (15 * 7 = 105), makes the last skill only add 10 points.
     var index_of_skill = skills.findIndex(p => Object.keys(p)[0] == intersects);
     skills[index_of_skill][intersects] = skills[index_of_skill][intersects] + points_to_add;
     points -= points_to_add;
-    console.log(intersects)
     if (points <= 0) break; //
   }
 
@@ -440,8 +530,9 @@ function classSkills(class_, template, skills, stats){
     skills[index_of_skill][random_skill] = skills[index_of_skill][random_skill] + points_to_add;
     points -= points_to_add;
   }
-  console.log(points);
 }
+
+
 
 function racialSkills(skills, template, race, stats, _class) {
   // for ease of use, characteristics are separated out and put in temp array 's'.
@@ -514,6 +605,8 @@ function racialSkills(skills, template, race, stats, _class) {
   }
 }
 
+
+
 // takes elements out randomly with no repeats until none are left, then resets.
 function randomNoRepeats(array) {
   var copy = array.slice(0);
@@ -526,6 +619,8 @@ function randomNoRepeats(array) {
   };
 }
 
+
+
 function racialSpecials(template, race) {
   var spec = []
   for (var special of template.Race[race].Special) {
@@ -533,6 +628,8 @@ function racialSpecials(template, race) {
   }
   return spec;
 }
+
+
 
 function calculateBaseSkills(template, stats) {
   // for ease of use, characteristics are separated out and put in temp array 's'.
@@ -557,12 +654,16 @@ function calculateBaseSkills(template, stats) {
   return skill_return;
 }
 
+
+
 function copyText() {
   var copyText = document.getElementById("myJson");
   copyText.select();
   copyText.setSelectionRange(0, 99999);
   document.execCommand("copy");
 }
+
+
 
 function roll(dice) {
   var result = 0;
@@ -581,6 +682,8 @@ function roll(dice) {
   //console.log(result);
   return result;
 }
+
+
 
 // returns an array of chracteristics that meet min-reqs for chosen class.
 function rollCharacteristics(prereq, template, race) {
@@ -601,17 +704,15 @@ function rollCharacteristics(prereq, template, race) {
       let statVal = Object.entries(stats[i])[0][1]; // this is the value of ^ key
       if (characteristic === stat){
         if(prereq[characteristic] > statVal) { // if underrolled
-          //console.log("CONDITION!!!", stat);
           stats[i][stat] = parseInt(prereq[characteristic]);
         }
-        //console.log(characteristic, prereq[characteristic], stat, statVal);
       }
-      //console.log(characteristic, prereq[characteristic]);
     }
-    //console.log(Object.keys(stats[i]));
   }
   return(stats);
 }
+
+
 
 function calculateAttributes(template, race, stats, class_) {
   // for ease of use, characteristics are separated out.
@@ -720,6 +821,8 @@ function calculateAttributes(template, race, stats, class_) {
   }
   return attr;
 }
+
+
 
 function hitLocations(chest_abdomen_head, rest_of_body, stats) {
   // these characteristics are needed to calculate HP.

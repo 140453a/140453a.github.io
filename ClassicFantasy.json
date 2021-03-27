@@ -217,7 +217,7 @@ var cf =`{
       "Prereqs": ["Channel", "COMBAT", "First Aid", "Influence", "Insight", "Piety", "Willpower"],
       "Skills": {
         "Standard": ["COMBAT", "Customs", "First Aid", "Influence", "Insight", "Willpower", "Locale"],
-        "Professional": ["Channel", "Piety", "Healing"]
+        "Professional": ["Channel", "Piety", "Healing", "Bureaucracy", "Lore(Any)", "Oratory"]
       },
       "Notes": ["**Advancement Skills: Channel, COMBAT, First Aid, Influence, Insight, Piety, Willpower",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
@@ -300,7 +300,7 @@ var cf =`{
       "Prereqs": ["Arcane Casting", "Arcane Knowledge", "Influence", "Insight", "Lore(Any)", "Perception", "Willpower"],
       "Skills": {
         "Standard": ["Customs", "First Aid", "Influence", "Insight", "Perception", "Willpower", "Locale"],
-        "Professional": ["Arcane Casting", "Arcane Knowledge", "Lore(Any)"]
+        "Professional": ["Arcane Casting", "Arcane Knowledge", "Lore(Any)", "Culture(Any)", "Language(Any)"]
       },
       "Notes": ["**Advancement Skills: Arcane Casting, Arcane Knowledge, Influence, Insight, Lore(Any), Perception, Willpower",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
@@ -420,7 +420,7 @@ var cf =`{
       "Prereqs": ["Athletics", "COMBAT", "Deceit", "Evade", "Sleight", "Stealth", "Streetwise"],
       "Skills": {
         "Standard": ["Athletics", "Stealth", "COMBAT", "Deceit", "Evade", "Insight", "Perception"],
-        "Professional": ["Lockpicking", "Disguise", "Sleight", "Streetwise", "Acting", "Commerce"]
+        "Professional": ["Sleight", "Lockpicking", "Disguise", "Streetwise", "Acting", "Commerce"]
       },
       "Notes": ["**Advancement Skills: Athletics, COMBAT, Deceit, Evade, Sleight, Stealth, Streetwise",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
@@ -448,7 +448,7 @@ var cf =`{
       "Prereqs": ["Acrobatics", "Athletics", "COMBAT", "Deceit", "Evade", "Perception", "Stealth", "Streetwise"],
       "Skills": {
         "Standard": ["Athletics", "COMBAT", "Stealth", "Deceit", "Evade", "Insight", "Perception"],
-        "Professional": ["Lockpicking", "Acrobatics", "Sleight", "Streetwise", "Acting", "Commerce"]
+        "Professional": ["Streetwise", "Acrobatics", "Lockpicking", "Sleight", "Acting", "Commerce"]
       },
       "Notes": ["**Advancement Skills: Acrobatics, Athletics, COMBAT, Deceit, Evade, Perception, Stealth, Streetwise",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
