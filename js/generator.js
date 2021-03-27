@@ -117,7 +117,6 @@ function generate() {
   char.mysticism_spells = [];
 
   char.spirits = [];
-  char.combat_styles = []
   char.cults = [];
   char.folk_spells = [];
   var skills = calculateBaseSkills(template, char.stats);
@@ -133,9 +132,32 @@ function generate() {
   classSkills(char.class, template, char.skills, char.stats);
   classAdjustment(char, char.class, char.skills, char.features, char.stats, template);
   bonusSkills(char, char.class, template);
+  combatStyle(char, template);
   // XKCD TODO: remove "COMBAT" from char.skills
   $("#myJson").html("[" + JSON.stringify(char) + "]");
   return true;
+}
+
+
+function combatStyle(char, template) {
+  if (["Magic-User"].includes(char.class)) {return} // magic users have no combat ability.
+  var inner_style = {}
+  var outer_style = [inner_style];
+
+  inner_style.name = char.class + " Style";
+
+  var indexOfCombat = char.skills.findIndex(function(obj, index) {
+    if(Object.keys(obj)[0] == 'COMBAT') return true;
+  });
+  inner_style.value = char.skills[indexOfCombat].COMBAT; // setting combat style percentage.
+
+  // removing COMBAT professional skill from skills
+  char.skills.splice(indexOfCombat, 1);
+
+  // setting up starter class weapon.
+  char.weapons = [];
+  
+  char.combat_styles = outer_style; // setting char with combat style array
 }
 
 

@@ -105,13 +105,8 @@ var cf =`{
       },
       "Notes": ["**Advancement Skills: Arcane Casting, Arcane Knowledge, Athletics, Influence, Lore(Any), Musicianship, Seduction, Sing",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
-      "combat_styles": [
-        {
-          "name": "",
-
-          "weapons": [
-            {}]
-    }]},
+      "weapons": []
+    },
     "BardD": {
       "Talents": [
         "Spell Caster: Druidic bards practise nature magic and can bring the very forces of the wilderness to their aid when needed through the casting of their spells. Note also that many forms of armour are contrary to the druidic oath with regards to Divine spell casting",
@@ -136,13 +131,8 @@ var cf =`{
       },
       "Notes": ["**Advancement Skills: Athletics, Channel, Influence, Musicianship, Piety, Sing, Survival, Lore(Any)",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
-      "combat_styles": [
-        {
-          "name": "",
-
-          "weapons": [
-            {}]
-    }]},
+      "weapons": []
+    },
     "Berserker": {
       "Talents": ["Artful Dodger: This talent requires you to be Unburdened (ENC less than STRx2) and wearing nothing more restrictive than light armour. You possess fast reflexes and gain 1 extra Action Point, which may only be used to Parry or Evade. In addition, you may use the Evade skill to dodge a melee attack without falling prone. Against a ranged attack, you only end up prone if you fail the roll.",
       "Combat Proficiency: Being a master of armed and unarmed combat, berserkers gain a further +5% to their Combat Style.",
@@ -165,13 +155,8 @@ var cf =`{
       "Notes": ["**Advancement Skills: Athletics, Brawn, COMBAT, Endurance, Evade, Unarmed, Survival",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
-      "combat_styles": [
-        {
-          "name": "",
-
-          "weapons": [
-            {}]
-    }]},
+      "weapons": []
+    },
     "Cavalier": {
       "Talents": ["Armour Proficiency: You are trained in the use of all armours up to and including plate, knowing how position yourself to receive a blow in such a way as to deflect a portion of the attack. Light armours receive 1 extra armour point, and heavy armours 2. The only stipulation is that you have to know the attack is coming. In addition, when worn, only 1/4 the total ENC of the armour is counted towards Encumbrance instead of half.",
       "Determination: Due to this talent, cavaliers may continue to function even after sustaining grievous injury or exhaustion with a successful roll against their oath of Fealty and Knightly Virtues. Where other characters would lose consciousness from pain and shock, your fierce determination to your cause pushes you ever onward. This allows you to ignore all the detrimental effects of Serious Wounds and Fatigue.",
@@ -195,13 +180,8 @@ var cf =`{
       "Notes": ["**Advancement Skills: Bureaucracy, COMBAT, Courtesy, Endurance, Influence, Ride, Willpower",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
-      "combat_styles": [
-        {
-          "name": "",
-
-          "weapons": [
-            {}]
-    }]},
+      "weapons": []
+    },
     "Cleric": {
       "Talents": ["Abilities and Talents Divine Spell Caster: Clerics are masters of Divine magic. Clerical Divine spell-casting is not hindered by the wearing of armour.",
         "Starting Spells: A cleric begins with a number of Rank 1 spells equal to 1/10th Piety.",
@@ -221,13 +201,8 @@ var cf =`{
       },
       "Notes": ["**Advancement Skills: Channel, COMBAT, First Aid, Influence, Insight, Piety, Willpower",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
-      "combat_styles": [
-        {
-          "name": "",
-
-          "weapons": [
-            {}]
-    }]},
+      "weapons": []
+    },
     "Druid": {
       "Talents": ["Divine Spell Caster: Druids are masters of nature magic and can bring the very forces of the wilderness to their aid when needed through the casting of their spells. Many forms of armour are contrary to the druidic oath with regards to Divine spell casting",
           "Starting Spells: A druid begins with a number of Rank 1 spells equal to 1/10th Piety.",
@@ -248,13 +223,8 @@ var cf =`{
       },
       "Notes": ["**Advancement Skills: Channel, COMBAT, First Aid, Influence, Insight, Piety, Willpower",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
-      "combat_styles": [
-        {
-          "name": "",
-
-          "weapons": [
-            {}]
-    }]},
+      "weapons": []
+    },
     "Fighter": {
       "Talents": [
         "Armour Proficiency: You are trained in the use of all armours up to and including plate. Light armours receive 1 extra armour point, and heavy armours 2. The only stipulation is that you have to know the attack is coming. In addition, when worn, only 1/4 the total ENC of the armour is counted towards Encumbrance instead of half.",
@@ -278,13 +248,9 @@ var cf =`{
       "Notes": ["**Advancement Skills: Brawn, COMBAT, Craft(Any), Endurance, Evade, Lore(Any), Unarmed",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
-      "combat_styles": [
-        {
-          "name": "",
 
-          "weapons": [
-            {}]
-    }]},
+      "weapons": []
+    },
     "Magic-User": {
       "Talents": ["Cantrips: Cantrips are the first magical ability taught to an apprentice magic-user. A magic-user knows a number of cantrips equal to 1/5th Arcane Casting.",
         "Arcane Spell Caster: Magic-users are eventually able to cast the most spectacular and powerful of spells, able to burn armies, and collapse castles with but a gesture. All Arcane spells require precise gestures and movements (the spell’s somatic component) during casting, which are hindered by the wearing of armour.",
@@ -303,14 +269,8 @@ var cf =`{
         "Professional": ["Arcane Casting", "Arcane Knowledge", "Lore(Any)", "Culture(Any)", "Language(Any)"]
       },
       "Notes": ["**Advancement Skills: Arcane Casting, Arcane Knowledge, Influence, Insight, Lore(Any), Perception, Willpower",
-                "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
-      "combat_styles": [
-        {
-          "name": "",
-
-          "weapons": [
-            {}]
-    }]},
+                "**Replace '(any)' in Craft, Lore, etc. skills with something specific."]
+    },
     "Monk": {
       "Talents": ["Artful Dodger: All monks of Rank 1 or higher automatically possess the Artful Dodger talent granting fast reflexes and 1 extra Action Point, which may only be used to Parry or Evade. This is an innate ability and cost no Magic Points to invoke. In addition, you may use the Evade skill to dodge a melee attack without falling prone. Against a ranged attack, you only end up prone if you fail the roll.",
         "Combat Proficiency: Being a master of armed and unarmed combat, monks gain a further +5% to their Combat Style and Unarmed skill.",
@@ -334,13 +294,8 @@ var cf =`{
       "Notes": ["**Advancement Skills: Acrobatics, Athletics, COMBAT, Evade, Meditation, Mysticism, Unarmed, Willpower",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
-      "combat_styles": [
-        {
-          "name": "",
-
-          "weapons": [
-            {}]
-    }]},
+      "weapons": []
+},
     "Paladin": {
       "Talents": ["Armour Proficiency: You are trained in the use of all armours up to and including plate. Light armours receive 1 extra armour point, and heavy armours 2. The only stipulation is that you have to know the attack is coming. In addition, when worn, only 1/4 the total ENC of the armour is counted towards Encumbrance instead of half.",
       "Combat Proficiency: Being a master of armed and unarmed combat, Fighters gain a further +5% to their Combat Style and Unarmed skill.",
@@ -368,20 +323,15 @@ var cf =`{
       "Notes": ["**Advancement Skills: Channel, COMBAT, Endurance, Perception, Piety, Stealth, Survival",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
-      "combat_styles": [
-        {
-          "name": "",
-
-          "weapons": [
-            {}]
-    }]},
+      "weapons": []
+    },
     "Ranger": {
       "Talents": ["Artful Dodger: This talent requires you to be Unburdened (ENC less than STRx2) and wearing nothing more restrictive than light armour. You possess fast reflexes and gain 1 extra Action Point, which may only be used to Parry or Evade. In addition, you may use the Evade skill to dodge a melee attack without falling prone. Against a ranged attack, you only end up prone if you fail the roll.",
         "Combat Proficiency: Being a master of armed and unarmed combat, Fighters gain a further +5% to their Combat Style and Unarmed skill.",
         "Dual Weapon Specialisation: Grants the Ranger use of a weapon in each hand without penalty. The usual restriction that the offhand weapon must be shorter than the main weapon does not apply to you. Technically, this extra “weapon” may be a shield. When wielding two weapons, you gain an extra Action Point that may be used with the offhand weapon in the following ways: to parry 1 additional attack, or to make 1 additional attack with no addional penalty, and may use any special effect normally allowed by the main hand weapon.",
         "Bow/Light Crossbow Specialisation: The normally imparted rules for aiming are modified as follows. When attacking a target at the weapon’s Close range, Aiming requires 1 Turn steadying the weapon instead of a full Round, and makes the following attack 1 grade easier. Attacks made beyond Close range follow the normal rules. Additional rounds spent aiming grant no further advantage. Finally, when aiming your Critical chance is equal to 1/20th your final modified skill instead of the normal 1/10th.",
         "Species Enemy: At Rank 1, and every rank thereafter, the ranger may choose a Species Enemy. Each additional species chosen after the first requires the expenditure of 2 Experience Rolls and 1 month of training. Add 20% of your oath to all skills that involve the designated species."
-  ],
+      ],
       "Prereq": {"STR": "11", "CON": "12", "INT": "14", "POW": "12"},
       "Armor": {
         "Main": 3,
@@ -397,13 +347,8 @@ var cf =`{
       "Notes": ["**Advancement Skills: Athletics, Channel, COMBAT, Endurance, Perception, Piety, Stealth, Survival",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
-      "combat_styles": [
-        {
-          "name": "",
-
-          "weapons": [
-            {}]
-    }]},
+      "weapons": []
+    },
     "Thief": {
       "Talents": ["Artful Dodger: This talent requires you to be Unburdened (ENC less than STRx2) and wearing nothing more restrictive than light armour. You possess fast reflexes and gain 1 extra Action Point, which may only be used to Parry or Evade. In addition, you may use the Evade skill to dodge a melee attack without falling prone. Against a ranged attack, you only end up prone if you fail the roll.",
         "Backstab: Backstab allows the attacker to use the Kill Silently Special Effect to neutralise a victim with a surprise attack.",
@@ -424,13 +369,8 @@ var cf =`{
       },
       "Notes": ["**Advancement Skills: Athletics, COMBAT, Deceit, Evade, Sleight, Stealth, Streetwise",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
-      "combat_styles": [
-        {
-          "name": "",
-
-          "weapons": [
-            {}]
-    }]},
+      "weapons": []
+    },
     "Thief-Acrobat": {
       "Talents": ["Artful Dodger: This talent requires you to be Unburdened (ENC less than STRx2) and wearing nothing more restrictive than light armour. You possess fast reflexes and gain 1 extra Action Point, which may only be used to Parry or Evade. In addition, you may use the Evade skill to dodge a melee attack without falling prone. Against a ranged attack, you only end up prone if you fail the roll.",
         "Backstab: Backstab allows the attacker to use the Kill Silently Special Effect to neutralise a victim with a surprise attack.",
@@ -452,13 +392,8 @@ var cf =`{
       },
       "Notes": ["**Advancement Skills: Acrobatics, Athletics, COMBAT, Deceit, Evade, Perception, Stealth, Streetwise",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
-      "combat_styles": [
-        {
-          "name": "",
-
-          "weapons": [
-            {}]
-    }]}
+      "weapons": []
+    }
   },
   "Race": {
     "Dwarf": {
