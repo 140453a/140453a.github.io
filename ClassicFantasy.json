@@ -1,4 +1,48 @@
 var cf =`{
+  "Weapons": {
+    "Ball & Chain": {"ap": 6, "add_damage_modifier:": true, "name": "Ball & Chain", "range": "", "hp": 8, "reach": "M", "damage": "1d6+1", "effects": "Bash, Entangle, Stun Location", "size": "M"},
+    "Bastard Sword": {"ap": 6, "add_damage_modifier:": true, "name": "Bastard Sword", "range": "", "hp": 12, "reach": "L", "damage": "1d10", "effects": "Bleed, Impale, Sunder", "size": "M"},
+    "Battle Axe": {"ap": 4, "add_damage_modifier:": true, "name": "Battle Axe", "range": "", "hp": 8, "reach": "M", "damage": "1d8+1", "effects": "Bleed, Sunder", "size": "L"},
+    "Broadsword": {"ap": 6, "add_damage_modifier:": true, "name": "Broadsword", "range": "", "hp": 10, "reach": "M", "damage": "1d8", "effects": "Bleed, Impale", "size": "M"},
+    "Buckler": {"ap": 6, "add_damage_modifier:": true, "name": "Buckler", "range": "", "hp": 9, "reach": "S", "damage": "1d3", "effects": "Bash, Stun, Ranged Parry, Passive Block 2", "size": "M"},
+    "Club": {"ap": 4, "add_damage_modifier:": true, "name": "Club", "range": "", "hp": 4, "reach": "S", "damage": "1d6", "effects": "Bash, Stun Location", "size": "M"},
+    "Dagger": {"ap": 6, "add_damage_modifier:": true, "name": "Dagger", "range": "", "hp": 8, "reach": "S", "damage": "1d4+1", "effects": "Bleed, Impale, Throw", "size": "S"},
+    "Dart": {"ap": 2, "add_damage_modifier:": true, "name": "Dart", "range": "15/30/60", "hp": 1, "reach": "-", "damage": "1d4", "effects": "Impale", "size": "S"},
+    "Falchion": {"ap": 6, "add_damage_modifier:": true, "name": "Falchion", "range": "", "hp": 10, "reach": "M", "damage": "1d6+2", "effects": "Bleed", "size": "M"},
+    "Garrotte": {"ap": 1, "add_damage_modifier:": true, "name": "Garrotte", "range": "", "hp": 2, "reach": "T", "damage": "1d2", "effects": "Stealth", "size": "S"},
+    "Glaive": {"ap": 4, "add_damage_modifier:": true, "name": "Glaive", "range": "", "hp": 10, "reach": "L", "damage": "1d10+2", "effects": "Bleed, Sunder", "size": "L"},
+    "Great Axe": {"ap": 4, "add_damage_modifier:": true, "name": "Great Axe", "range": "", "hp": 10, "reach": "L", "damage": "2d6+2", "effects": "Bleed, Sunder", "size": "H"},
+    "Great Hammer": {"ap": 4, "add_damage_modifier:": true, "name": "Great Hammer", "range": "", "hp": 10, "reach": "L", "damage": "1d10+3", "effects": "Bash, Stun Location, Sunder", "size": "H"},
+    "Halberd": {"ap": 4, "add_damage_modifier:": true, "name": "Halberd", "range": "", "hp": 10, "reach": "VL", "damage": "1d8+2", "effects": "Entangle, Impale, Sunder", "size": "L"},
+    "Hand Crossbow": {"ap": 4, "add_damage_modifier:": false, "name": "Hand Crossbow", "range": "30/60/150", "hp": 3, "reach": "-", "damage": "1d4", "effects": "Impale", "size": "M"},
+    "Hatchet": {"ap": 3, "add_damage_modifier:": true, "name": "Hatchet", "range": "", "hp": 6, "reach": "S", "damage": "1d6", "effects": "Bleed, Throw", "size": "S"},
+    "Heater": {"ap": 6, "add_damage_modifier:": true, "name": "Heater", "range": "", "hp": 12, "reach": "S", "damage": "1d4", "effects": "Ranged Parry, Passive Block 3", "size": "L"},
+    "Javelin": {"ap": 3, "add_damage_modifier:": true, "name": "Javelin", "range": "30/60/150", "hp": 8, "reach": "-", "damage": "1d8+1", "effects": "Impale, Pin Weapon(Shield)", "size": "H"},
+    "Jo Stick": {"ap": 3, "add_damage_modifier:": true, "name": "Jo Stick", "range": "", "hp": 4, "reach": "M", "damage": "1d4", "effects": "Stun Location", "size": "M"},
+    "Knife": {"ap": 5, "add_damage_modifier:": true, "name": "Knife", "range": "", "hp": 4, "reach": "S", "damage": "1d3", "effects": "Bleed, Impale", "size": "S"},
+    "Kite": {"ap": 4, "add_damage_modifier:": true, "name": "Kite Shield", "range": "", "hp": 15, "reach": "S", "damage": "1d4", "effects": "Bash, Stun, Ranged Parry, Passive Block 4", "size": "H"},
+    "Lance": {"ap": 4, "add_damage_modifier:": true, "name": "Lance", "range": "", "hp": 10, "reach": "VL", "damage": "1d10+2", "effects": "Impale, Sunder", "size": "H"},
+    "Light Crossbow": {"ap": 4, "add_damage_modifier:": false, "name": "Light Crossbow", "range": "60/300/600", "hp": 5, "reach": "-", "damage": "1d8", "effects": "Impale", "size": "L"},
+    "Longbow": {"ap": 4, "add_damage_modifier:": true, "name": "Longbow", "range": "45/375/750", "hp": 7, "reach": "-", "damage": "1d8", "effects": "Impale", "size": "H"},
+    "Longspear": {"ap": 4, "add_damage_modifier:": true, "name": "Longspear", "range": "", "hp": 10, "reach": "VL", "damage": "1d10+1", "effects": "Impale", "size": "L"},
+    "Longsword": {"ap": 6, "add_damage_modifier:": true, "name": "Longsword", "range": "", "hp": 12, "reach": "L", "damage": "1d8", "effects": "Bleed, Impale", "size": "M"},
+    "Morning Star": {"ap": 4, "add_damage_modifier:": true, "name": "Morning Star", "range": "", "hp": 10, "reach": "S", "damage": "2d4", "effects": "Bash, Stun Location", "size": "M"},
+    "Peltast": {"ap": 4, "add_damage_modifier:": true, "name": "Peltast", "range": "", "hp": 12, "reach": "S", "damage": "1d4", "effects": "Bash, Stun, Ranged Parry, Passive Block 3", "size": "L"},
+    "Quarterstaff": {"ap": 4, "add_damage_modifier:": true, "name": "Quarterstaff", "range": "", "hp": 8, "reach": "L", "damage": "1d8", "effects": "Stun Location", "size": "M"},
+    "Rapier": {"ap": 5, "add_damage_modifier:": true, "name": "Rapier", "range": "", "hp": 8, "reach": "L", "damage": "1d8", "effects": "Impale", "size": "M"},
+    "Recurve Bow": {"ap": 4, "add_damage_modifier:": true, "name": "Recurve Bow", "range": "45/375/750", "hp": 8, "reach": "-", "damage": "1d8", "effects": "Impale", "size": "H"},
+    "Scimitar": {"ap": 6, "add_damage_modifier:": true, "name": "Scimitar", "range": "", "hp": 10, "reach": "L", "damage": "1d8", "effects": "Bleed", "size": "M"},
+    "Shortbow": {"ap": 4, "add_damage_modifier:": true, "name": "Shortbow", "range": "45/300/600", "hp": 4, "reach": "-", "damage": "1d6", "effects": "Impale", "size": "L"},
+    "Shortspear": {"ap": 4, "add_damage_modifier:": true, "name": "Shortspear", "range": "", "hp": 5, "reach": "L", "damage": "1d8+1", "effects": "Impale, Throw", "size": "M"},
+    "Shortsword": {"ap": 6, "add_damage_modifier:": true, "name": "Shortsword", "range": "", "hp": 8, "reach": "S", "damage": "1d6", "effects": "Bleed, Impale", "size": "M"},
+    "Sickle": {"ap": 3, "add_damage_modifier:": true, "name": "Sickle", "range": "", "hp": 8, "reach": "S", "damage": "1d6", "effects": "Bleed, Impale", "size": "M"},
+    "Sling": {"ap": 1, "add_damage_modifier:": false, "name": "Sling", "range": "30/450/900", "hp": 2, "reach": "-", "damage": "1d8", "effects": "Stun Location", "size": "L"},
+    "Staff Sling": {"ap": 3, "add_damage_modifier:": false, "name": "Staff sling", "range": "15/75/150", "hp": 6, "reach": "-", "damage": "2d6", "effects": "Stun Location", "size": "E"},
+    "Target": {"ap": 4, "add_damage_modifier:": true, "name": "Target", "range": "", "hp": 9, "reach": "S", "damage": "1d3+1", "effects": "Bash, Impale, Ranged Parry, Passive Block 3", "size": "L"},
+    "Unarmed": {"ap": 0, "add_damage_modifier:": true, "name": "Unarmed", "range": "", "hp": 0, "reach": "T", "damage": "1d3", "effects": "", "size": "S"},
+    "War Hammer": {"ap": 3, "add_damage_modifier:": true, "name": "War Hammer", "range": "", "hp": 8, "reach": "M", "damage": "1d8+1", "effects": "Stun Location", "size": "M"},
+    "Whip": {"ap": 2, "add_damage_modifier:": true, "name": "Whip", "range": "", "hp": 8, "reach": "VL", "damage": "1d3", "effects": "Stun Location, Entangle", "size": "M"}
+  },
   "Spells": {
     "Cantrips": ["Appraise", "Calculate", "Calm", "Cleanse", "Chill", "Cool", "Deflect", "Dishevel", "Dry", "Extinguish", "Glue", "Ignite", "Magic Tricks", "Magnify", "Perfume", "Polish", "Preserve", "Repair", "Repugnance", "Tidy", "Tune", "Warmth" ],
     "Rank1": {
@@ -106,9 +150,10 @@ var cf =`{
       "Notes": ["**Advancement Skills: Arcane Casting, Arcane Knowledge, Athletics, Influence, Lore(Any), Musicianship, Seduction, Sing",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
       "weapons": {
-        "OneHanded": [],
-        "Shield" : [],
-        "TwoHanded": []
+        "OneHanded": ["Broadsword", "Club", "Dagger", "Falchion", "Knife", "Longsword", "Shortspear", "Shortsword", "Rapier", "Scimitar"],
+        "Throwing": ["Javelin", "Dart", "Sling"],
+        "Shield" : ["Buckler", "Peltast"],
+        "TwoHanded": ["Bastard Sword", "Longspear", "Quarterstaff"]
       }
     },
     "BardD": {
@@ -136,9 +181,10 @@ var cf =`{
       "Notes": ["**Advancement Skills: Athletics, Channel, Influence, Musicianship, Piety, Sing, Survival, Lore(Any)",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
       "weapons": {
-        "OneHanded": [],
-        "Shield" : [],
-        "TwoHanded": []
+        "OneHanded": ["Club", "Dagger", "Longsword", "Shortspear", "Shortsword", "Rapier"],
+        "Throwing": ["Javelin", "Dart", "Sling"],
+        "Shield" : ["Buckler"],
+        "TwoHanded": ["Longspear", "Quarterstaff"]
       }
     },
     "Berserker": {
@@ -166,9 +212,10 @@ var cf =`{
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
       "weapons": {
-        "OneHanded": [],
-        "Shield" : [],
-        "TwoHanded": []
+        "OneHanded": ["Longsword", "Shortsword", "Club", "Scimitar"],
+        "Throwing": ["Hatchet", "Short Bow"],
+        "Shield" : ["Buckler", "Heater", "Target"],
+        "TwoHanded": ["Battleaxe", "Bastard Sword", "Great Axe"]
       }
     },
     "Cavalier": {
@@ -195,9 +242,10 @@ var cf =`{
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
       "weapons": {
-        "OneHanded": [],
-        "Shield" : [],
-        "TwoHanded": []
+        "OneHanded": ["Longsword", "Lance", "Rapier", "War Hammer", "Bastard Sword", "Morning Star"],
+        "Throwing": ["Dagger"],
+        "Shield" : ["Heater", "Kite"],
+        "TwoHanded": ["Great Hammer"]
       }
     },
     "Cleric": {
@@ -220,9 +268,10 @@ var cf =`{
       "Notes": ["**Advancement Skills: Channel, COMBAT, First Aid, Influence, Insight, Piety, Willpower",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
       "weapons": {
-        "OneHanded": [],
-        "Shield" : [],
-        "TwoHanded": []
+        "OneHanded": ["Club", "Morning Star", "War Hammer", "Ball & Chain"],
+        "Throwing": ["Staff Sling"],
+        "Shield" : ["Buckler", "Heater"],
+        "TwoHanded": ["Quarterstaff"]
       }
     },
     "Druid": {
@@ -246,9 +295,10 @@ var cf =`{
       "Notes": ["**Advancement Skills: Channel, COMBAT, First Aid, Influence, Insight, Piety, Willpower",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
       "weapons": {
-        "OneHanded": [],
-        "Shield" : [],
-        "TwoHanded": []
+        "OneHanded": ["Club", "Dagger", "War Hammer", "Sickle", "Scimitar", "Shortspear", "Whip"],
+        "Throwing": ["Dart", "Staff Sling"],
+        "Shield" : ["Buckler"],
+        "TwoHanded": ["Quarterstaff", "Longspear"]
       }
     },
     "Fighter": {
@@ -275,9 +325,10 @@ var cf =`{
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
       "weapons": {
-        "OneHanded": [],
-        "Shield" : [],
-        "TwoHanded": []
+        "OneHanded": ["Longsword", "Shortsword", "Club", "Scimitar", "Falchion", "Rapier", "War Hammer"],
+        "Throwing": ["Short Bow", "Long Bow"],
+        "Shield" : ["Buckler", "Heater", "Target"],
+        "TwoHanded": ["Battleaxe", "Bastard Sword", "Great Axe", "Halberd", "Longspear"]
       }
     },
     "Magic-User": {
@@ -324,9 +375,10 @@ var cf =`{
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
       "weapons": {
-        "OneHanded": [],
+        "OneHanded": ["Garrotte", "Dagger", "Falchion", "Knife", "Club", "Jo Stick"],
+        "Throwing": ["Hatchet", "Crossbow", "Javelin"],
         "Shield" : [],
-        "TwoHanded": []
+        "TwoHanded": ["Quarterstaff", "Longspear", "Halberd"]
       }
 },
     "Paladin": {
@@ -357,9 +409,10 @@ var cf =`{
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
       "weapons": {
-        "OneHanded": [],
-        "Shield" : [],
-        "TwoHanded": []
+        "OneHanded": ["Longsword", "Lance", "Rapier", "War Hammer", "Bastard Sword", "Morning Star"],
+        "Throwing": ["Dagger"],
+        "Shield" : ["Heater", "Kite"],
+        "TwoHanded": ["Great Hammer"]
       }
     },
     "Ranger": {
@@ -385,9 +438,10 @@ var cf =`{
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
       "weapons": {
-        "OneHanded": [],
-        "Shield" : [],
-        "TwoHanded": []
+        "OneHanded": ["Longsword", "Shortsword", "Club", "Scimitar", "Falchion", "Rapier", "War Hammer"],
+        "Throwing": ["Recurve Bow", "Short Bow", "Light Crossbow", "Long Bow"],
+        "Shield" : ["Buckler", "Heater", "Target"],
+        "TwoHanded": ["Battleaxe", "Bastard Sword", "Great Axe", "Halberd", "Longspear"]
       }
     },
     "Thief": {
@@ -412,7 +466,8 @@ var cf =`{
       "Notes": ["**Advancement Skills: Athletics, COMBAT, Deceit, Evade, Sleight, Stealth, Streetwise",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
       "weapons": {
-        "OneHanded": [],
+        "OneHanded": ["Club", "Dagger", "Falchion", "Garrotte", "Knife", "Longsword", "Shortsword"],
+        "Throwing": ["Hand Crossbow", "Dart", "Short Bow", "Sling"],
         "Shield" : [],
         "TwoHanded": []
       }
@@ -440,7 +495,8 @@ var cf =`{
       "Notes": ["**Advancement Skills: Acrobatics, Athletics, COMBAT, Deceit, Evade, Perception, Stealth, Streetwise",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
       "weapons": {
-        "OneHanded": [],
+        "OneHanded": ["Broadsword", "Club", "Dagger", "Falchion", "Garrotte", "Knife", "Longsword", "Shortsword"],
+        "Throwing": ["Sling", "Dart"],
         "Shield" : [],
         "TwoHanded": []
       }

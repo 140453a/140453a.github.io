@@ -123,7 +123,7 @@ function generate() {
   char.skills = skills;
   char.notes = ""
   char.sorcery_spells = [];
-  var hit = hitLocations(template.Class[_class].Armor.Main, template.Class[_class].Armor.Limbs, char.stats);
+  var hit = hitLocations(template.Class[_class].Armor.Main, template.Class[_class].Armor.Limbs, char.stats, char.class);
   char.hit_locations = hit;
   var spec = racialSpecials(template, char.race);
   char.features = spec;
@@ -133,7 +133,6 @@ function generate() {
   classAdjustment(char, char.class, char.skills, char.features, char.stats, template);
   bonusSkills(char, char.class, template);
   combatStyle(char, template);
-  // XKCD TODO: remove "COMBAT" from char.skills
   $("#myJson").html("[" + JSON.stringify(char) + "]");
   return true;
 }
@@ -150,17 +149,31 @@ function combatStyle(char, template) {
     if(Object.keys(obj)[0] == 'COMBAT') return true;
   });
   inner_style.value = char.skills[indexOfCombat].COMBAT; // setting combat style percentage.
+  delete char.skills[indexOfCombat].COMBAT; // cleaning up COMBAT skill.
 
-  // removing COMBAT professional skill from skills
-  char.skills.splice(indexOfCombat, 1);
 
+  if (["Fighter"].includes(char.class)) {
+    if (char.fighter == "melee") {
+      //char.inner_style.weapons.push({})
+    }
+  } else if (["Ranger"].includes(char.class)) {
+    ;//
+  }
   // setting up starter class weapon.
-  char.weapons = [];
+  random_style = Math.floor(Math.random() * 2) + 1; // 1 - 2, 1 = 1h + shield, 2 = 2h + ranged.
+
+
 
   char.combat_styles = outer_style; // setting char with combat style array
 }
 
+// returns an object of a random weapon from a class's weapon_type list in classicfantasy.json.
+function randomWeapon(template, class_, weapon_type) {
+  var weapon_arr = template.Class[class_].weapons[weapon_type];
+  var weapon = weapon_arr[weapon_arr.length * Math.random() | 0]; // getting random weapon from array.
+  // looking up weapon to get its stats.
 
+}
 
 // add bonus skills with focus on getting 5 prerequisite skills to 50%
 function bonusSkills(char, class_ ,template) {
@@ -363,28 +376,34 @@ function classAdjustment(char, class_, skills, features, stats, template) {
         features.push(template.Class[class_].Talents[0]); // defense talent, armour proficiency.
         features.push(template.Class[class_].Talents[3]); // offense talent, melee weapon.
         armor_penalty = Math.ceil(armor_penalty / 4); // armour proficiency lowers enc.
+        char.fighter = "melee";
         break;
       case 2:
         features.push(template.Class[class_].Talents[0]); // defense talent, armour proficiency.
         features.push(template.Class[class_].Talents[4]); // offense talent, ranged weapon.
         armor_penalty = Math.ceil(armor_penalty / 4); // armour proficiency lowers enc.
+        char.fighter = "ranged";
         break;
       case 3:
         features.push(template.Class[class_].Talents[0]); // defense talent, armour proficiency.
         features.push(template.Class[class_].Talents[5]); // offense talent, shields.
         armor_penalty = Math.ceil(armor_penalty / 4); // armour proficiency lowers enc.
+        char.fighter = "shields"
         break;
       case 4:
         features.push(template.Class[class_].Talents[1]); // defense talent, agile defender.
         features.push(template.Class[class_].Talents[3]); // offense talent, melee weapon.
+        char.fighter = "melee";
         break;
       case 5:
         features.push(template.Class[class_].Talents[1]); // defense talent, agile defender.
         features.push(template.Class[class_].Talents[4]); // offense talent, ranged weapon.
+        char.fighter = "ranged";
         break;
       case 6:
         features.push(template.Class[class_].Talents[1]); // defense talent, agile defender.
         features.push(template.Class[class_].Talents[5]); // offense talent, shields.
+        char.fighter = "shields"
         break;
     }
 
@@ -919,37 +938,30 @@ function calculateAttributes(template, race, stats, class_) {
 
 
 
-function hitLocations(chest_abdomen_head, rest_of_body, stats) {
+function hitLocations(chest_abdomen_head, rest_of_body, stats, class_) {
   // these characteristics are needed to calculate HP.
   var CON = Object.entries(stats[1])[0][1];
   var SIZ = Object.entries(stats[2])[0][1];
+  // berserkers have a feature called resilient, which calculates HP based on STR+CON+SIZ
+  var STR = Object.entries(stats[0])[0][1];
+
   var bucket = CON + SIZ;
-  var hp_mod = 0
-  if (bucket <= 5) {
-    hp_mod = 0;
-  } else if (bucket <= 10) {
-    hp_mod = 1;
-  } else if (bucket <= 15) {
-    hp_mod = 2;
-  } else if (bucket <= 20) {
-    hp_mod = 3;
-  } else if (bucket <= 25) {
-    hp_mod = 4;
-  } else if (bucket <= 30) {
-    hp_mod = 5;
-  } else if (bucket <= 35) {
-    hp_mod = 6;
-  } else if (bucket <= 40) {
-    hp_mod = 7;
-  } else {
-    hp_mod = 8;
+  if (class_ == "Berserker") bucket = CON + SIZ + STR; // testing for resilienct feature.
+
+  console.log(bucket);
+  var hp_mod = 0;
+  for (var i = bucket; i > 5; i -= 5) { // this function perfectly maps to hp buckets.
+    hp_mod += 1;
   }
+  console.log(hp_mod);
   //returning array
   var hit = [];
   var humanoid = ["Right leg", "Left leg", "Abdomen", "Chest", "Right arm", "Left arm", "Head"];
   var ranges = ["01-03", "04-06", "07-09", "10-12", "13-15", "16-18", "19-20"];
   var special = [2, 3, 6] // indexes of abdomen, chest, head.
   var base_hp = [1, 1, 2, 3, 1, 1, 1]; //starting hp of humanoid, before modifier is added.
+
+
 
   for (var i = 0; i < 7; i++) {
     let obj = {}
