@@ -139,9 +139,8 @@ function generate() {
 
 
 function combatStyle(char, template) {
-  if (["Magic-User"].includes(char.class)) {return} // magic users have no combat ability.
   var inner_style = {}
-  var outer_style = [inner_style];
+  inner_style.weapons = [];
 
   inner_style.name = char.class + " Style";
 
@@ -151,7 +150,13 @@ function combatStyle(char, template) {
   inner_style.value = char.skills[indexOfCombat].COMBAT; // setting combat style percentage.
   delete char.skills[indexOfCombat].COMBAT; // cleaning up COMBAT skill.
 
-
+  if (["Magic-User"].includes(char.class)) { // just give magic user a staff and a dagger
+    inner_style.weapons.push(template.Weapons["Dagger"]);
+    inner_style.weapons.push(template.Weapons["Staff"]);
+    var outer_style = [inner_style];
+    char.combat_styles = outer_style; // setting char with combat style array
+    return;
+  }
   if (["Fighter"].includes(char.class)) {
     if (char.fighter == "melee") {
       //char.inner_style.weapons.push({})
@@ -160,11 +165,22 @@ function combatStyle(char, template) {
     ;//
   }
   // setting up starter class weapon.
-  random_style = Math.floor(Math.random() * 2) + 1; // 1 - 2, 1 = 1h + shield, 2 = 2h + ranged.
+  random_style = Math.floor(Math.random() * 2) + 1; // 1 to 2, 1 = 1h + shield, 2 = 2h + ranged.
+  no_of_weapons = roll(template.Class[char.class].weapons.Amount);
 
+  if (random_style == 1) { // 1h + shield
+    var one_handed_weapon = randomWeapon(template, char.class, "OneHanded");
+    one_handed_weapon = template.Weapons[one_handed_weapon];
+    inner_style.weapons.push(one_handed_weapon);
 
-
+  } else {
+    var two_handed_weapon = randomWeapon(template, char.class, "TwoHanded");
+    two_handed_weapon = template.Weapons[two_handed_weapon];
+    inner_style.weapons.push(two_handed_weapon);
+  }
+  var outer_style = [inner_style];
   char.combat_styles = outer_style; // setting char with combat style array
+  return;
 }
 
 // returns an object of a random weapon from a class's weapon_type list in classicfantasy.json.
@@ -172,7 +188,7 @@ function randomWeapon(template, class_, weapon_type) {
   var weapon_arr = template.Class[class_].weapons[weapon_type];
   var weapon = weapon_arr[weapon_arr.length * Math.random() | 0]; // getting random weapon from array.
   // looking up weapon to get its stats.
-
+  return weapon;
 }
 
 // add bonus skills with focus on getting 5 prerequisite skills to 50%
@@ -208,7 +224,6 @@ function bonusSkills(char, class_ ,template) {
     skills[index_of_skill][random_skill] = skills[index_of_skill][random_skill] + points_to_add;
   }
   
-
 }
 
 
