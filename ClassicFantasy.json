@@ -150,6 +150,7 @@ var cf =`{
       "Notes": ["**Advancement Skills: Arcane Casting, Arcane Knowledge, Athletics, Influence, Lore(Any), Musicianship, Seduction, Sing",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
       "weapons": {
+        "Amount" : "1d2+1",
         "OneHanded": ["Broadsword", "Club", "Dagger", "Falchion", "Knife", "Longsword", "Shortspear", "Shortsword", "Rapier", "Scimitar"],
         "Throwing": ["Javelin", "Dart", "Sling"],
         "Shield" : ["Buckler", "Peltast"],
@@ -181,6 +182,7 @@ var cf =`{
       "Notes": ["**Advancement Skills: Athletics, Channel, Influence, Musicianship, Piety, Sing, Survival, Lore(Any)",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
       "weapons": {
+        "Amount" : "1d2+1",
         "OneHanded": ["Club", "Dagger", "Longsword", "Shortspear", "Shortsword", "Rapier"],
         "Throwing": ["Javelin", "Dart", "Sling"],
         "Shield" : ["Buckler"],
@@ -212,6 +214,7 @@ var cf =`{
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
       "weapons": {
+        "Amount" : "1d2+1",
         "OneHanded": ["Longsword", "Shortsword", "Club", "Scimitar"],
         "Throwing": ["Hatchet", "Short Bow"],
         "Shield" : ["Buckler", "Heater", "Target"],
@@ -268,6 +271,7 @@ var cf =`{
       "Notes": ["**Advancement Skills: Channel, COMBAT, First Aid, Influence, Insight, Piety, Willpower",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
       "weapons": {
+        "Amount" : "1d3+1",
         "OneHanded": ["Club", "Morning Star", "War Hammer", "Ball & Chain"],
         "Throwing": ["Staff Sling"],
         "Shield" : ["Buckler", "Heater"],
@@ -295,6 +299,7 @@ var cf =`{
       "Notes": ["**Advancement Skills: Channel, COMBAT, First Aid, Influence, Insight, Piety, Willpower",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
       "weapons": {
+        "Amount" : "1d2+1",
         "OneHanded": ["Club", "Dagger", "War Hammer", "Sickle", "Scimitar", "Shortspear", "Whip"],
         "Throwing": ["Dart", "Staff Sling"],
         "Shield" : ["Buckler"],
@@ -325,6 +330,7 @@ var cf =`{
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
       "weapons": {
+        "Amount" : "1d2+1",
         "OneHanded": ["Longsword", "Shortsword", "Club", "Scimitar", "Falchion", "Rapier", "War Hammer"],
         "Throwing": ["Short Bow", "Long Bow"],
         "Shield" : ["Buckler", "Heater", "Target"],
@@ -375,6 +381,7 @@ var cf =`{
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
       "weapons": {
+        "Amount" : "1d2",
         "OneHanded": ["Garrotte", "Dagger", "Falchion", "Knife", "Club", "Jo Stick"],
         "Throwing": ["Hatchet", "Crossbow", "Javelin"],
         "Shield" : [],
@@ -409,6 +416,7 @@ var cf =`{
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
       "weapons": {
+        "Amount" : "1d3+1",
         "OneHanded": ["Longsword", "Lance", "Rapier", "War Hammer", "Bastard Sword", "Morning Star"],
         "Throwing": ["Dagger"],
         "Shield" : ["Heater", "Kite"],
@@ -438,6 +446,7 @@ var cf =`{
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
       "weapons": {
+        "Amount" : "1d2+1",
         "OneHanded": ["Longsword", "Shortsword", "Club", "Scimitar", "Falchion", "Rapier", "War Hammer"],
         "Throwing": ["Recurve Bow", "Short Bow", "Light Crossbow", "Long Bow"],
         "Shield" : ["Buckler", "Heater", "Target"],
@@ -466,6 +475,7 @@ var cf =`{
       "Notes": ["**Advancement Skills: Athletics, COMBAT, Deceit, Evade, Sleight, Stealth, Streetwise",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
       "weapons": {
+        "Amount" : "1d2+1",
         "OneHanded": ["Club", "Dagger", "Falchion", "Garrotte", "Knife", "Longsword", "Shortsword"],
         "Throwing": ["Hand Crossbow", "Dart", "Short Bow", "Sling"],
         "Shield" : [],
@@ -495,6 +505,7 @@ var cf =`{
       "Notes": ["**Advancement Skills: Acrobatics, Athletics, COMBAT, Deceit, Evade, Perception, Stealth, Streetwise",
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific."],
       "weapons": {
+        "Amount" : "1d2",
         "OneHanded": ["Broadsword", "Club", "Dagger", "Falchion", "Garrotte", "Knife", "Longsword", "Shortsword"],
         "Throwing": ["Sling", "Dart"],
         "Shield" : [],

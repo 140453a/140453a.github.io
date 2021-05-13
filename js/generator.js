@@ -152,7 +152,7 @@ function combatStyle(char, template) {
 
   if (["Magic-User"].includes(char.class)) { // just give magic user a staff and a dagger
     inner_style.weapons.push(template.Weapons["Dagger"]);
-    inner_style.weapons.push(template.Weapons["Staff"]);
+    inner_style.weapons.push(template.Weapons["Quarterstaff"]);
     var outer_style = [inner_style];
     char.combat_styles = outer_style; // setting char with combat style array
     return;
@@ -172,11 +172,13 @@ function combatStyle(char, template) {
     var one_handed_weapon = randomWeapon(template, char.class, "OneHanded");
     one_handed_weapon = template.Weapons[one_handed_weapon];
     inner_style.weapons.push(one_handed_weapon);
+    console.log("One:", one_handed_weapon);
 
   } else {
     var two_handed_weapon = randomWeapon(template, char.class, "TwoHanded");
     two_handed_weapon = template.Weapons[two_handed_weapon];
     inner_style.weapons.push(two_handed_weapon);
+    console.log("Two:", two_handed_weapon);
   }
   var outer_style = [inner_style];
   char.combat_styles = outer_style; // setting char with combat style array
