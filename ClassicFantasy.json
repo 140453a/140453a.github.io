@@ -216,7 +216,7 @@ var cf =`{
       "weapons": {
         "Amount" : "1d2+1",
         "OneHanded": ["Longsword", "Shortsword", "Club", "Scimitar"],
-        "Throwing": ["Hatchet", "Short Bow"],
+        "Throwing": ["Hatchet", "Shortbow"],
         "Shield" : ["Buckler", "Heater", "Target"],
         "TwoHanded": ["Battleaxe", "Bastard Sword", "Great Axe"]
       }
@@ -227,7 +227,7 @@ var cf =`{
       "Highly Resistant to Mind Control: Due to this talent, you find it 2 grades easier to perform Willpower checks when resisting any form of magic that targets the mind. This includes such powers as beguiling, charm, domination, hold, hypnosis, magic jar, possession, sleep, suggestion, and psionic mind blast. It has no effect on skills such as Influence or Seduction. You also find it 1 grade easier to disbelieve illusions and phantasms. Does not stack with elvish power.",
       "Hospitality: You may expect food and lodging from other paladins or cavaliers of non-conflicting Passions, as well as noble and royal households of similar political divisions.",
       "Immunity to Fear (3 Metre/10 foot Radius): Due to this talent, you are immune to the effects of fear, magical or otherwise. This immunity extends around you in a 3-metre (10-foot) radius, granting this ability to all friends and allies in the radius of effect.",
-      "Mounted Combat Specialisation: You have trained to fight from the back of a mount and may benefit from the following when mounted. Where normally the combat skills of riders may not exceed their Ride skill, this stipulation does not apply to you. In addition, your Combat Style is improved by 10% when fighting from a mount for the purposes of both attack and defence. Finally, you may ignore the first penalty grade of any Ride roll required while in combat. The elven cavalier may apply the above bonuses when using a short bow from the back of a mount as well.",
+      "Mounted Combat Specialisation: You have trained to fight from the back of a mount and may benefit from the following when mounted. Where normally the combat skills of riders may not exceed their Ride skill, this stipulation does not apply to you. In addition, your Combat Style is improved by 10% when fighting from a mount for the purposes of both attack and defence. Finally, you may ignore the first penalty grade of any Ride roll required while in combat. The elven cavalier may apply the above bonuses when using a Shortbow from the back of a mount as well.",
       "Combat Proficiency: Being a master of armed and unarmed combat, cavaliers gain a further +5% to their Combat Style & Unarmed."
   ],
       "Prereq": {"STR": "11", "CON": "12", "DEX": "11", "INT": "13", "POW": "10"},
@@ -332,7 +332,7 @@ var cf =`{
       "weapons": {
         "Amount" : "1d2+1",
         "OneHanded": ["Longsword", "Shortsword", "Club", "Scimitar", "Falchion", "Rapier", "War Hammer"],
-        "Throwing": ["Short Bow", "Long Bow"],
+        "Throwing": ["Shortbow", "Longbow"],
         "Shield" : ["Buckler", "Heater", "Target"],
         "TwoHanded": ["Battleaxe", "Bastard Sword", "Great Axe", "Halberd", "Longspear"]
       }
@@ -448,7 +448,7 @@ var cf =`{
       "weapons": {
         "Amount" : "1d2+1",
         "OneHanded": ["Longsword", "Shortsword", "Club", "Scimitar", "Falchion", "Rapier", "War Hammer"],
-        "Throwing": ["Recurve Bow", "Short Bow", "Light Crossbow", "Long Bow"],
+        "Throwing": ["Recurve Bow", "Shortbow", "Light Crossbow", "Longbow"],
         "Shield" : ["Buckler", "Heater", "Target"],
         "TwoHanded": ["Battleaxe", "Bastard Sword", "Great Axe", "Halberd", "Longspear"]
       }
@@ -477,7 +477,7 @@ var cf =`{
       "weapons": {
         "Amount" : "1d2+1",
         "OneHanded": ["Club", "Dagger", "Falchion", "Garrotte", "Knife", "Longsword", "Shortsword"],
-        "Throwing": ["Hand Crossbow", "Dart", "Short Bow", "Sling"],
+        "Throwing": ["Hand Crossbow", "Dart", "Shortbow", "Sling"],
         "Shield" : [],
         "TwoHanded": []
       }

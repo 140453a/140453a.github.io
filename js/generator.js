@@ -104,23 +104,23 @@ function generate() {
   char.race = race;
   const _class = $('select[name=class] option').filter(':selected').val();
   char.class = _class;
+  char.cult_rank = "None";
   // Loading json template for character generation (e.g. template.Skills.Regular.Athletics)
   const template = JSON.parse(cf); //cf is the json object in classicfantasy.json
   prereq = template.Class[_class].Prereq;
   var stats = rollCharacteristics(prereq, template, char.race); // getting characteristics for character
   char.stats = stats; // main json now has characteristics that meet prereqs for class.
+  var skills = calculateBaseSkills(template, char.stats);
+  char.skills = skills;
   var attrs = calculateAttributes(template, char.race, char.stats, char.class);
   char.attributes = attrs;
   // extra stuff needed for json importer to work. (maybe? some needed, some not.)
   char.theism_spells = [];
-  char.cult_rank = "None";
   char.mysticism_spells = [];
 
   char.spirits = [];
   char.cults = [];
   char.folk_spells = [];
-  var skills = calculateBaseSkills(template, char.stats);
-  char.skills = skills;
   char.notes = ""
   char.sorcery_spells = [];
   var hit = hitLocations(template.Class[_class].Armor.Main, template.Class[_class].Armor.Limbs, char.stats, char.class);
@@ -148,7 +148,12 @@ function combatStyle(char, template) {
     if(Object.keys(obj)[0] == 'COMBAT') return true;
   });
   inner_style.value = char.skills[indexOfCombat].COMBAT; // setting combat style percentage.
-  delete char.skills[indexOfCombat].COMBAT; // cleaning up COMBAT skill.
+  char.skills.splice(indexOfCombat, 1); // cleaning up COMBAT skill.
+
+
+  // setting up variables to roll weapons.
+  no_of_weapons = roll(template.Class[char.class].weapons.Amount); // number of weapons to generate.
+
 
   if (["Magic-User"].includes(char.class)) { // just give magic user a staff and a dagger
     inner_style.weapons.push(template.Weapons["Dagger"]);
@@ -157,29 +162,59 @@ function combatStyle(char, template) {
     char.combat_styles = outer_style; // setting char with combat style array
     return;
   }
-  if (["Fighter"].includes(char.class)) {
+  else if (["Fighter"].includes(char.class)) {
     if (char.fighter == "melee") {
-      //char.inner_style.weapons.push({})
+      inner_style.weapons.push(template.Weapons[randomWeapon(template, char.class, "OneHanded")]);
+      inner_style.weapons.push(template.Weapons[randomWeapon(template, char.class, "OneHanded")]);
+      if (no_of_weapons > 2) {
+        inner_style.weapons.push(template.Weapons[randomWeapon(template, char.class, "TwoHanded")]);
+      };
+      
+    } else if (char.fighter = "ranged") {
+      inner_style.weapons.push(template.Weapons[randomWeapon(template, char.class, "Throwing")]);
+      inner_style.weapons.push(template.Weapons[randomWeapon(template, char.class, "OneHanded")]);
+      if (no_of_weapons > 2) {
+        inner_style.weapons.push(template.Weapons[randomWeapon(template, char.class, "Shield")]);
+      };
+    } else { // shield style
+      inner_style.weapons.push(template.Weapons[randomWeapon(template, char.class, "OneHanded")]);
+      inner_style.weapons.push(template.Weapons[randomWeapon(template, char.class, "Shield")]);
+      if (no_of_weapons > 2) {
+        inner_style.weapons.push(template.Weapons[randomWeapon(template, char.class, "OneHanded")]);
+      };
     }
+    delete char.fighter;
   } else if (["Ranger"].includes(char.class)) {
-    ;//
-  }
-  // setting up starter class weapon.
-  random_style = Math.floor(Math.random() * 2) + 1; // 1 to 2, 1 = 1h + shield, 2 = 2h + ranged.
-  no_of_weapons = roll(template.Class[char.class].weapons.Amount);
+    if (char.ranger_style == "melee") {
+      inner_style.weapons.push(template.Weapons[randomWeapon(template, char.class, "OneHanded")]);
+      inner_style.weapons.push(template.Weapons[randomWeapon(template, char.class, "OneHanded")]);
+      if (no_of_weapons > 2) {
+        inner_style.weapons.push(template.Weapons[randomWeapon(template, char.class, "Shield")]);
+      };
+      
+    } else { // ranged style
+      inner_style.weapons.push(template.Weapons[randomWeapon(template, char.class, "Throwing")]);
+      inner_style.weapons.push(template.Weapons[randomWeapon(template, char.class, "OneHanded")]);
+      if (no_of_weapons > 2) {
+        inner_style.weapons.push(template.Weapons[randomWeapon(template, char.class, "Shield")]);
+      };
+    }
+    delete char.ranger_style;
+  } else if (["Thief"].includes(char.class)) {
+    inner_style.weapons.push(template.Weapons["Dagger"]);
+    inner_style.weapons.push(template.Weapons[randomWeapon(template, char.class, "OneHanded")]);
+    if (no_of_weapons > 2) {
+      inner_style.weapons.push(template.Weapons[randomWeapon(template, char.class, "Throwing")]);
+    };
 
-  if (random_style == 1) { // 1h + shield
-    var one_handed_weapon = randomWeapon(template, char.class, "OneHanded");
-    one_handed_weapon = template.Weapons[one_handed_weapon];
-    inner_style.weapons.push(one_handed_weapon);
-    console.log("One:", one_handed_weapon);
-
-  } else {
-    var two_handed_weapon = randomWeapon(template, char.class, "TwoHanded");
-    two_handed_weapon = template.Weapons[two_handed_weapon];
-    inner_style.weapons.push(two_handed_weapon);
-    console.log("Two:", two_handed_weapon);
+  } else if (["Thief-Acrobat"].includes(char.class)) {
+    inner_style.weapons.push(template.Weapons["Dagger"]);
+    inner_style.weapons.push(template.Weapons[randomWeapon(template, char.class, "OneHanded")]);
+    if (no_of_weapons > 2) {
+      inner_style.weapons.push(template.Weapons[randomWeapon(template, char.class, "Throwing")]);
+    };
   }
+ 
   var outer_style = [inner_style];
   char.combat_styles = outer_style; // setting char with combat style array
   return;
@@ -190,6 +225,7 @@ function randomWeapon(template, class_, weapon_type) {
   var weapon_arr = template.Class[class_].weapons[weapon_type];
   var weapon = weapon_arr[weapon_arr.length * Math.random() | 0]; // getting random weapon from array.
   // looking up weapon to get its stats.
+  console.log("WEAPON:", weapon);
   return weapon;
 }
 
@@ -548,8 +584,10 @@ function classAdjustment(char, class_, skills, features, stats, template) {
     var ranger_style = Math.round(Math.random()); // 0 or 1
     if (ranger_style == 0) { // bow specialization
       features.push(template.Class[class_].Talents[2]);  
+      char.ranger_style = "bow"; // this is needed for weapon choices later.
     } else { // dual wielding specialization
       features.push(template.Class[class_].Talents[3]);
+      char.ranger_style = "melee"; // this is needed for weapon choices later.
     }
 
     // required passions
