@@ -12,4 +12,4 @@ This is what the site looks like as of 6/23/2021.
 
 ### Reactions
 The service was appreciated by the small community which it serves.
-![Discord reviews](https://i.imgur.com/RSJfUxc.png)
+![Discord reviews](https://i.imgur.com/OZO9oua.png)
