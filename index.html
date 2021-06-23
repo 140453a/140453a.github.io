@@ -14,6 +14,7 @@
 <body>
   <div class="container">
   <h2>Mythras Expert Classic Fantasy Character Generator</h2>
+    <h4>Version 1.0</h3>
     <form id='form'>
       <div class="form-group">
         <!-- NAME -->
@@ -59,6 +60,9 @@
     <div id="char_json">
       <textarea class="form-control" id="myJson" rows="7" readonly></textarea>
       <button type="button" class="btn btn-secondary btn-sm" onclick="copyText()">Copy text</button>
+    </div>
+    <div class="alert alert-warning" id="faq">
+      <b>Note:</b> Due to limitations in the Roll20 Importer, spells can not currently be added to character sheets and must be added manually; additionally, the armor section can not currently be imported due to the importer. I have not tested this generator on FoundryVTT, use at your own discretion. <br/> <br/> Please send bug reports and suggestions to alby#3987 on Discord.
     </div>
   </div>
 </body>

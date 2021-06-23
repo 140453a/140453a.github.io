@@ -115,14 +115,16 @@ function generate() {
   var attrs = calculateAttributes(template, char.race, char.stats, char.class);
   char.attributes = attrs;
   // extra stuff needed for json importer to work. (maybe? some needed, some not.)
+  char.folk_spells = [];
   char.theism_spells = [];
+  char.sorcery_spells = ["Pilbus", "Shilbus"];
   char.mysticism_spells = [];
 
   char.spirits = [];
   char.cults = [];
-  char.folk_spells = [];
+  
   char.notes = ""
-  char.sorcery_spells = [];
+
   var hit = hitLocations(template.Class[_class].Armor.Main, template.Class[_class].Armor.Limbs, char.stats, char.class);
   char.hit_locations = hit;
   var spec = racialSpecials(template, char.race);
@@ -150,11 +152,7 @@ function combatStyle(char, template) {
   inner_style.value = char.skills[indexOfCombat].COMBAT; // setting combat style percentage.
   char.skills.splice(indexOfCombat, 1); // cleaning up COMBAT skill.
 
-
-  // setting up variables to roll weapons.
-  no_of_weapons = roll(template.Class[char.class].weapons.Amount); // number of weapons to generate.
-
-
+  // magic users are an exception, and can be dealt with before doing unneccessary calculations.
   if (["Magic-User"].includes(char.class)) { // just give magic user a staff and a dagger
     inner_style.weapons.push(template.Weapons["Dagger"]);
     inner_style.weapons.push(template.Weapons["Quarterstaff"]);
@@ -162,7 +160,12 @@ function combatStyle(char, template) {
     char.combat_styles = outer_style; // setting char with combat style array
     return;
   }
-  else if (["Fighter"].includes(char.class)) {
+
+  // setting up variables to roll weapons.
+  no_of_weapons = roll(template.Class[char.class].weapons.Amount); // number of weapons to generate.
+
+
+  if (["Fighter"].includes(char.class)) {
     if (char.fighter == "melee") {
       inner_style.weapons.push(template.Weapons[randomWeapon(template, char.class, "OneHanded")]);
       inner_style.weapons.push(template.Weapons[randomWeapon(template, char.class, "OneHanded")]);
@@ -225,7 +228,7 @@ function randomWeapon(template, class_, weapon_type) {
   var weapon_arr = template.Class[class_].weapons[weapon_type];
   var weapon = weapon_arr[weapon_arr.length * Math.random() | 0]; // getting random weapon from array.
   // looking up weapon to get its stats.
-  console.log("WEAPON:", weapon);
+  //console.log("WEAPON:", weapon);
   return weapon;
 }
 
@@ -291,7 +294,7 @@ function classAdjustment(char, class_, skills, features, stats, template) {
     var pen = template.Class[class_].Armor.Penalty.toString();
     var unmodified_sr = char.attributes.strike_rank;
     var sr = (unmodified_sr - template.Class[class_].Armor.Penalty).toString();
-    console.log(sr + `(${unmodified_sr}-${pen})`);
+    //console.log(sr + `(${unmodified_sr}-${pen})`);
     char.attributes.strike_rank = sr + `(${unmodified_sr}-${pen})`;
 
 
@@ -471,11 +474,16 @@ function classAdjustment(char, class_, skills, features, stats, template) {
     for (talent of template.Class[class_].Talents) { // pushing all talents to character.
       features.push(talent);
     }
+    // Gnomes MUST be illusionists.
+    if (class_ === "Gnome") {
+      features.push("You are specialized in Illusion magic.");
+      return;
+    }
+
     //determining speciality, if any.
     var specialization = null;
     var magic_chance = Math.round(Math.random()); // 50% chance to be specialized.
     if (magic_chance) { // if specialized,
-      features_arr = [] // populate with specialization information, as well as a feature telling you your specialization, and forbidden specs.
       var random_spec = Math.floor(Math.random() * 8); // 1 - 8
       switch (random_spec) {
         case 1:
@@ -505,6 +513,7 @@ function classAdjustment(char, class_, skills, features, stats, template) {
         default:
           break;
       }
+      features.push("You are specialized in " + specialization + " magic.");
     }
 
     // Strike rank (called initiative, but importer uses strike rank.)
@@ -663,7 +672,7 @@ function classSkills(class_, template, skills, stats){
 
   const randomElement = class_choices[Math.floor(Math.random() * class_choices.length)];
   class_professionals.push(randomElement);
-  console.log("Class_Professionals", class_professionals);
+  //console.log("Class_Professionals", class_professionals);
   // adding pro skills to char.skills
   for (let i = 0; i < 3; i ++) {
     if(skills.indexOf(class_professionals[i]) === -1){ // only pushing if unique.
@@ -1003,12 +1012,12 @@ function hitLocations(chest_abdomen_head, rest_of_body, stats, class_) {
   var bucket = CON + SIZ;
   if (class_ == "Berserker") bucket = CON + SIZ + STR; // testing for resilienct feature.
 
-  console.log(bucket);
+  //console.log(bucket);
   var hp_mod = 0;
   for (var i = bucket; i > 5; i -= 5) { // this function perfectly maps to hp buckets.
     hp_mod += 1;
   }
-  console.log(hp_mod);
+  //console.log(hp_mod);
   //returning array
   var hit = [];
   var humanoid = ["Right leg", "Left leg", "Abdomen", "Chest", "Right arm", "Left arm", "Head"];
