@@ -11,5 +11,5 @@ This is what the site looks like as of 6/23/2021.
 ![Site preview](https://i.imgur.com/IJQLj0D.png)
 
 ### Reactions
-The service was appreciated by the small community which it serves.
+The service was appreciated by the small community which it serves. Additionally, the creator of the RPG system, Rodney Leary, gave the project a thumbsup reaction. 👍
 ![Discord reviews](https://i.imgur.com/57IxPMe.png)
