@@ -1,0 +1,8 @@
+ar wh = `
+    "Names":{
+        "First": ["Able", "Alaric", "Alban", "Aldo", "Ambrose", "Anaster", "Anselm", "Anomander", "Archibald", "August", "Baldwin", "Balthasar", "Barnabas", "Bartholomew", "Benedict", "Cassian", "Castellan", "Chapman", "Crispin", "Cyprian", "Dunstan", "Edmund", "Everard", "Ferdinand", "Florian", "Frost", "Godfrey", "Godric", "Ivan", "Leopold", "Lucian", "Milo", "Otto", "Quentin", "Rudolf", "Sebastian", "Severin", "Meese", "Mallick", "L'oric", "Kiska", "Tattersail", "Karsa", "Kilmandaros", "Kimloc", "Kruppe", "Kulpath", "Inchers", "Itkovian", "Held", "Henarist"],
+        "Last": ["Rake", "Forge", "Arpat", "Estos", "Gruk", "Gild", "Mekhar", "Setral", "Nom", "Harn", "Delat", "Home", "Sengar", "Tooth", "Handar", "Haran", "Trana", "Beddict", "Trana", "Rope", "Brood", "Tol", "D'Arle", "Irard", "Thenu'alas", "Younghand", "Ultor", "Fandoris", "Thord", "Nebrahl", "Rav", "Reese", "Silann", "Diskanar", "Balkat", "Throe", "Paran", "Eberict", "The Giant", "Mosag", "Khalag," "Vygulf", "Gholan", "Absinos", "Ovan", "Pust", "Sharplance", "Fant", "Reloe", "Urmanal", "Invictad", "Demesand", "Orglong", "Broach", "Yil", "Runt"]
+        }
+    }    
+
+`
