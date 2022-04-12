@@ -4,7 +4,7 @@ This is a rank 1 character generator for the tabletop roleplaying game **Mythras
 
 Mythras is similar to Dungeons & Dragons, but more complex and more obscure. This is a niche game that I personally do not play, but thought that it could use some help—as there is something special about supporting small communities.
 
-This site is hosted at [here](https://classicfantasy.xyz) at https://classicfantasy.xyz.
+This site is hosted at [here](https://classicfantasy.quest) at https://classicfantasy.quest.
 
 ### Preview
 This is what the site looks like as of 6/23/2021.
