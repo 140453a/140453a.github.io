@@ -117,7 +117,7 @@ function generate() {
   // extra stuff needed for json importer to work. (maybe? some needed, some not.)
   char.folk_spells = [];
   char.theism_spells = [];
-  char.sorcery_spells = ["Pilbus", "Shilbus"];
+  char.sorcery_spells = [];
   char.mysticism_spells = [];
 
   char.spirits = [];
