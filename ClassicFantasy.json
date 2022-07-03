@@ -245,6 +245,7 @@ var cf =`{
                 "**Replace '(any)' in Craft, Lore, etc. skills with something specific.",
                 "**Combat Proficiency bonus is already added to the Combat and Unarmed skills."],
       "weapons": {
+        "Amount" : "1d3+1",
         "OneHanded": ["Longsword", "Lance", "Rapier", "War Hammer", "Bastard Sword", "Morning Star"],
         "Throwing": ["Dagger"],
         "Shield" : ["Heater", "Kite"],
